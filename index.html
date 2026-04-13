@@ -1606,43 +1606,37 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   .strip__inner { flex-wrap: nowrap; justify-content: flex-start; }
   .strip__item { padding: 4px 14px; white-space: nowrap; flex-shrink: 0; font-size: 12px; }
   .hero { min-height: 0; align-items: flex-start; }
-  .hero__content { grid-template-columns: 1fr; gap: 0; padding: 44px 20px 40px; max-width: 100%; width: 100%; }
+  .hero__content { grid-template-columns: 1fr; gap: 0; padding: 48px 22px 44px; max-width: 100%; width: 100%; }
   .hero__overlay { background: linear-gradient(180deg, rgba(242,232,213,0.96) 0%, rgba(242,232,213,0.92) 70%, rgba(242,232,213,0.65) 100%); }
   .hero__badge { display: none; }
   .hero__text { max-width: 100%; }
-  .hero__content { text-align: center; }
   .hero__text { max-width: 100%; }
   .hero__title {
-    font-size: clamp(46px, 13.5vw, 72px);
+    font-size: clamp(58px, 17vw, 90px);
+    font-weight: 800;
     margin-bottom: 0;
-    line-height: 1.05;
+    line-height: 1.0;
     position: relative;
-    padding: 0 4px;
+    text-align: left;
+    padding: 0;
+    letter-spacing: -0.02em;
   }
   .hero__title::before {
     content: '\201C';
     display: block;
     font-family: Georgia, serif;
-    font-size: clamp(72px, 20vw, 100px);
+    font-size: clamp(90px, 26vw, 130px);
     color: var(--forest);
-    opacity: 0.20;
-    line-height: 0.60;
-    margin-bottom: 6px;
+    opacity: 0.18;
+    line-height: 0.55;
+    margin-bottom: 8px;
     text-align: left;
-    padding-left: 2px;
   }
   .hero__title::after {
-    content: '\201D';
-    display: block;
-    font-family: Georgia, serif;
-    font-size: clamp(72px, 20vw, 100px);
-    color: var(--forest);
-    opacity: 0.20;
-    line-height: 0.22;
-    margin-top: 4px;
-    text-align: right;
-    padding-right: 2px;
+    content: none;
   }
+  .hero__sub { font-size: 15px; margin-top: 16px; margin-bottom: 0; text-align: left; line-height: 1.6; }
+  .hero__content { text-align: left !important; }
   .hero__sub { font-size: 14px; margin-bottom: 20px; max-width: 100%; line-height: 1.6; text-align: center; }
   .hero__actions { display: none; }
 
@@ -2006,16 +2000,6 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 
 
 
-<!-- ─── Stats strip ──────────────────────────────────────────────────────── -->
-<div class="strip">
-  <div class="strip__inner">
-    <div class="strip__item"><span class="strip__icon">📚</span><span class="strip__label"><strong>100 books</strong> planned across 5 series</span></div>
-    <div class="strip__item"><span class="strip__icon">🦊</span><span class="strip__label">Book 2 <strong>printed &amp; available</strong></span></div>
-    <div class="strip__item"><span class="strip__icon">✍️</span><span class="strip__label">Written by <strong>Olivia &amp; Matthias</strong></span></div>
-    <div class="strip__item"><span class="strip__icon">🌿</span><span class="strip__label"><strong>No villains.</strong> No winners. No lectures.</span></div>
-  </div>
-</div>
-
 <!-- ─── Little Fox intro — mobile only ──────────────────────────────────── -->
 <section class="fox-intro">
   <div class="fox-intro__inner">
@@ -2057,6 +2041,16 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
     </div>
   </div>
 </section>
+
+<!-- ─── Stats strip ──────────────────────────────────────────────────────── -->
+<div class="strip">
+  <div class="strip__inner">
+    <div class="strip__item"><span class="strip__icon">📚</span><span class="strip__label"><strong>100 books</strong> planned across 5 series</span></div>
+    <div class="strip__item"><span class="strip__icon">🦊</span><span class="strip__label">Book 2 <strong>printed &amp; available</strong></span></div>
+    <div class="strip__item"><span class="strip__icon">✍️</span><span class="strip__label">Written by <strong>Olivia &amp; Matthias</strong></span></div>
+    <div class="strip__item"><span class="strip__icon">🌿</span><span class="strip__label"><strong>No villains.</strong> No winners. No lectures.</span></div>
+  </div>
+</div>
 
 <section class="section" id="book" style="background:var(--cream);padding-bottom:0;">
 <div class="container">
