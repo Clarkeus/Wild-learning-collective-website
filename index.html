@@ -1182,8 +1182,6 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 
 
 
-.product-buy-wrap { display: none; }
-.product-tabs { display: none; }
 
 /* ═══════════════════════════════════════════════════════════════════════
    MOBILE PRICING SYSTEM — hidden on desktop
@@ -1239,6 +1237,10 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 @media (max-width: 768px) {
 
   /* ══════ OUTER WRAPPER ══════ */
+  /* Hide desktop purchase section on mobile */
+  .product-buy-wrap { display: none; }
+  .product-tabs { display: none; }
+
   .mob-pricing {
     display: block;
     padding-bottom: 24px;
