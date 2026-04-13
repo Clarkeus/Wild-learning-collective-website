@@ -1606,46 +1606,45 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   .strip__inner { flex-wrap: nowrap; justify-content: flex-start; }
   .strip__item { padding: 4px 14px; white-space: nowrap; flex-shrink: 0; font-size: 12px; }
   .hero { min-height: 0; align-items: flex-start; }
-  .hero__content { grid-template-columns: 1fr; gap: 0; padding: 36px 20px 32px; max-width: 100%; width: 100%; }
+  .hero__content { grid-template-columns: 1fr; gap: 0; padding: 44px 20px 40px; max-width: 100%; width: 100%; }
   .hero__overlay { background: linear-gradient(180deg, rgba(242,232,213,0.96) 0%, rgba(242,232,213,0.92) 70%, rgba(242,232,213,0.65) 100%); }
   .hero__badge { display: none; }
   .hero__text { max-width: 100%; }
   .hero__content { text-align: center; }
   .hero__text { max-width: 100%; }
   .hero__title {
-    font-size: clamp(34px, 10vw, 54px);
+    font-size: clamp(46px, 13.5vw, 72px);
     margin-bottom: 0;
-    line-height: 1.1;
+    line-height: 1.05;
     position: relative;
-    padding: 0 8px;
+    padding: 0 4px;
   }
   .hero__title::before {
     content: '\201C';
     display: block;
     font-family: Georgia, serif;
-    font-size: clamp(56px, 15vw, 80px);
+    font-size: clamp(72px, 20vw, 100px);
     color: var(--forest);
-    opacity: 0.22;
-    line-height: 0.65;
-    margin-bottom: 4px;
+    opacity: 0.20;
+    line-height: 0.60;
+    margin-bottom: 6px;
     text-align: left;
-    padding-left: 4px;
+    padding-left: 2px;
   }
   .hero__title::after {
     content: '\201D';
     display: block;
     font-family: Georgia, serif;
-    font-size: clamp(56px, 15vw, 80px);
+    font-size: clamp(72px, 20vw, 100px);
     color: var(--forest);
-    opacity: 0.22;
-    line-height: 0.25;
-    margin-top: 2px;
+    opacity: 0.20;
+    line-height: 0.22;
+    margin-top: 4px;
     text-align: right;
-    padding-right: 4px;
+    padding-right: 2px;
   }
   .hero__sub { font-size: 14px; margin-bottom: 20px; max-width: 100%; line-height: 1.6; text-align: center; }
-  .hero__actions { gap: 10px; flex-wrap: wrap; justify-content: center; }
-  .hero__actions .btn--primary { display: none; }
+  .hero__actions { display: none; }
 
   .fox-intro { display: block; }
   .hero-banner-mob {
