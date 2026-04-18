@@ -26,6 +26,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ── Skip-to-content (ADA) ──────────────── */
+.skip-link {
+  position: absolute;
+  top: -120px;
+  left: 16px;
+  z-index: 9999;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 10px 18px;
+  border-radius: 0 0 8px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; outline: 2px solid var(--faded-yellow); }
+
 
 /* ─── LOCKED COLOUR SYSTEM ────────────────────────────────────────────────── */
 /* Canonical Little Fox palette — never deviate                              */
@@ -178,12 +195,12 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   margin-top: 28px;
 }
 .hero__prov-item {
-  font-size: 11.5px; font-weight: 400; letter-spacing: 0.07em;
-  color: rgba(90,70,50,0.52); text-transform: uppercase;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+  color: rgba(90,70,50,0.72); text-transform: uppercase;
 }
 .hero__prov-dot {
   width: 3px; height: 3px; border-radius: 50%;
-  background: rgba(90,70,50,0.28); flex-shrink: 0;
+  background: rgba(90,70,50,0.45); flex-shrink: 0;
 }
 .hero__sub {
   font-size: 17px; font-weight: 300; color: var(--soil); line-height: 1.65;
