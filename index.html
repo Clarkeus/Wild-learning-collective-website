@@ -173,11 +173,22 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 }
 .hero__title em { font-style: italic; color: var(--forest); }
 .hero__em { font-style: italic; color: var(--fox); }
+.hero__provenance {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-top: 28px;
+}
+.hero__prov-item {
+  font-size: 11.5px; font-weight: 400; letter-spacing: 0.07em;
+  color: rgba(90,70,50,0.52); text-transform: uppercase;
+}
+.hero__prov-dot {
+  width: 3px; height: 3px; border-radius: 50%;
+  background: rgba(90,70,50,0.28); flex-shrink: 0;
+}
 .hero__sub {
   font-size: 17px; font-weight: 300; color: var(--soil); line-height: 1.65;
   margin-bottom: 36px; max-width: 460px;
 }
-.hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero__fox { display: flex; justify-content: center; align-items: flex-end; padding-bottom: 20px; }
 .hero__fox svg { width: min(300px, 38vw); filter: drop-shadow(0 8px 24px rgba(90,60,30,0.18)); }
 
@@ -1662,7 +1673,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .hero__content { text-align: left !important; }
   .hero__em { font-style: italic; color: var(--fox); }
 .hero__sub { font-size: 14px; margin-bottom: 20px; max-width: 100%; line-height: 1.6; text-align: center; }
-  .hero__actions { display: none; }
 
   .fox-intro { display: block; }
   .hero-banner-mob {
@@ -1679,7 +1689,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     object-position: center 38%;
     display: block;
   }
-  .hero__actions .btn--large { padding: 13px 24px; font-size: 15px; }
   .hero__carousel { display: none !important; }
   .mobile-buy-header { display: block; text-align: center; padding: 0 4px 20px; border-bottom: 1px solid rgba(90,70,50,0.09); }
   .mobile-buy-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--forest); margin-bottom: 6px; }
@@ -1737,9 +1746,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   }
   .hero__em { font-style: italic; color: var(--fox); }
 .hero__sub { font-size: 13px; }
-  .hero__actions { flex-direction: column; }
   .fox-intro { padding: 8px 20px 44px; }
-  .hero__actions .btn { width: 100%; justify-content: center; }
   .mobile-buy-title { font-size: 22px; }
   #book { padding-top: 20px !important; }
   .mob-price-amt { font-size: 40px; }
@@ -2128,13 +2135,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 
 <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<div class="announce-bar" role="banner" aria-label="Production details">
-  <span>
-    Printed in London
-    <span class="sep" aria-hidden="true">&#9670;</span>
-    FSC certified
-  </span>
-</div>
 
 <nav class="nav" id="nav">
   <a class="nav__logo" href="#">
@@ -2243,13 +2243,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
       <p class="hero__sub">
         A calm illustrated universe where Little Fox learns to feel, think, and choose. No villains. No winners. No lectures.
       </p>
-      <div class="hero__actions">
-        <a class="btn btn--primary btn--large" href="#book">
-          Meet Little Fox &nbsp;<span class="btn__arrow">→</span>
-        </a>
-        <a class="btn btn--secondary btn--large" href="#club">
-          Join the Club
-        </a>
+      <div class="hero__provenance">
+        <span class="hero__prov-item">Printed in London</span>
+        <span class="hero__prov-dot" aria-hidden="true"></span>
+        <span class="hero__prov-item">FSC certified</span>
       </div>
     </div>
     <!-- ── Hero right-side carousel ── -->
