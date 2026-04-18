@@ -172,6 +172,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   line-height: 1.1; color: var(--ink); margin-bottom: 20px; letter-spacing: -0.01em;
 }
 .hero__title em { font-style: italic; color: var(--forest); }
+.hero__em { font-style: italic; color: var(--fox); }
 .hero__sub {
   font-size: 17px; font-weight: 300; color: var(--soil); line-height: 1.65;
   margin-bottom: 36px; max-width: 460px;
@@ -428,6 +429,16 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   font-size: 13px; color: var(--cream); outline: none; font-family: var(--sans);
 }
 .footer__email-input::placeholder { color: rgba(242,232,213,0.3); }
+/* ── Global focus styles (ADA) ─────────────── */
+*:focus-visible {
+  outline: 2px solid var(--faded-yellow);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--faded-yellow);
+  outline-offset: 3px;
+}
 .footer__email-input:focus { border-color: rgba(214,194,122,0.4); }
 .footer__email-btn {
   background: var(--faded-yellow); color: var(--ink); font-size: 12px; font-weight: 600;
@@ -444,8 +455,8 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
 }
 .footer__copyright-block { display: flex; flex-direction: column; gap: 8px; max-width: 700px; }
-.footer__copy { font-size: 12px; color: rgba(242,232,213,0.28); }
-.footer__copy-detail { font-size: 11px; color: rgba(242,232,213,0.18); line-height: 1.6; }
+.footer__copy { font-size: 12px; color: rgba(242,232,213,0.72); }
+.footer__copy-detail { font-size: 11px; color: rgba(242,232,213,0.60); line-height: 1.6; }
 .footer__socials { display: flex; gap: 14px; }
 .footer__social {
   width: 36px; height: 36px; border-radius: 8px;
@@ -1646,9 +1657,11 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
     text-align: right;
     margin-top: 6px;
   }
-  .hero__sub { font-size: 15px; margin-top: 20px; margin-bottom: 0; text-align: left; line-height: 1.6; }
+  .hero__em { font-style: italic; color: var(--fox); }
+.hero__sub { font-size: 15px; margin-top: 20px; margin-bottom: 0; text-align: left; line-height: 1.6; }
   .hero__content { text-align: left !important; }
-  .hero__sub { font-size: 14px; margin-bottom: 20px; max-width: 100%; line-height: 1.6; text-align: center; }
+  .hero__em { font-style: italic; color: var(--fox); }
+.hero__sub { font-size: 14px; margin-bottom: 20px; max-width: 100%; line-height: 1.6; text-align: center; }
   .hero__actions { display: none; }
 
   .fox-intro { display: block; }
@@ -1722,7 +1735,8 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
     font-size: clamp(26px, 7.5vw, 44px);
     line-height: 0.20;
   }
-  .hero__sub { font-size: 13px; }
+  .hero__em { font-style: italic; color: var(--fox); }
+.hero__sub { font-size: 13px; }
   .hero__actions { flex-direction: column; }
   .fox-intro { padding: 8px 20px 44px; }
   .hero__actions .btn { width: 100%; justify-content: center; }
@@ -2099,7 +2113,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 <body>
 
 <!-- Shared SVG defs -->
-<svg width="0" height="0" style="position:absolute">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <filter id="wc" x="-5%" y="-5%" width="110%" height="110%">
       <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="4" seed="7" result="noise"/>
@@ -2113,9 +2127,18 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 </svg>
 
 <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="announce-bar" role="banner" aria-label="Production details">
+  <span>
+    Printed in London
+    <span class="sep" aria-hidden="true">&#9670;</span>
+    FSC certified
+  </span>
+</div>
+
 <nav class="nav" id="nav">
   <a class="nav__logo" href="#">
-    <svg class="nav__logo-icon" viewBox="0 0 40 40" fill="none">
+    <svg class="nav__logo-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
       <ellipse cx="20" cy="26" rx="10" ry="11" fill="#C4622D"/>
       <ellipse cx="20" cy="29" rx="6" ry="7.5" fill="#F4EDE4"/>
       <circle cx="20" cy="16" r="8" fill="#C4622D"/>
@@ -2135,7 +2158,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
       <span>Little Fox &amp; Friends</span>
     </div>
   </a>
-  <ul class="nav__links">
+  <ul class="nav__links" aria-label="Main navigation">
     <li><a class="nav__link" href="#book">The Book</a></li>
     <li><a class="nav__link" href="#club">The Club</a></li>
     <li><a class="nav__link" href="#challenge">Wild Challenge</a></li>
@@ -2145,7 +2168,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
-  <ul class="nav__mobile" id="mobile-nav">
+  <ul class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
     <li><a class="nav__link" href="#book">The Book</a></li>
     <li><a class="nav__link" href="#club">The Club</a></li>
     <li><a class="nav__link" href="#challenge">Wild Challenge</a></li>
@@ -2155,9 +2178,10 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 </nav>
 
 <!-- ─── Hero ────────────────────────────────────────────────────────────── -->
+<main id="main-content" tabindex="-1">
 <section class="hero">
   <div class="hero__forest">
-    <svg viewBox="0 0 1440 840" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 1440 840" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#D6E4DC"/>
@@ -2214,7 +2238,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
         Book 2 — printed &amp; available now
       </div>
       <h1 class="hero__title">
-        Stories that build <em>calm, confident,</em> intelligent thinkers.
+        Stories that build <span class="hero__em">calm, confident,</span> intelligent thinkers.
       </h1>
       <p class="hero__sub">
         A calm illustrated universe where Little Fox learns to feel, think, and choose. No villains. No winners. No lectures.
@@ -2360,14 +2384,14 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
       <!-- Nav: arrows + dots -->
       <div class="hero__carousel-nav">
         <button class="hero__carousel-arrow" onclick="navigateHero(-1)" aria-label="Previous">
-          <svg viewBox="0 0 14 14"><polyline points="9,2 4,7 9,12"/></svg>
+          <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><polyline points="9,2 4,7 9,12"/></svg>
         </button>
         <div class="hero__carousel-dots">
           <button class="hero__carousel-dot active" onclick="goHeroSlide(0)" aria-label="Fox intro"></button>
           <button class="hero__carousel-dot" onclick="goHeroSlide(1)" aria-label="Book 2"></button>
         </div>
         <button class="hero__carousel-arrow" onclick="navigateHero(1)" aria-label="Next">
-          <svg viewBox="0 0 14 14"><polyline points="5,2 10,7 5,12"/></svg>
+          <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><polyline points="5,2 10,7 5,12"/></svg>
         </button>
       </div>
     </div>
@@ -2380,7 +2404,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 <section class="fox-intro">
   <div class="fox-intro__inner">
     <div class="fox-intro__svg">
-      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" width="170" height="170">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" width="170" height="170" aria-hidden="true" focusable="false" role="img">
         <!-- Body -->
         <ellipse cx="70" cy="98" rx="32" ry="26" fill="#C4622D"/>
         <!-- Chest -->
@@ -2653,10 +2677,10 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
       <div class="pcard__price">£13.99</div>
       <div class="pcard__tagline">One physical book, your choice</div>
       <hr class="pcard__divider">
-      <ul class="pcard__perks">
+      <ul class="pcard__perks" aria-label="Single book features">
         <li>Choose any title from our collection</li>
         <li>Hand-illustrated, full-colour print</li>
-        <li>Printed on FSC-certified paper</li>
+        <li>Printed in London on silk paper, FSC certified</li>
         <li>Delivered in 3–5 working days</li>
       </ul>
       <!-- Compact book picker -->
@@ -2693,7 +2717,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
         <span class="pcard__photo-pill">New box every month</span>
       </div>
       <hr class="pcard__divider">
-      <ul class="pcard__perks">
+      <ul class="pcard__perks" aria-label="Monthly club features">
         <li>One new Little Fox story every month</li>
         <li>8 hand-picked extras in every box</li>
         <li>Wild Challenge card for outdoor learning</li>
@@ -2806,15 +2830,15 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
     <div class="school-carousel-wrap fade-up">
 
       <div class="school-tabs" role="tablist">
-        <button class="school-tab active" onclick="switchSchool(0,this)" role="tab">
+        <button class="school-tab active" onclick="switchSchool(0,this)" role="tab" aria-selected="true" aria-controls="school-panel-0" id="school-tab-0">
           <div class="school-tab__num">01</div>
           <div class="school-tab__label">In the Classroom</div>
         </button>
-        <button class="school-tab" onclick="switchSchool(1,this)" role="tab">
+        <button class="school-tab" onclick="switchSchool(1,this)" role="tab" aria-selected="false" aria-controls="school-panel-1" id="school-tab-1">
           <div class="school-tab__num">02</div>
           <div class="school-tab__label">Community &amp; Group Sessions</div>
         </button>
-        <button class="school-tab" onclick="switchSchool(2,this)" role="tab">
+        <button class="school-tab" onclick="switchSchool(2,this)" role="tab" aria-selected="false" aria-controls="school-panel-2" id="school-tab-2">
           <div class="school-tab__num">03</div>
           <div class="school-tab__label">What's in the Box</div>
         </button>
@@ -2836,7 +2860,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
               <div class="school-panel__bullet">Digital audio tracks for whole-class listening</div>
               <div class="school-panel__bullet">Teacher reading notes included — no specialist training needed</div>
             </div>
-            <a class="school-panel__cta" href="mailto:hello@wildlearningcollective.com?subject=School%20Sample%20Pack">Get a free sample pack &rarr;</a>
+            <a class="school-panel__cta" href="mailto:hello@wildlearningcollective.com?subject=School%20Sample%20Pack" aria-label="Get a free sample pack — email Wild Learning Collective">Get a free sample pack &rarr;</a>
           </div>
         </div>
 
@@ -2854,7 +2878,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
               <div class="school-panel__bullet">Circle-time reflection using the activity sheet</div>
               <div class="school-panel__bullet">Children write or draw their own Wild story to finish</div>
             </div>
-            <a class="school-panel__cta" href="mailto:hello@wildlearningcollective.com?subject=Wild%20Day%20Out%20Guide">Download the free guide &rarr;</a>
+            <a class="school-panel__cta" href="mailto:hello@wildlearningcollective.com?subject=Wild%20Day%20Out%20Guide" aria-label="Download the free Wild Day Out guide — email Wild Learning Collective">Download the free guide &rarr;</a>
           </div>
         </div>
 
@@ -2941,7 +2965,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 
     <!-- CTA below grid -->
     <div class="fade-up" style="text-align:center;margin-top:36px;">
-      <a class="btn btn--school" href="mailto:hello@wildlearningcollective.com?subject=School%20Enquiry">Request a Free Sample Pack</a>
+      <a class="btn btn--school" href="mailto:hello@wildlearningcollective.com?subject=School%20Enquiry" aria-label="Request a Free Sample Pack — email Wild Learning Collective">Request a Free Sample Pack</a>
       <p class="schools__cta-note" style="margin-top:12px;">We'll send Book 2 + a full discussion guide within 48 hours.</p>
     </div>
 
@@ -2966,7 +2990,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
       <div class="faq-list fade-up">
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             What age are the books for?
             <span class="faq-icon">+</span>
           </button>
@@ -2976,7 +3000,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             How does the Monthly Club work?
             <span class="faq-icon">+</span>
           </button>
@@ -2986,7 +3010,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Can I cancel any time?
             <span class="faq-icon">+</span>
           </button>
@@ -2996,7 +3020,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Can I choose which book I receive?
             <span class="faq-icon">+</span>
           </button>
@@ -3006,7 +3030,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             When will my order arrive?
             <span class="faq-icon">+</span>
           </button>
@@ -3016,17 +3040,17 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Do you ship outside the UK?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Currently we ship within the UK only. International shipping is something we're actively working on — if you'd like to register interest for your country, drop us a line at <a href="mailto:hello@wildlearningcollective.com" style="color:var(--forest);">hello@wildlearningcollective.com</a>.</p>
+            <p>Currently we ship within the UK only. International shipping is something we're actively working on — if you'd like to register interest for your country, drop us a line at <a href="mailto:hello@wildlearningcollective.com" style="color:var(--forest);" aria-label="Email Wild Learning Collective at hello@wildlearningcollective.com">hello@wildlearningcollective.com</a>.</p>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             What makes these different from other children's books?
             <span class="faq-icon">+</span>
           </button>
@@ -3036,7 +3060,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Is the Gift Box a subscription?
             <span class="faq-icon">+</span>
           </button>
@@ -3096,12 +3120,13 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
       <div style="display:inline-block;background:var(--fox);color:white;font-size:10px;font-weight:700;padding:3px 13px;border-radius:20px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:14px;">Coming Soon</div>
       <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);margin-bottom:10px;">Little Fox for the Very Young</h3>
       <p style="font-size:14px;font-weight:300;color:var(--soil);max-width:520px;margin:0 auto 18px;line-height:1.7;">Simple, quiet picture books for ages 1–3. <em>Little Fox is Happy. Little Fox is Sad.</em> Big feelings, small words, beautiful illustrations.</p>
-      <a href="mailto:hello@wildlearningcollective.com?subject=Early%20Interest%20—%20Beginner%20Books" style="font-size:13px;font-weight:600;color:var(--forest);text-decoration:underline;text-underline-offset:3px;">Register early interest &rarr;</a>
+      <a href="mailto:hello@wildlearningcollective.com?subject=Early%20Interest%20—%20Beginner%20Books" aria-label="Register early interest in beginner books — email Wild Learning Collective" style="font-size:13px;font-weight:600;color:var(--forest);text-decoration:underline;text-underline-offset:3px;">Register early interest &rarr;</a>
     </div>
   </section>
 
 
 <!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+</main>
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
@@ -3305,7 +3330,10 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   function switchSchool(idx, btn) {
     schoolIdx = idx;
     if (schoolTrack) schoolTrack.style.transform = 'translateX(-' + (idx * 100) + '%)';
-    document.querySelectorAll('.school-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+    document.querySelectorAll('.school-tab').forEach((t,i) => {
+      t.classList.toggle('active', i===idx);
+      t.setAttribute('aria-selected', i===idx ? 'true' : 'false');
+    });
   }
   (function() {
     let sx = 0;
@@ -3475,10 +3503,12 @@ window.addEventListener('resize', function() {
     var isOpen = btn.classList.contains('open');
     document.querySelectorAll('.faq-q.open').forEach(function(q) {
       q.classList.remove('open');
+      q.setAttribute('aria-expanded', 'false');
       q.nextElementSibling.style.display = 'none';
     });
     if (!isOpen) {
       btn.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
       btn.nextElementSibling.style.display = 'block';
     }
   }
