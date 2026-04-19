@@ -2286,8 +2286,135 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px;
 }
 @media (max-width: 720px) {
-  .lesson-preview-grid { grid-template-columns: 1fr; }
+  .lesson-preview-grid { display: none; }
   .lesson-steps-inner { grid-template-columns: 1fr; gap: 20px; }
+  .lesson-steps-outer { display: none; }
+}
+
+/* ─── Mobile lesson carousel ─────────────────────────────────────────────── */
+.lesson-mob-carousel { display: none; }
+@media (max-width: 720px) {
+  .lesson-mob-carousel { display: block; }
+  .lmc-viewport { overflow: hidden; border-radius: 18px; }
+  .lmc-track { display: flex; transition: transform 0.38s cubic-bezier(0.4,0,0.2,1); }
+  .lmc-slide { flex: 0 0 90%; min-width: 0; margin-right: 12px; }
+  .lmc-card {
+    border-radius: 18px; overflow: hidden;
+    background: rgba(242,232,213,0.07);
+    border: 1px solid rgba(242,232,213,0.13);
+    display: flex; flex-direction: column;
+  }
+  .lmc-img { width: 100%; height: 160px; object-fit: cover; object-position: top; display: block; }
+  .lmc-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+  .lmc-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faded-yellow); }
+  .lmc-title { font-family: var(--serif); font-size: 19px; font-weight: 600; color: var(--cream); line-height: 1.2; }
+  .lmc-desc { font-size: 12.5px; font-weight: 300; color: rgba(242,232,213,0.55); line-height: 1.6; }
+  .lmc-dl {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(242,232,213,0.09); border: 1px solid rgba(242,232,213,0.18);
+    color: var(--cream); padding: 8px 16px; border-radius: 50px;
+    font-size: 12px; font-weight: 500; text-decoration: none;
+    align-self: flex-start; margin-top: 6px;
+  }
+  .lmc-dots { display: flex; justify-content: center; gap: 7px; margin-top: 14px; }
+  .lmc-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(242,232,213,0.2); cursor: pointer; transition: background 0.2s, width 0.3s; }
+  .lmc-dot.active { background: var(--faded-yellow); width: 18px; border-radius: 3px; }
+}
+
+/* ─── Mobile school wizard ───────────────────────────────────────────────── */
+.school-mob-wizard { display: none; }
+@media (max-width: 768px) {
+  .school-enquiry { display: none !important; }
+  .school-mob-wizard {
+    display: block;
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 28px 20px 32px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .smw-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+  .smw-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faded-yellow); }
+  .smw-prog { display: flex; gap: 6px; align-items: center; }
+  .smw-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(242,232,213,0.18); transition: background 0.3s, width 0.3s; border-radius: 3px; }
+  .smw-dot.on { background: var(--faded-yellow); width: 18px; }
+  .smw-viewport { overflow: hidden; }
+  .smw-track { display: flex; transition: transform 0.42s cubic-bezier(0.4,0,0.2,1); }
+  .smw-slide { flex: 0 0 100%; min-width: 0; }
+  .smw-q { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--cream); line-height: 1.25; margin-bottom: 18px; }
+  .smw-opts { display: flex; flex-direction: column; gap: 9px; }
+  .smw-opt {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: rgba(242,232,213,0.06); border: 1px solid rgba(242,232,213,0.1);
+    border-radius: 12px; padding: 13px 15px;
+    text-align: left; width: 100%; font-family: var(--sans);
+    transition: background 0.18s, border-color 0.18s; cursor: pointer;
+  }
+  .smw-opt.on { background: rgba(214,194,122,0.12); border-color: rgba(214,194,122,0.5); }
+  .smw-opt__icon { font-size: 19px; flex-shrink: 0; }
+  .smw-opt__name { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 2px; }
+  .smw-opt__desc { font-size: 12px; font-weight: 300; color: rgba(242,232,213,0.48); line-height: 1.4; }
+  .smw-size-row {
+    display: none; flex-direction: column; gap: 8px;
+    background: rgba(214,194,122,0.07); border: 1px solid rgba(214,194,122,0.2);
+    border-radius: 12px; padding: 13px 15px; margin-top: 2px;
+  }
+  .smw-size-row.show { display: flex; }
+  .smw-size-lbl { font-size: 12px; color: rgba(242,232,213,0.55); }
+  .smw-size-field { display: flex; gap: 10px; align-items: center; }
+  .smw-size-input {
+    background: rgba(242,232,213,0.08); border: 1px solid rgba(242,232,213,0.2);
+    border-radius: 8px; padding: 8px 12px;
+    color: var(--cream); font-size: 16px; font-family: var(--sans); width: 88px;
+  }
+  .smw-size-btn {
+    background: var(--faded-yellow); color: var(--ink);
+    border: none; border-radius: 8px; padding: 8px 16px;
+    font-size: 13px; font-weight: 600; font-family: var(--sans); cursor: pointer;
+  }
+  .smw-extras { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
+  .smw-extra {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: rgba(242,232,213,0.06); border: 1px solid rgba(242,232,213,0.1);
+    border-radius: 12px; padding: 13px 15px;
+    text-align: left; width: 100%; font-family: var(--sans);
+    transition: background 0.18s, border-color 0.18s; cursor: pointer;
+  }
+  .smw-extra.on { background: rgba(79,111,82,0.22); border-color: rgba(79,111,82,0.55); }
+  .smw-xcheck {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 1.5px solid rgba(242,232,213,0.22); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: transparent; transition: all 0.2s; margin-top: 1px;
+  }
+  .smw-extra.on .smw-xcheck { border-color: var(--forest); background: var(--forest); color: white; }
+  .smw-extra__name { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 2px; }
+  .smw-extra__desc { font-size: 12px; font-weight: 300; color: rgba(242,232,213,0.48); }
+  .smw-continue {
+    width: 100%; background: var(--forest); color: var(--cream);
+    border: none; border-radius: 12px; padding: 13px;
+    font-family: var(--sans); font-size: 15px; font-weight: 500; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .smw-continue:hover { background: var(--forest-dense); }
+  .smw-form { display: flex; flex-direction: column; gap: 10px; }
+  .smw-input {
+    background: rgba(242,232,213,0.08); border: 1px solid rgba(242,232,213,0.14);
+    border-radius: 10px; padding: 12px 14px;
+    color: var(--cream); font-family: var(--sans); font-size: 15px; width: 100%;
+  }
+  .smw-input::placeholder { color: rgba(242,232,213,0.28); }
+  .smw-input:focus { outline: none; border-color: rgba(214,194,122,0.5); }
+  .smw-textarea { resize: vertical; min-height: 68px; }
+  .smw-select option { background: var(--ink); color: var(--cream); }
+  .smw-submit {
+    width: 100%; background: var(--faded-yellow); color: var(--ink);
+    border: none; border-radius: 12px; padding: 14px;
+    font-family: var(--sans); font-size: 15px; font-weight: 600;
+    cursor: pointer; margin-top: 4px; transition: opacity 0.2s;
+  }
+  .smw-submit:hover { opacity: 0.88; }
+  .smw-note { font-size: 11.5px; color: rgba(242,232,213,0.32); text-align: center; margin-top: 8px; }
 }
 </style>
 </head>
@@ -3076,63 +3203,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
       </div>
     </div>
 
-    <!-- Pricing intro -->
-    <div class="fade-up" style="text-align:center;max-width:680px;margin:0 auto 40px;">
-      <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);margin-bottom:10px;line-height:1.35;">Built for every setting where children gather</h3>
-      <p style="font-size:14px;font-weight:300;color:var(--soil);line-height:1.75;">Whether you run a classroom, a reading group, or a library story session — every licence includes structured guides, activity sheets, and audio access from day one.</p>
-    </div>
-
-    <!-- 2×2 pricing grid -->
-    <div class="pricing-tiers fade-up">
-      <div class="pricing-tier">
-        <div class="pricing-tier__left">
-          <div class="pricing-tier__badge">Groups &amp; Libraries</div>
-          <div class="pricing-tier__name">Community Licence</div>
-          <div class="pricing-tier__desc">Book clubs, libraries &amp; parent groups</div>
-          <div class="pricing-tier__includes">Full digital pack · discussion guides · printable sheets</div>
-        </div>
-        <div class="pricing-tier__right">
-          <div class="pricing-tier__amount">£149</div>
-          <span class="pricing-tier__period">per year</span>
-        </div>
-      </div>
-      <div class="pricing-tier">
-        <div class="pricing-tier__left">
-          <div class="pricing-tier__badge">Single Class</div>
-          <div class="pricing-tier__name">Class Licence</div>
-          <div class="pricing-tier__desc">Up to 35 pupils · one classroom</div>
-          <div class="pricing-tier__includes">Digital pack · discussion guides · printables · audio access</div>
-        </div>
-        <div class="pricing-tier__right">
-          <div class="pricing-tier__amount">£399</div>
-          <span class="pricing-tier__period">per year</span>
-        </div>
-      </div>
-      <div class="pricing-tier pricing-tier--highlight">
-        <div class="pricing-tier__left">
-          <div class="pricing-tier__badge">Most Popular</div>
-          <div class="pricing-tier__name">Whole School</div>
-          <div class="pricing-tier__desc">Up to 200 pupils · unlimited classes</div>
-          <div class="pricing-tier__includes">Everything in Class + CPD session + Wild Day Out guide</div>
-        </div>
-        <div class="pricing-tier__right">
-          <div class="pricing-tier__amount">£999</div>
-          <span class="pricing-tier__period">per year</span>
-        </div>
-      </div>
-      <div class="pricing-tier">
-        <div class="pricing-tier__left">
-          <div class="pricing-tier__badge">Multi-Site</div>
-          <div class="pricing-tier__name">Trust Licence</div>
-          <div class="pricing-tier__desc">Multiple schools · 200+ pupils</div>
-          <div class="pricing-tier__includes">Whole School across all sites + dedicated onboarding + physical class sets (quoted)</div>
-        </div>
-        <div class="pricing-tier__right">
-          <div class="pricing-tier__amount">from £2,999</div>
-          <span class="pricing-tier__period">per year</span>
-        </div>
-      </div>
-    </div>
 
     <!-- ── School enquiry builder ─────────────────────────────── -->
     <div class="school-enquiry fade-up" id="school-enquiry">
@@ -3177,12 +3247,20 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
           <div class="school-opt" onclick="selectSchoolOpt(this,'quantity')" data-val="sharing">
             <span class="school-opt__icon">👫</span>
             <div class="school-opt__name">Sharing</div>
-            <div class="school-opt__desc">1 between 2 — 15 copies per class</div>
+            <div class="school-opt__desc">1 between 2 — how many children in your class?</div>
+          </div>
+          <div id="desk-size-sharing" style="display:none;align-items:center;gap:10px;padding:10px 14px;background:rgba(214,194,122,0.07);border:1px solid rgba(214,194,122,0.2);border-radius:10px;margin-top:-4px;">
+            <span style="font-size:12px;color:rgba(242,232,213,0.6);">Number of children:</span>
+            <input type="number" id="deskSizeSharing" min="1" max="120" placeholder="e.g. 28" style="width:80px;background:rgba(242,232,213,0.08);border:1px solid rgba(242,232,213,0.2);border-radius:6px;padding:6px 10px;color:var(--cream);font-size:14px;font-family:var(--sans);">
           </div>
           <div class="school-opt" onclick="selectSchoolOpt(this,'quantity')" data-val="full">
             <span class="school-opt__icon">🏫</span>
             <div class="school-opt__name">Full class</div>
-            <div class="school-opt__desc">1 each — 30 copies, every child takes a book home</div>
+            <div class="school-opt__desc">1 each — how many children in your class?</div>
+          </div>
+          <div id="desk-size-full" style="display:none;align-items:center;gap:10px;padding:10px 14px;background:rgba(214,194,122,0.07);border:1px solid rgba(214,194,122,0.2);border-radius:10px;margin-top:-4px;">
+            <span style="font-size:12px;color:rgba(242,232,213,0.6);">Number of children:</span>
+            <input type="number" id="deskSizeFull" min="1" max="120" placeholder="e.g. 30" style="width:80px;background:rgba(242,232,213,0.08);border:1px solid rgba(242,232,213,0.2);border-radius:6px;padding:6px 10px;color:var(--cream);font-size:14px;font-family:var(--sans);">
           </div>
           <div class="school-opt" onclick="selectSchoolOpt(this,'quantity')" data-val="multiple">
             <span class="school-opt__icon">🌳</span>
@@ -3266,6 +3344,125 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 
     </div>
 
+    <!-- ── Mobile step-by-step wizard (hidden on desktop) ──── -->
+    <div class="school-mob-wizard" id="schoolMobWizard">
+
+      <div class="smw-head">
+        <div class="smw-eyebrow">Build your package</div>
+        <div class="smw-prog">
+          <span class="smw-dot on" id="smwDot0"></span>
+          <span class="smw-dot" id="smwDot1"></span>
+          <span class="smw-dot" id="smwDot2"></span>
+          <span class="smw-dot" id="smwDot3"></span>
+        </div>
+      </div>
+
+      <div class="smw-viewport">
+        <div class="smw-track" id="smwTrack">
+
+          <!-- Slide 1: Format -->
+          <div class="smw-slide">
+            <div class="smw-q">How would you like to use Little Fox?</div>
+            <div class="smw-opts">
+              <button class="smw-opt" onclick="smwPickFormat(this,'digital')">
+                <span class="smw-opt__icon">🖥</span>
+                <div><div class="smw-opt__name">Digital licence</div><div class="smw-opt__desc">Project on screen — whole class together</div></div>
+              </button>
+              <button class="smw-opt" onclick="smwPickFormat(this,'physical')">
+                <span class="smw-opt__icon">📖</span>
+                <div><div class="smw-opt__name">Physical books</div><div class="smw-opt__desc">Printed in London on silk paper</div></div>
+              </button>
+              <button class="smw-opt" onclick="smwPickFormat(this,'both')">
+                <span class="smw-opt__icon">✦</span>
+                <div><div class="smw-opt__name">Both</div><div class="smw-opt__desc">Digital for sessions, physical to take home</div></div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slide 2: Quantity -->
+          <div class="smw-slide">
+            <div class="smw-q">How many children?</div>
+            <div class="smw-opts">
+              <button class="smw-opt" id="smwQtyTaster" onclick="smwPickQty(this,'taster')">
+                <span class="smw-opt__icon">🌱</span>
+                <div><div class="smw-opt__name">Taster</div><div class="smw-opt__desc">1 copy + 30 activity sheets to try first</div></div>
+              </button>
+              <button class="smw-opt" id="smwQtySharing" onclick="smwPickQty(this,'sharing')">
+                <span class="smw-opt__icon">👫</span>
+                <div><div class="smw-opt__name">1 between 2</div><div class="smw-opt__desc">Tap to tell us how many children</div></div>
+              </button>
+              <div class="smw-size-row" id="smwSizeSharing">
+                <div class="smw-size-lbl">How many children in the class?</div>
+                <div class="smw-size-field">
+                  <input type="number" class="smw-size-input" id="smwSizeInputSharing" min="1" max="120" placeholder="e.g. 28">
+                  <button class="smw-size-btn" onclick="smwAdvanceQty()">Continue</button>
+                </div>
+              </div>
+              <button class="smw-opt" id="smwQtyFull" onclick="smwPickQty(this,'full')">
+                <span class="smw-opt__icon">🏫</span>
+                <div><div class="smw-opt__name">Full class — 1 each</div><div class="smw-opt__desc">Tap to tell us how many children</div></div>
+              </button>
+              <div class="smw-size-row" id="smwSizeFull">
+                <div class="smw-size-lbl">How many children in the class?</div>
+                <div class="smw-size-field">
+                  <input type="number" class="smw-size-input" id="smwSizeInputFull" min="1" max="120" placeholder="e.g. 30">
+                  <button class="smw-size-btn" onclick="smwAdvanceQty()">Continue</button>
+                </div>
+              </div>
+              <button class="smw-opt" id="smwQtyMultiple" onclick="smwPickQty(this,'multiple')">
+                <span class="smw-opt__icon">🌳</span>
+                <div><div class="smw-opt__name">Multiple classes</div><div class="smw-opt__desc">School-wide package</div></div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slide 3: Add-ons -->
+          <div class="smw-slide">
+            <div class="smw-q">Anything to add? <span style="font-size:13px;font-weight:300;opacity:0.4;">optional</span></div>
+            <div class="smw-extras">
+              <button class="smw-extra" onclick="smwToggleExtra(this,'author')">
+                <div class="smw-xcheck">✓</div>
+                <div><div class="smw-extra__name">Author visit</div><div class="smw-extra__desc">In-person or virtual, 45 min</div></div>
+              </button>
+              <button class="smw-extra" onclick="smwToggleExtra(this,'termly')">
+                <div class="smw-xcheck">✓</div>
+                <div><div class="smw-extra__name">Termly subscription</div><div class="smw-extra__desc">One new book per term, three a year</div></div>
+              </button>
+              <button class="smw-extra" onclick="smwToggleExtra(this,'cpd')">
+                <div class="smw-xcheck">✓</div>
+                <div><div class="smw-extra__name">CPD pack for staff</div><div class="smw-extra__desc">PSHE and curriculum mapping guide</div></div>
+              </button>
+            </div>
+            <button class="smw-continue" onclick="smwGoTo(3)">Continue</button>
+          </div>
+
+          <!-- Slide 4: Your details -->
+          <div class="smw-slide">
+            <div class="smw-q" style="margin-bottom:16px;">Almost there</div>
+            <div class="smw-form">
+              <input class="smw-input" id="smwName" type="text" placeholder="Your name" autocomplete="name">
+              <input class="smw-input" id="smwSchool" type="text" placeholder="School name">
+              <input class="smw-input" id="smwEmail" type="email" placeholder="Your email" autocomplete="email">
+              <select class="smw-input smw-select" id="smwRole">
+                <option value="">Your role</option>
+                <option>Class Teacher</option>
+                <option>PSHE Lead</option>
+                <option>Head Teacher</option>
+                <option>Librarian</option>
+                <option>SENCO</option>
+                <option>Teaching Assistant</option>
+                <option>Other</option>
+              </select>
+              <textarea class="smw-input smw-textarea" id="smwNotes" placeholder="Anything else? (optional)"></textarea>
+              <button class="smw-submit" onclick="smwSend()">Send enquiry</button>
+              <p class="smw-note">We reply within 48 hours. No pressure, no obligation.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -3285,6 +3482,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
       <p style="font-size:15px;font-weight:300;color:rgba(242,232,213,0.6);max-width:520px;margin:0 auto;line-height:1.75;">Take children outdoors. Everyone faces the same thing. Every drawing, every word, every feeling comes back different. Perspective is taught — not explained.</p>
     </div>
 
+    <!-- Desktop grid (hidden on mobile) -->
     <div class="lesson-preview-grid fade-up">
 
       <div class="lesson-card">
@@ -3311,7 +3509,47 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 
     </div>
 
-    <div style="max-width:860px;margin:44px auto 0;background:rgba(242,232,213,0.05);border:1px solid rgba(242,232,213,0.1);border-radius:18px;padding:36px 32px;" class="fade-up">
+    <!-- Mobile carousel (hidden on desktop) -->
+    <div class="lesson-mob-carousel fade-up">
+      <div class="lmc-viewport">
+        <div class="lmc-track" id="lmcTrack">
+          <div class="lmc-slide">
+            <div class="lmc-card">
+              <img class="lmc-img" src="teacher-plan-preview.jpg" alt="Teacher Lesson Plan preview">
+              <div class="lmc-body">
+                <div class="lmc-tag">For the teacher</div>
+                <div class="lmc-title">Year 1 and 2 Lesson Plan</div>
+                <div class="lmc-desc">60 minutes outdoors. Five steps, PSHE links, discussion prompts. Everything you need.</div>
+                <a class="lmc-dl" href="LittleFox_TeacherLessonPlan.pdf" target="_blank">
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Download
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="lmc-slide">
+            <div class="lmc-card">
+              <img class="lmc-img" src="pupil-plan-preview.jpg" alt="Pupil Activity Sheet preview">
+              <div class="lmc-body">
+                <div class="lmc-tag">For the child</div>
+                <div class="lmc-title">Pupil Activity Sheet</div>
+                <div class="lmc-desc">Draw, describe, feel. Compare with the class. Simple for Year 1. Rich enough to stay with them.</div>
+                <a class="lmc-dl" href="LittleFox_PupilActivitySheet.pdf" target="_blank">
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Download
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lmc-dots">
+        <span class="lmc-dot active" onclick="lmcGoTo(0)"></span>
+        <span class="lmc-dot" onclick="lmcGoTo(1)"></span>
+      </div>
+    </div>
+
+    <div class="lesson-steps-outer" style="max-width:860px;margin:44px auto 0;background:rgba(242,232,213,0.05);border:1px solid rgba(242,232,213,0.1);border-radius:18px;padding:36px 32px;" class="fade-up">
       <div class="lesson-steps-inner">
         <div>
           <div style="font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded-yellow);margin-bottom:8px;">Step 1</div>
@@ -3878,6 +4116,13 @@ window.addEventListener('resize', function() {
     });
     el.classList.add('selected');
     schoolSel[group] = el.dataset.val;
+    // Show/hide class size inputs on desktop
+    if (group === 'quantity') {
+      var ds = document.getElementById('desk-size-sharing');
+      var df = document.getElementById('desk-size-full');
+      if (ds) ds.style.display = el.dataset.val === 'sharing' ? 'flex' : 'none';
+      if (df) df.style.display = el.dataset.val === 'full'    ? 'flex' : 'none';
+    }
   }
 
   function toggleSchoolExtra(el) {
@@ -3923,7 +4168,8 @@ window.addEventListener('resize', function() {
     body += '\u2014 School: ' + school + '\n';
     body += '\u2014 Role: ' + (role || 'Not specified') + '\n\n';
     body += '\u2014 Format: ' + (schoolSel.format ? fmtMap[schoolSel.format] : 'Not selected') + '\n';
-    body += '\u2014 Quantity: ' + (schoolSel.quantity ? qtyMap[schoolSel.quantity] : 'Not selected') + '\n';
+    var deskSize = schoolSel.quantity === 'sharing' ? (document.getElementById('deskSizeSharing') || {}).value : schoolSel.quantity === 'full' ? (document.getElementById('deskSizeFull') || {}).value : null;
+    body += '\u2014 Quantity: ' + (schoolSel.quantity ? qtyMap[schoolSel.quantity] : 'Not selected') + (deskSize ? ' (' + deskSize + ' children)' : '') + '\n';
     if (schoolSel.extras.length > 0) {
       body += '\u2014 Add-ons: ' + schoolSel.extras.map(function(e){ return extMap[e]; }).join(', ') + '\n';
     }
@@ -3934,6 +4180,101 @@ window.addEventListener('resize', function() {
       + '?subject=' + encodeURIComponent(subject)
       + '&body=' + encodeURIComponent(body);
   }
+
+  /* ── Mobile school wizard ──────────────────────────────────────────── */
+  var smwStep = 0;
+  var smwData = { format: null, qty: null, classSize: null, extras: [] };
+
+  function smwGoTo(step) {
+    var track = document.getElementById('smwTrack');
+    if (track) track.style.transform = 'translateX(-' + (step * 100) + '%)';
+    smwStep = step;
+    for (var i = 0; i < 4; i++) {
+      var d = document.getElementById('smwDot' + i);
+      if (d) d.classList.toggle('on', i === step);
+    }
+  }
+
+  function smwPickFormat(el, val) {
+    el.closest('.smw-opts').querySelectorAll('.smw-opt').forEach(function(b) { b.classList.remove('on'); });
+    el.classList.add('on');
+    smwData.format = val;
+    setTimeout(function() { smwGoTo(1); }, 300);
+  }
+
+  function smwPickQty(el, val) {
+    el.closest('.smw-opts').querySelectorAll('.smw-opt').forEach(function(b) { b.classList.remove('on'); });
+    el.classList.add('on');
+    smwData.qty = val;
+    smwData.classSize = null;
+    var rs = document.getElementById('smwSizeSharing');
+    var rf = document.getElementById('smwSizeFull');
+    if (rs) rs.classList.remove('show');
+    if (rf) rf.classList.remove('show');
+    if (val === 'sharing' && rs) { rs.classList.add('show'); }
+    else if (val === 'full' && rf) { rf.classList.add('show'); }
+    else { setTimeout(function() { smwGoTo(2); }, 300); }
+  }
+
+  function smwAdvanceQty() {
+    var sEl = smwData.qty === 'sharing'
+      ? document.getElementById('smwSizeInputSharing')
+      : document.getElementById('smwSizeInputFull');
+    smwData.classSize = sEl ? sEl.value : null;
+    smwGoTo(2);
+  }
+
+  function smwToggleExtra(el, val) {
+    el.classList.toggle('on');
+    var i = smwData.extras.indexOf(val);
+    if (el.classList.contains('on')) { if (i === -1) smwData.extras.push(val); }
+    else { if (i > -1) smwData.extras.splice(i, 1); }
+  }
+
+  function smwSend() {
+    var name   = (document.getElementById('smwName')   || {}).value || '';
+    var school = (document.getElementById('smwSchool') || {}).value || '';
+    var email  = (document.getElementById('smwEmail')  || {}).value || '';
+    var role   = (document.getElementById('smwRole')   || {}).value || '';
+    var notes  = (document.getElementById('smwNotes')  || {}).value || '';
+    name = name.trim(); school = school.trim(); email = email.trim();
+    if (!name || !school || !email) { alert('Please fill in your name, school, and email.'); return; }
+    var fmtMap = { digital: 'Digital licence', physical: 'Physical books', both: 'Both (digital + physical)' };
+    var qtyMap = { taster: 'Taster (1 copy + 30 sheets)', sharing: '1 between 2', full: 'Full class (1 each)', multiple: 'Multiple classes' };
+    var extMap = { author: 'Author visit', termly: 'Termly subscription', cpd: 'CPD pack' };
+    var subject = 'School Enquiry \u2014 ' + school;
+    var body = 'Hi,\n\nI\'d like to find out more about Little Fox for my school.\n\n';
+    body += '\u2014 Name: ' + name + '\n';
+    body += '\u2014 School: ' + school + '\n';
+    body += '\u2014 Role: ' + (role || 'Not specified') + '\n\n';
+    body += '\u2014 Format: ' + (smwData.format ? fmtMap[smwData.format] : 'Not selected') + '\n';
+    body += '\u2014 Quantity: ' + (smwData.qty ? qtyMap[smwData.qty] : 'Not selected');
+    if (smwData.classSize) body += ' (' + smwData.classSize + ' children)';
+    body += '\n';
+    if (smwData.extras.length > 0) body += '\u2014 Add-ons: ' + smwData.extras.map(function(e){ return extMap[e]; }).join(', ') + '\n';
+    if (notes) body += '\nAdditional notes:\n' + notes + '\n';
+    body += '\nReply to: ' + email + '\n\nLooking forward to hearing from you.';
+    window.location.href = 'mailto:hello@wildlearningcollective.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+
+  /* ── Lesson mobile carousel ──────────────────────────────────────── */
+  var lmcIdx = 0;
+  function lmcGoTo(idx) {
+    lmcIdx = idx;
+    var t = document.getElementById('lmcTrack');
+    if (t) t.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    document.querySelectorAll('.lmc-dot').forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+  }
+  (function() {
+    var lv = document.querySelector('.lmc-viewport');
+    if (!lv) return;
+    var sx = 0;
+    lv.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; }, { passive: true });
+    lv.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) lmcGoTo(Math.max(0, Math.min(1, lmcIdx + (dx < 0 ? 1 : -1))));
+    }, { passive: true });
+  })();
 
 </script>
 
