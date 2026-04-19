@@ -2297,14 +2297,28 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .lesson-mob-carousel { display: block; }
   .lmc-viewport { overflow: hidden; border-radius: 18px; }
   .lmc-track { display: flex; transition: transform 0.38s cubic-bezier(0.4,0,0.2,1); }
-  .lmc-slide { flex: 0 0 90%; min-width: 0; margin-right: 12px; }
+  .lmc-slide { flex: 0 0 100%; min-width: 0; }
   .lmc-card {
     border-radius: 18px; overflow: hidden;
     background: rgba(242,232,213,0.07);
     border: 1px solid rgba(242,232,213,0.13);
     display: flex; flex-direction: column;
   }
-  .lmc-img { width: 100%; height: 160px; object-fit: cover; object-position: top; display: block; }
+  .lmc-illus {
+    width: 100%; height: 150px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 6px;
+    position: relative; overflow: hidden;
+  }
+  .lmc-illus--teacher { background: linear-gradient(135deg, #3F5A44 0%, #4F6F52 60%, #3F5A44 100%); }
+  .lmc-illus--pupil   { background: linear-gradient(135deg, #A94E24 0%, #C4622D 60%, #A94E24 100%); }
+  .lmc-illus__icon { font-size: 42px; line-height: 1; }
+  .lmc-illus__label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(255,255,255,0.65);
+  }
+  .lmc-illus__blob {
+    position: absolute; border-radius: 50%; background: rgba(255,255,255,0.06);
+  }
   .lmc-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 6px; }
   .lmc-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faded-yellow); }
   .lmc-title { font-family: var(--serif); font-size: 19px; font-weight: 600; color: var(--cream); line-height: 1.2; }
@@ -2338,9 +2352,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .smw-prog { display: flex; gap: 6px; align-items: center; }
   .smw-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(242,232,213,0.18); transition: background 0.3s, width 0.3s; border-radius: 3px; }
   .smw-dot.on { background: var(--faded-yellow); width: 18px; }
-  .smw-viewport { overflow: hidden; }
-  .smw-track { display: flex; transition: transform 0.42s cubic-bezier(0.4,0,0.2,1); }
-  .smw-slide { flex: 0 0 100%; min-width: 0; }
+  .smw-viewport { position: relative; overflow: hidden; }
+  .smw-track { position: relative; }
+  .smw-slide {
+    width: 100%; opacity: 0; pointer-events: none;
+    position: absolute; top: 0; left: 0;
+    transform: translateX(48px);
+    transition: opacity 0.36s ease, transform 0.36s cubic-bezier(0.4,0,0.2,1);
+  }
+  .smw-slide.smw-active {
+    position: relative; opacity: 1; pointer-events: all;
+    transform: translateX(0);
+  }
+  .smw-slide.smw-gone { transform: translateX(-48px); opacity: 0; }
   .smw-q { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--cream); line-height: 1.25; margin-bottom: 18px; }
   .smw-opts { display: flex; flex-direction: column; gap: 9px; }
   .smw-opt {
@@ -3515,11 +3539,16 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
         <div class="lmc-track" id="lmcTrack">
           <div class="lmc-slide">
             <div class="lmc-card">
-              <img class="lmc-img" src="teacher-plan-preview.jpg" alt="Teacher Lesson Plan preview">
+              <div class="lmc-illus lmc-illus--teacher">
+                <div class="lmc-illus__blob" style="width:130px;height:130px;top:-40px;right:-30px;"></div>
+                <div class="lmc-illus__blob" style="width:80px;height:80px;bottom:-25px;left:-15px;"></div>
+                <div class="lmc-illus__icon">🌿📋</div>
+                <div class="lmc-illus__label">Year 1 &amp; 2 · KS1 · 60 min · Outdoors</div>
+              </div>
               <div class="lmc-body">
                 <div class="lmc-tag">For the teacher</div>
-                <div class="lmc-title">Year 1 and 2 Lesson Plan</div>
-                <div class="lmc-desc">60 minutes outdoors. Five steps, PSHE links, discussion prompts. Everything you need.</div>
+                <div class="lmc-title">Lesson Plan</div>
+                <div class="lmc-desc">Five clear steps, PSHE links, timing, and discussion prompts. Take Little Fox outside.</div>
                 <a class="lmc-dl" href="LittleFox_TeacherLessonPlan.pdf" target="_blank">
                   <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   Download
@@ -3529,11 +3558,16 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
           </div>
           <div class="lmc-slide">
             <div class="lmc-card">
-              <img class="lmc-img" src="pupil-plan-preview.jpg" alt="Pupil Activity Sheet preview">
+              <div class="lmc-illus lmc-illus--pupil">
+                <div class="lmc-illus__blob" style="width:110px;height:110px;top:-30px;left:-20px;"></div>
+                <div class="lmc-illus__blob" style="width:90px;height:90px;bottom:-30px;right:-20px;"></div>
+                <div class="lmc-illus__icon">✏️🖼</div>
+                <div class="lmc-illus__label">Draw · Describe · Feel · Compare</div>
+              </div>
               <div class="lmc-body">
                 <div class="lmc-tag">For the child</div>
                 <div class="lmc-title">Pupil Activity Sheet</div>
-                <div class="lmc-desc">Draw, describe, feel. Compare with the class. Simple for Year 1. Rich enough to stay with them.</div>
+                <div class="lmc-desc">Every child draws the same thing. Every answer comes back different. That is the lesson.</div>
                 <a class="lmc-dl" href="LittleFox_PupilActivitySheet.pdf" target="_blank">
                   <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   Download
@@ -4186,14 +4220,23 @@ window.addEventListener('resize', function() {
   var smwData = { format: null, qty: null, classSize: null, extras: [] };
 
   function smwGoTo(step) {
-    var track = document.getElementById('smwTrack');
-    if (track) track.style.transform = 'translateX(-' + (step * 100) + '%)';
+    var slides = document.querySelectorAll('#schoolMobWizard .smw-slide');
+    slides.forEach(function(sl, i) {
+      sl.classList.remove('smw-active', 'smw-gone');
+      if (i < step) sl.classList.add('smw-gone');
+      if (i === step) sl.classList.add('smw-active');
+    });
     smwStep = step;
     for (var i = 0; i < 4; i++) {
       var d = document.getElementById('smwDot' + i);
       if (d) d.classList.toggle('on', i === step);
     }
   }
+  // Initialise first slide
+  document.addEventListener('DOMContentLoaded', function() {
+    var firstSlide = document.querySelector('#schoolMobWizard .smw-slide');
+    if (firstSlide) firstSlide.classList.add('smw-active');
+  });
 
   function smwPickFormat(el, val) {
     el.closest('.smw-opts').querySelectorAll('.smw-opt').forEach(function(b) { b.classList.remove('on'); });
