@@ -2133,6 +2133,114 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .peek-caption__title { font-size: 14px; }
   .peek-caption__sub { font-size: 12px; }
 }
+
+/* ── School enquiry builder ─────────────────────────────────── */
+.school-enquiry {
+  margin: 72px auto 0;
+  max-width: 860px;
+  padding: 56px 56px 60px;
+  background: var(--ink);
+  border-radius: 20px;
+}
+.school-enquiry__eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faded-yellow); margin-bottom: 10px;
+}
+.school-enquiry__title {
+  font-family: var(--serif); font-size: 30px; font-weight: 600;
+  color: var(--cream); margin-bottom: 8px;
+}
+.school-enquiry__sub {
+  font-size: 15px; font-weight: 300; color: rgba(242,232,213,0.62);
+  line-height: 1.65; margin-bottom: 44px; max-width: 560px;
+}
+.school-step { margin-bottom: 38px; }
+.school-step__num {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faded-yellow);
+  margin-bottom: 6px;
+}
+.school-step__q {
+  font-family: var(--serif); font-size: 19px; color: var(--cream);
+  margin-bottom: 16px; font-weight: 500;
+}
+.school-opts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+}
+.school-opt {
+  border: 1.5px solid rgba(242,232,213,0.12);
+  border-radius: 12px;
+  padding: 16px 18px 18px;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: rgba(255,255,255,0.04);
+  text-align: left;
+  user-select: none;
+}
+.school-opt:hover { border-color: rgba(214,194,122,0.45); background: rgba(255,255,255,0.07); }
+.school-opt.selected { border-color: var(--faded-yellow); background: rgba(214,194,122,0.10); }
+.school-opt__icon { font-size: 20px; margin-bottom: 10px; display: block; }
+.school-opt__name { font-size: 13.5px; font-weight: 600; color: var(--cream); margin-bottom: 4px; }
+.school-opt__desc { font-size: 12px; color: rgba(242,232,213,0.52); font-weight: 300; line-height: 1.5; }
+.school-opt.selected .school-opt__name { color: var(--faded-yellow); }
+.school-extras { display: flex; flex-direction: column; gap: 9px; }
+.school-extra {
+  border: 1.5px solid rgba(242,232,213,0.12);
+  border-radius: 10px; padding: 14px 16px;
+  cursor: pointer; transition: all 0.18s;
+  background: rgba(255,255,255,0.04);
+  display: flex; align-items: flex-start; gap: 14px;
+  user-select: none;
+}
+.school-extra:hover { border-color: rgba(214,194,122,0.45); }
+.school-extra.selected { border-color: var(--faded-yellow); background: rgba(214,194,122,0.08); }
+.school-extra__check {
+  width: 20px; height: 20px; flex-shrink: 0;
+  border: 1.5px solid rgba(242,232,213,0.22); border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: transparent; transition: all 0.18s; margin-top: 1px;
+}
+.school-extra.selected .school-extra__check { background: var(--faded-yellow); border-color: var(--faded-yellow); color: var(--ink); }
+.school-extra__name { font-size: 13.5px; font-weight: 600; color: var(--cream); margin-bottom: 3px; }
+.school-extra.selected .school-extra__name { color: var(--faded-yellow); }
+.school-extra__desc { font-size: 12px; color: rgba(242,232,213,0.52); font-weight: 300; line-height: 1.45; }
+.school-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 40px 0; }
+.school-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.school-form__field { display: flex; flex-direction: column; gap: 6px; }
+.school-form__label { font-size: 11.5px; font-weight: 500; color: rgba(242,232,213,0.62); letter-spacing: 0.04em; }
+.school-form__input, .school-form__select, .school-form__textarea {
+  border: 1.5px solid rgba(242,232,213,0.12); border-radius: 8px;
+  padding: 11px 14px; font-size: 14px; font-family: var(--sans);
+  color: var(--cream); background: rgba(255,255,255,0.06);
+  outline: none; transition: border 0.2s;
+}
+.school-form__input::placeholder, .school-form__textarea::placeholder { color: rgba(242,232,213,0.28); }
+.school-form__input:focus, .school-form__select:focus, .school-form__textarea:focus { border-color: rgba(214,194,122,0.5); }
+.school-form__select option { background: var(--ink); color: var(--cream); }
+.school-form__textarea { resize: vertical; min-height: 84px; }
+.school-form__submit {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--faded-yellow); color: var(--ink);
+  font-size: 15px; font-weight: 700; padding: 15px 34px;
+  border-radius: 100px; border: none; cursor: pointer;
+  transition: opacity 0.2s; margin-top: 10px; letter-spacing: 0.01em;
+}
+.school-form__submit:hover { opacity: 0.88; }
+.school-form__note {
+  font-size: 12px; color: rgba(242,232,213,0.4); margin-top: 14px;
+  font-weight: 300; line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .school-enquiry { padding: 36px 24px 40px; margin-top: 48px; }
+  .school-enquiry__title { font-size: 24px; }
+  .school-form__grid { grid-template-columns: 1fr; }
+  .school-opts { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .school-opts { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -2875,7 +2983,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
               <div class="school-panel__bullet">Digital audio tracks for whole-class listening</div>
               <div class="school-panel__bullet">Teacher reading notes included — no specialist training needed</div>
             </div>
-            <a class="school-panel__cta" href="mailto:hello@wildlearningcollective.com?subject=School%20Sample%20Pack" aria-label="Get a free sample pack — email Wild Learning Collective">Get a free sample pack &rarr;</a>
+            <a class="school-panel__cta" href="#school-enquiry">Build your package &darr;</a>
           </div>
         </div>
 
@@ -2893,7 +3001,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
               <div class="school-panel__bullet">Circle-time reflection using the activity sheet</div>
               <div class="school-panel__bullet">Children write or draw their own Wild story to finish</div>
             </div>
-            <a class="school-panel__cta" href="mailto:hello@wildlearningcollective.com?subject=Wild%20Day%20Out%20Guide" aria-label="Download the free Wild Day Out guide — email Wild Learning Collective">Download the free guide &rarr;</a>
+            <a class="school-panel__cta" href="#school-enquiry">Build your package &darr;</a>
           </div>
         </div>
 
@@ -2913,7 +3021,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
               <div class="school-panel__bullet">Collectible character card + Fox &amp; Friends stickers</div>
               <div class="school-panel__bullet">Wild Postcard + 2 narrated audio tracks</div>
             </div>
-            <a class="school-panel__cta" href="#book">See pricing &amp; join &rarr;</a>
+            <a class="school-panel__cta" href="#school-enquiry">Build your package &darr;</a>
           </div>
         </div>
 
@@ -2978,10 +3086,136 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
       </div>
     </div>
 
-    <!-- CTA below grid -->
-    <div class="fade-up" style="text-align:center;margin-top:36px;">
-      <a class="btn btn--school" href="mailto:hello@wildlearningcollective.com?subject=School%20Enquiry" aria-label="Request a Free Sample Pack — email Wild Learning Collective">Request a Free Sample Pack</a>
-      <p class="schools__cta-note" style="margin-top:12px;">We'll send Book 2 + a full discussion guide within 48 hours.</p>
+    <!-- ── School enquiry builder ─────────────────────────────── -->
+    <div class="school-enquiry fade-up" id="school-enquiry">
+
+      <div class="school-enquiry__eyebrow">Build your package</div>
+      <h3 class="school-enquiry__title">What works for your school?</h3>
+      <p class="school-enquiry__sub">Tell us what you need and we'll come back with a tailored quote. No commitment, no pressure — just the right package for your class.</p>
+
+      <!-- Step 1: Format -->
+      <div class="school-step">
+        <div class="school-step__num">Step 01</div>
+        <div class="school-step__q">How would you like to use Little Fox?</div>
+        <div class="school-opts" id="step-format">
+          <div class="school-opt" onclick="selectSchoolOpt(this,'format')" data-val="digital">
+            <span class="school-opt__icon">🖥</span>
+            <div class="school-opt__name">Digital licence</div>
+            <div class="school-opt__desc">Project on screen — the whole class experiences it together</div>
+          </div>
+          <div class="school-opt" onclick="selectSchoolOpt(this,'format')" data-val="physical">
+            <span class="school-opt__icon">📖</span>
+            <div class="school-opt__name">Physical books</div>
+            <div class="school-opt__desc">Printed in London on silk paper — in children's hands</div>
+          </div>
+          <div class="school-opt" onclick="selectSchoolOpt(this,'format')" data-val="both">
+            <span class="school-opt__icon">✦</span>
+            <div class="school-opt__name">Both</div>
+            <div class="school-opt__desc">Digital for the session, physical for children to take home</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Quantity -->
+      <div class="school-step">
+        <div class="school-step__num">Step 02</div>
+        <div class="school-step__q">How many children?</div>
+        <div class="school-opts" id="step-quantity">
+          <div class="school-opt" onclick="selectSchoolOpt(this,'quantity')" data-val="taster">
+            <span class="school-opt__icon">🌱</span>
+            <div class="school-opt__name">Taster</div>
+            <div class="school-opt__desc">1 copy + 30 classroom activity sheets — try it before committing</div>
+          </div>
+          <div class="school-opt" onclick="selectSchoolOpt(this,'quantity')" data-val="sharing">
+            <span class="school-opt__icon">👫</span>
+            <div class="school-opt__name">Sharing</div>
+            <div class="school-opt__desc">1 between 2 — 15 copies per class</div>
+          </div>
+          <div class="school-opt" onclick="selectSchoolOpt(this,'quantity')" data-val="full">
+            <span class="school-opt__icon">🏫</span>
+            <div class="school-opt__name">Full class</div>
+            <div class="school-opt__desc">1 each — 30 copies, every child takes a book home</div>
+          </div>
+          <div class="school-opt" onclick="selectSchoolOpt(this,'quantity')" data-val="multiple">
+            <span class="school-opt__icon">🌳</span>
+            <div class="school-opt__name">Multiple classes</div>
+            <div class="school-opt__desc">School-wide — let's talk about a bigger package</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Add-ons -->
+      <div class="school-step">
+        <div class="school-step__num">Step 03</div>
+        <div class="school-step__q">Anything to add? <span style="font-size:13px;font-weight:300;color:rgba(242,232,213,0.45);">(optional)</span></div>
+        <div class="school-extras">
+          <div class="school-extra" onclick="toggleSchoolExtra(this)" data-val="author">
+            <div class="school-extra__check">✓</div>
+            <div>
+              <div class="school-extra__name">Author visit</div>
+              <div class="school-extra__desc">In-person (London) or virtual — a 45-minute reading and guided discussion with the author</div>
+            </div>
+          </div>
+          <div class="school-extra" onclick="toggleSchoolExtra(this)" data-val="termly">
+            <div class="school-extra__check">✓</div>
+            <div>
+              <div class="school-extra__name">Termly subscription</div>
+              <div class="school-extra__desc">One new Little Fox book delivered each term — three a year, built into your curriculum</div>
+            </div>
+          </div>
+          <div class="school-extra" onclick="toggleSchoolExtra(this)" data-val="cpd">
+            <div class="school-extra__check">✓</div>
+            <div>
+              <div class="school-extra__name">CPD pack for staff</div>
+              <div class="school-extra__desc">A structured teacher guide — how to use Little Fox for PSHE, emotional literacy, and circle time. Maps to curriculum outcomes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="school-divider">
+
+      <!-- Step 4: Contact -->
+      <div class="school-step" style="margin-bottom:0;">
+        <div class="school-step__num">Step 04</div>
+        <div class="school-step__q" style="margin-bottom:20px;">Your details</div>
+        <div class="school-form__grid">
+          <div class="school-form__field">
+            <label class="school-form__label" for="sch-name">Your name</label>
+            <input class="school-form__input" id="sch-name" type="text" placeholder="Ms. Johnson" autocomplete="name">
+          </div>
+          <div class="school-form__field">
+            <label class="school-form__label" for="sch-school">School name</label>
+            <input class="school-form__input" id="sch-school" type="text" placeholder="Greenfield Primary">
+          </div>
+          <div class="school-form__field">
+            <label class="school-form__label" for="sch-email">Email address</label>
+            <input class="school-form__input" id="sch-email" type="email" placeholder="you@school.sch.uk" autocomplete="email">
+          </div>
+          <div class="school-form__field">
+            <label class="school-form__label" for="sch-role">Your role</label>
+            <select class="school-form__select" id="sch-role">
+              <option value="">Select your role...</option>
+              <option>Class Teacher</option>
+              <option>Head Teacher</option>
+              <option>Librarian</option>
+              <option>SENCO</option>
+              <option>PSHE Lead</option>
+              <option>Teaching Assistant</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="school-form__field" style="margin-bottom:22px;">
+          <label class="school-form__label" for="sch-notes">Anything else? <span style="font-weight:300;opacity:0.6;">(optional)</span></label>
+          <textarea class="school-form__textarea" id="sch-notes" placeholder="e.g. we have a specific PSHE theme this term, or we're a small rural school with a mixed-age class..."></textarea>
+        </div>
+        <button class="school-form__submit" onclick="sendSchoolEnquiry()">
+          Send enquiry &nbsp;→
+        </button>
+        <p class="school-form__note">We'll reply within 48 hours with a tailored quote. No pressure, no obligation.</p>
+      </div>
+
     </div>
 
   </div>
@@ -3527,6 +3761,90 @@ window.addEventListener('resize', function() {
       btn.nextElementSibling.style.display = 'block';
     }
   }
+
+  // ── School enquiry builder ──────────────────────────────────────────────
+  var schoolSel = { format: null, quantity: null, extras: [] };
+
+  function selectSchoolOpt(el, group) {
+    document.querySelectorAll('#step-' + group + ' .school-opt').forEach(function(o) {
+      o.classList.remove('selected');
+    });
+    el.classList.add('selected');
+    schoolSel[group] = el.dataset.val;
+  }
+
+  function toggleSchoolExtra(el) {
+    el.classList.toggle('selected');
+    var val = el.dataset.val;
+    var idx = schoolSel.extras.indexOf(val);
+    if (idx > -1) { schoolSel.extras.splice(idx, 1); }
+    else { schoolSel.extras.push(val); }
+  }
+
+  function sendSchoolEnquiry() {
+    var name   = document.getElementById('sch-name').value.trim();
+    var school = document.getElementById('sch-school').value.trim();
+    var email  = document.getElementById('sch-email').value.trim();
+    var role   = document.getElementById('sch-role').value;
+    var notes  = document.getElementById('sch-notes').value.trim();
+
+    if (!name || !school || !email) {
+      alert('Please fill in your name, school name, and email address before sending.');
+      return;
+    }
+
+    var fmtMap = {
+      digital: 'Digital licence (projected on screen)',
+      physical: 'Physical books (printed in London)',
+      both: 'Both — digital for sessions + physical for children to keep'
+    };
+    var qtyMap = {
+      taster:   'Taster — 1 copy + 30 classroom activity sheets',
+      sharing:  'Sharing — 1 between 2 (approx. 15 copies)',
+      full:     'Full class — 1 each (approx. 30 copies)',
+      multiple: 'Multiple classes — school-wide package'
+    };
+    var extMap = {
+      author:  'Author visit (in-person or virtual)',
+      termly:  'Termly subscription (one book per term)',
+      cpd:     'CPD pack for staff'
+    };
+
+    var subject = 'School Enquiry — ' + school;
+    var body = 'Hi,
+
+I'd like to enquire about Little Fox for my school.
+
+';
+    body += '— Name: ' + name + '
+';
+    body += '— School: ' + school + '
+';
+    body += '— Role: ' + (role || 'Not specified') + '
+
+';
+    body += '— Format: ' + (schoolSel.format ? fmtMap[schoolSel.format] : 'Not selected') + '
+';
+    body += '— Quantity: ' + (schoolSel.quantity ? qtyMap[schoolSel.quantity] : 'Not selected') + '
+';
+    if (schoolSel.extras.length > 0) {
+      body += '— Add-ons: ' + schoolSel.extras.map(function(e){ return extMap[e]; }).join(', ') + '
+';
+    }
+    if (notes) { body += '
+Additional notes:
+' + notes + '
+'; }
+    body += '
+Reply to: ' + email + '
+
+Looking forward to hearing from you.';
+
+    window.location.href = 'mailto:hello@wildlearningcollective.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+  }
+
 </script>
 
 </body>
