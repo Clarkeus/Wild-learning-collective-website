@@ -2056,6 +2056,29 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .peek-track { touch-action: pan-y; }
 }
 
+
+/* ── Philosophy mobile carousel ─────────────────────────────────────────── */
+.phil-carousel-wrap { display: none; }
+@media (max-width: 768px) {
+  .philosophy__pillars { display: none !important; }
+  .phil-carousel-wrap { display: block; margin-top: 8px; }
+  .phil-viewport { overflow: hidden; }
+  .phil-track {
+    display: flex;
+    transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+  }
+  .phil-slide { flex: 0 0 100%; min-width: 0; padding: 0 8px; box-sizing: border-box; }
+  .phil-dots {
+    display: flex; justify-content: center; gap: 8px; margin-top: 20px;
+  }
+  .phil-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(90,70,50,0.2); cursor: pointer;
+    transition: background 0.2s, width 0.3s;
+  }
+  .phil-dot.active { background: var(--forest); width: 20px; border-radius: 3px; }
+}
+
 /* ── FAQ ─────────────────────────────────────────────────────────────────── */
 .faq-list {
   border-top: 1px solid rgba(90,70,50,0.10);
@@ -2300,7 +2323,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .lmc-slide { flex: 0 0 100%; min-width: 0; }
   .lmc-card {
     border-radius: 18px; overflow: hidden;
-    background: rgba(242,232,213,0.07);
+    background: var(--forest-dense);
     border: 1px solid rgba(242,232,213,0.13);
     display: flex; flex-direction: column;
   }
@@ -2331,7 +2354,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     align-self: flex-start; margin-top: 6px;
   }
   .lmc-dots { display: flex; justify-content: center; gap: 7px; margin-top: 14px; }
-  .lmc-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(242,232,213,0.2); cursor: pointer; transition: background 0.2s, width 0.3s; }
+  .lmc-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(63,90,68,0.25); cursor: pointer; transition: background 0.2s, width 0.3s; }
   .lmc-dot.active { background: var(--faded-yellow); width: 18px; border-radius: 3px; }
 }
 
@@ -3788,6 +3811,41 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
         <p class="pillar__text">Five series, a locked art canon, a consistent world. Little Fox grows across every book, and so does the child reading alongside him.</p>
       </div>
     </div>
+
+    <!-- Mobile philosophy carousel -->
+    <div class="phil-carousel-wrap fade-up">
+      <div class="phil-viewport">
+        <div class="phil-track" id="philTrack">
+          <div class="phil-slide">
+            <div class="pillar__icon">🌱</div>
+            <h3 class="pillar__title">Slow, not simplified</h3>
+            <p class="pillar__text">We don't rush to the lesson. Each story sits with the feeling first. Children need time to understand before they need answers.</p>
+          </div>
+          <div class="phil-slide">
+            <div class="pillar__icon">🦊</div>
+            <h3 class="pillar__title">No moral stated</h3>
+            <p class="pillar__text">Little Fox never tells you what to think. The story ends with an image, a silence, a question. The meaning belongs to the child.</p>
+          </div>
+          <div class="phil-slide">
+            <div class="pillar__icon">🌿</div>
+            <h3 class="pillar__title">A depth ladder</h3>
+            <p class="pillar__text">Books 1 to 5 explore single themes. Books 6 to 10 hold two at once. Books 11 onwards sit with conflict, nuance and true complexity.</p>
+          </div>
+          <div class="phil-slide">
+            <div class="pillar__icon">📖</div>
+            <h3 class="pillar__title">A 100-book universe</h3>
+            <p class="pillar__text">Five series, a locked art canon, a consistent world. Little Fox grows across every book, and so does the child reading alongside him.</p>
+          </div>
+        </div>
+      </div>
+      <div class="phil-dots">
+        <span class="phil-dot active" onclick="philGo(0)"></span>
+        <span class="phil-dot" onclick="philGo(1)"></span>
+        <span class="phil-dot" onclick="philGo(2)"></span>
+        <span class="phil-dot" onclick="philGo(3)"></span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -4235,6 +4293,30 @@ window.addEventListener('resize', function() {
     }
   }
 
+
+  // ── School accordion ──────────────────────────────────────────────────────
+  function toggleSchoolAcc(btn) {
+    var item = btn.closest('.school-acc-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.school-acc-item').forEach(function(i) {
+      i.classList.remove('open');
+      var body = i.querySelector('.school-acc-body');
+      if (body) body.style.maxHeight = '0';
+      var hdr = i.querySelector('.school-acc-header');
+      if (hdr) hdr.setAttribute('aria-expanded','false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      var body = item.querySelector('.school-acc-body');
+      if (body) body.style.maxHeight = body.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded','true');
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    var firstOpen = document.querySelector('.school-acc-item.open .school-acc-body');
+    if (firstOpen) firstOpen.style.maxHeight = firstOpen.scrollHeight + 'px';
+  });
+
   // ── School enquiry builder ──────────────────────────────────────────────
   var schoolSel = { format: null, quantity: null, extras: [] };
 
@@ -4445,6 +4527,30 @@ window.addEventListener('resize', function() {
       if (Math.abs(dx) > 40) lmcGoTo(Math.max(0, Math.min(1, lmcIdx + (dx < 0 ? 1 : -1))));
     }, { passive: true });
   })();
+
+
+  // ── Philosophy carousel (mobile) ──────────────────────────────────────────
+  var philIdx = 0;
+  var philTotal = 4;
+  function philGo(idx) {
+    philIdx = idx;
+    var track = document.getElementById('philTrack');
+    if (track) track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    document.querySelectorAll('.phil-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === idx);
+    });
+  }
+  (function() {
+    var vp = document.querySelector('.phil-viewport');
+    if (!vp) return;
+    var sx = 0;
+    vp.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; }, {passive:true});
+    vp.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) philGo(Math.max(0, Math.min(philTotal - 1, philIdx + (dx < 0 ? 1 : -1))));
+    }, {passive:true});
+  })();
+
 
 </script>
 
