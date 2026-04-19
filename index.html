@@ -3917,35 +3917,18 @@ window.addEventListener('resize', function() {
       cpd:     'CPD pack for staff'
     };
 
-    var subject = 'School Enquiry — ' + school;
-    var body = 'Hi,
-
-I'd like to enquire about Little Fox for my school.
-
-';
-    body += '— Name: ' + name + '
-';
-    body += '— School: ' + school + '
-';
-    body += '— Role: ' + (role || 'Not specified') + '
-
-';
-    body += '— Format: ' + (schoolSel.format ? fmtMap[schoolSel.format] : 'Not selected') + '
-';
-    body += '— Quantity: ' + (schoolSel.quantity ? qtyMap[schoolSel.quantity] : 'Not selected') + '
-';
+    var subject = 'School Enquiry \u2014 ' + school;
+    var body = 'Hi,\n\nI\'d like to enquire about Little Fox for my school.\n\n';
+    body += '\u2014 Name: ' + name + '\n';
+    body += '\u2014 School: ' + school + '\n';
+    body += '\u2014 Role: ' + (role || 'Not specified') + '\n\n';
+    body += '\u2014 Format: ' + (schoolSel.format ? fmtMap[schoolSel.format] : 'Not selected') + '\n';
+    body += '\u2014 Quantity: ' + (schoolSel.quantity ? qtyMap[schoolSel.quantity] : 'Not selected') + '\n';
     if (schoolSel.extras.length > 0) {
-      body += '— Add-ons: ' + schoolSel.extras.map(function(e){ return extMap[e]; }).join(', ') + '
-';
+      body += '\u2014 Add-ons: ' + schoolSel.extras.map(function(e){ return extMap[e]; }).join(', ') + '\n';
     }
-    if (notes) { body += '
-Additional notes:
-' + notes + '
-'; }
-    body += '
-Reply to: ' + email + '
-
-Looking forward to hearing from you.';
+    if (notes) { body += '\nAdditional notes:\n' + notes + '\n'; }
+    body += '\nReply to: ' + email + '\n\nLooking forward to hearing from you.';
 
     window.location.href = 'mailto:hello@wildlearningcollective.com'
       + '?subject=' + encodeURIComponent(subject)
