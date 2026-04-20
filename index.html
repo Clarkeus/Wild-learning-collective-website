@@ -2255,12 +2255,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   font-size: 12px; color: rgba(242,232,213,0.4); margin-top: 14px;
   font-weight: 300; line-height: 1.6;
 }
-@media (max-width: 768px) {
-  .school-enquiry { padding: 36px 24px 40px; margin-top: 48px; }
-  .school-enquiry__title { font-size: 24px; }
-  .school-form__grid { grid-template-columns: 1fr; }
-  .school-opts { grid-template-columns: 1fr 1fr; }
-}
+
 @media (max-width: 480px) {
   .school-opts { grid-template-columns: 1fr; }
 }
@@ -2420,6 +2415,38 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 .smw-classsize-input:focus { border-color: var(--faded-yellow); }
 
+
+/* ── Wizard desktop styles ─────────────────────────────────────────────── */
+@media (min-width: 769px) {
+  .school-mob-wizard {
+    max-width: 860px;
+    margin: 72px auto 0;
+    border-radius: 20px;
+  }
+  .smw-head { padding: 28px 48px 0; }
+  .smw-eyebrow { font-size: 11px; }
+  .smw-viewport { border-radius: 0 0 20px 20px; }
+  .smw-slide { padding: 36px 48px 44px; }
+  .smw-q { font-size: 24px; margin-bottom: 24px; }
+  .smw-opts { gap: 12px; }
+  .smw-opts.smw-grid-3 { grid-template-columns: repeat(3,1fr); }
+  .smw-opt { padding: 20px 18px; }
+  .smw-opt__name { font-size: 15px; }
+  .smw-opt__desc { font-size: 13px; }
+  .smw-chips { gap: 12px; }
+  .smw-chip { padding: 12px 26px; font-size: 15px; }
+  .smw-extras { gap: 10px; }
+  .smw-form { gap: 14px; }
+  .smw-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .smw-input { font-size: 15px; padding: 14px 16px; }
+  .smw-continue { padding: 14px 32px; font-size: 15px; }
+  .smw-submit { padding: 15px 36px; font-size: 15px; }
+  .smw-classsize-input { font-size: 24px; padding: 16px 20px; }
+  .smw-scale-opts { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .smw-yg-chips { gap: 10px; }
+  .smw-yg-chip { padding: 10px 18px; font-size: 13px; }
+}
+
 /* ─── Lesson Preview ─────────────────────────────────────────────────────── */
 .lesson-preview-grid {
   display: grid;
@@ -2514,9 +2541,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 
 /* ─── Mobile school wizard ───────────────────────────────────────────────── */
-.school-mob-wizard { display: none; }
+.school-mob-wizard { display: block; }
 @media (max-width: 768px) {
-  .school-enquiry { display: none !important; }
   .school-mob-wizard {
     display: block;
     background: var(--ink);
@@ -3561,251 +3587,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 
     </div>
 
-    <div class="school-enquiry fade-up" id="school-enquiry">
-
-      <div class="school-enquiry__eyebrow">Build your package</div>
-      <h3 class="school-enquiry__title">What works for your school?</h3>
-      <p class="school-enquiry__sub">Tell us what you need. We'll come back within 48 hours with a tailored quote — no pressure, no obligation.</p>
-
-      <!-- ── Step 1: Format ── -->
-      <div class="school-step sch-revealed" id="sch-step-1">
-        <div class="school-step__num">Step 01</div>
-        <div class="school-step__q">How would you like to use Little Fox?</div>
-        <div class="school-opts" id="step-format">
-          <div class="school-opt" onclick="schSelectFormat(this,'digital')" data-val="digital">
-            <span class="school-opt__icon">🖥</span>
-            <div class="school-opt__name">Digital licence</div>
-            <div class="school-opt__desc">Project on screen so the whole class experiences it together</div>
-          </div>
-          <div class="school-opt" onclick="schSelectFormat(this,'physical')" data-val="physical">
-            <span class="school-opt__icon">📖</span>
-            <div class="school-opt__name">Physical books</div>
-            <div class="school-opt__desc">Printed in London on silk paper, in children's hands</div>
-          </div>
-          <div class="school-opt" onclick="schSelectFormat(this,'both')" data-val="both">
-            <span class="school-opt__icon">✦</span>
-            <div class="school-opt__name">Both</div>
-            <div class="school-opt__desc">Digital for the session, physical for children to take home</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="sch-step-sep" id="sch-div-2"></div>
-
-      <!-- ── Step 2: Year group ── -->
-      <div class="school-step sch-hidden" id="sch-step-2">
-        <div class="school-step__num">Step 02</div>
-        <div class="school-step__q">Which year group?</div>
-        <div class="sch-chips">
-          <button class="sch-chip" onclick="schSelectYearGroup(this,'reception')" data-val="reception">Reception</button>
-          <button class="sch-chip" onclick="schSelectYearGroup(this,'ks1')" data-val="ks1">KS1 — Year 1 &amp; 2</button>
-          <button class="sch-chip" onclick="schSelectYearGroup(this,'ks2-lower')" data-val="ks2-lower">Lower KS2 — Y3 &amp; 4</button>
-          <button class="sch-chip" onclick="schSelectYearGroup(this,'ks2-upper')" data-val="ks2-upper">Upper KS2 — Y5 &amp; 6</button>
-          <button class="sch-chip" onclick="schSelectYearGroup(this,'mixed')" data-val="mixed">Mixed / All school</button>
-        </div>
-      </div>
-
-      <div class="sch-step-sep" id="sch-div-3"></div>
-
-      <!-- ── Step 3: Book ── -->
-      <div class="school-step sch-hidden" id="sch-step-3">
-        <div class="school-step__num">Step 03</div>
-        <div class="school-step__q">Which book?</div>
-        <div class="sch-book-opts">
-          <div class="sch-book-opt" onclick="schSelectBook(this,'book1')">
-            <span class="sch-book-opt__icon">📗</span>
-            <div class="sch-book-opt__title">Little Fox and the Busy Day</div>
-            <div class="sch-book-opt__sub">Book 1 — Pace, listening, slowing down</div>
-          </div>
-          <div class="sch-book-opt" onclick="schSelectBook(this,'book2')">
-            <span class="sch-book-opt__icon">📘</span>
-            <div class="sch-book-opt__title">Little Fox Thinks It Through</div>
-            <div class="sch-book-opt__sub">Book 2 — Perspective, thought, empathy</div>
-          </div>
-          <div class="sch-book-opt" onclick="schSelectBook(this,'recommend')">
-            <span class="sch-book-opt__icon">✦</span>
-            <div class="sch-book-opt__title">Recommend one for me</div>
-            <div class="sch-book-opt__sub">We'll suggest the best match for your class</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="sch-step-sep" id="sch-div-4"></div>
-
-      <!-- ── Step 4: Quantity (flip cards) ── -->
-      <div class="school-step sch-hidden" id="sch-step-4">
-        <div class="school-step__num">Step 04</div>
-        <div class="school-step__q">How many children?</div>
-        <div class="sch-qty-grid">
-
-          <!-- Taster: plain card -->
-          <div class="school-opt" onclick="schSelectQtySimple(this,'taster','Taster')" data-val="taster">
-            <span class="school-opt__icon">🌱</span>
-            <div class="school-opt__name">Taster</div>
-            <div class="school-opt__desc">1 copy + 30 classroom activity sheets. Try it before committing.</div>
-          </div>
-
-          <!-- Sharing: flip card -->
-          <div class="sch-flip-wrap" id="flip-sharing">
-            <div class="sch-flip-inner">
-              <div class="sch-flip-front school-opt" onclick="schFlipQty('sharing')">
-                <span class="school-opt__icon">👫</span>
-                <div class="school-opt__name">Sharing</div>
-                <div class="school-opt__desc">1 between 2 — click to tell us class size</div>
-                <div class="sch-confirm-badge" id="badge-sharing"></div>
-              </div>
-              <div class="sch-flip-back">
-                <div class="sch-flip-back__label">Sharing — 1 between 2</div>
-                <div class="sch-flip-back__q">How many children in the class?</div>
-                <input class="sch-flip-input" id="flipInputSharing" type="number" min="1" max="300" placeholder="e.g. 28">
-                <div class="sch-flip-back__actions">
-                  <button class="sch-flip-cancel" onclick="schUnflip('sharing')">&#8592; Back</button>
-                  <button class="sch-flip-confirm" onclick="schConfirmFlip('sharing')">Confirm &#8594;</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Full class: flip card -->
-          <div class="sch-flip-wrap" id="flip-full">
-            <div class="sch-flip-inner">
-              <div class="sch-flip-front school-opt" onclick="schFlipQty('full')">
-                <span class="school-opt__icon">🏫</span>
-                <div class="school-opt__name">Full class</div>
-                <div class="school-opt__desc">1 each — click to tell us class size</div>
-                <div class="sch-confirm-badge" id="badge-full"></div>
-              </div>
-              <div class="sch-flip-back">
-                <div class="sch-flip-back__label">Full class — 1 per child</div>
-                <div class="sch-flip-back__q">How many children in the class?</div>
-                <input class="sch-flip-input" id="flipInputFull" type="number" min="1" max="300" placeholder="e.g. 30">
-                <div class="sch-flip-back__actions">
-                  <button class="sch-flip-cancel" onclick="schUnflip('full')">&#8592; Back</button>
-                  <button class="sch-flip-confirm" onclick="schConfirmFlip('full')">Confirm &#8594;</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Multiple classes: flip card (wider) -->
-          <div class="sch-flip-wrap" id="flip-multiple" style="grid-column: 1 / -1;">
-            <div class="sch-flip-inner">
-              <div class="sch-flip-front school-opt" onclick="schFlipQty('multiple')" style="display:flex;gap:14px;align-items:flex-start;">
-                <span class="school-opt__icon">🌳</span>
-                <div>
-                  <div class="school-opt__name">Multiple classes</div>
-                  <div class="school-opt__desc">School-wide package — click to tell us more</div>
-                  <div class="sch-confirm-badge" id="badge-multiple"></div>
-                </div>
-              </div>
-              <div class="sch-flip-back sch-flip-back--wide">
-                <div class="sch-flip-back__label">Multiple classes</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-                  <div>
-                    <div class="sch-flip-back__q" style="margin-bottom:8px;">What scale?</div>
-                    <div class="sch-scale-chips">
-                      <button class="sch-scale-chip" onclick="schPickScale(this,'2-3')">2–3 classes</button>
-                      <button class="sch-scale-chip" onclick="schPickScale(this,'year-group')">Whole year group</button>
-                      <button class="sch-scale-chip" onclick="schPickScale(this,'school')">Whole school</button>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="sch-flip-back__q" style="margin-bottom:8px;">Which year groups?</div>
-                    <div class="sch-yg-chips">
-                      <button class="sch-yg-chip" onclick="schToggleYg(this,'reception')">Reception</button>
-                      <button class="sch-yg-chip" onclick="schToggleYg(this,'ks1')">KS1 (Y1–2)</button>
-                      <button class="sch-yg-chip" onclick="schToggleYg(this,'ks2-lower')">Lower KS2</button>
-                      <button class="sch-yg-chip" onclick="schToggleYg(this,'ks2-upper')">Upper KS2</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="sch-flip-back__actions" style="margin-top:auto;">
-                  <button class="sch-flip-cancel" onclick="schUnflip('multiple')">&#8592; Back</button>
-                  <button class="sch-flip-confirm" onclick="schConfirmFlip('multiple')">Confirm &#8594;</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="sch-step-sep" id="sch-div-5"></div>
-
-      <!-- ── Step 5: Add-ons ── -->
-      <div class="school-step sch-hidden" id="sch-step-5">
-        <div class="school-step__num">Step 05</div>
-        <div class="school-step__q">Anything to add? <span style="font-size:13px;font-weight:300;color:rgba(242,232,213,0.4);">(optional)</span></div>
-        <div class="school-extras">
-          <div class="school-extra" onclick="toggleSchoolExtra(this)" data-val="author">
-            <div class="school-extra__check">&#10003;</div>
-            <div>
-              <div class="school-extra__name">Author visit</div>
-              <div class="school-extra__desc">In-person (London) or virtual — a 45-minute reading and guided discussion with the author</div>
-            </div>
-          </div>
-          <div class="school-extra" onclick="toggleSchoolExtra(this)" data-val="termly">
-            <div class="school-extra__check">&#10003;</div>
-            <div>
-              <div class="school-extra__name">Termly subscription</div>
-              <div class="school-extra__desc">One new Little Fox book delivered each term, three a year</div>
-            </div>
-          </div>
-          <div class="school-extra" onclick="toggleSchoolExtra(this)" data-val="cpd">
-            <div class="school-extra__check">&#10003;</div>
-            <div>
-              <div class="school-extra__name">CPD pack for staff</div>
-              <div class="school-extra__desc">A teacher guide covering how to use Little Fox for PSHE, emotional literacy, and circle time</div>
-            </div>
-          </div>
-        </div>
-        <button class="sch-chip" onclick="schRevealStep(6)" style="margin-top:18px;border-color:var(--faded-yellow);color:var(--faded-yellow);">Continue &#8594;</button>
-      </div>
-
-      <div class="sch-step-sep" id="sch-div-6"></div>
-
-      <!-- ── Step 6: Contact ── -->
-      <div class="school-step sch-hidden" id="sch-step-6" style="margin-bottom:0;">
-        <div class="school-step__num">Step 06</div>
-        <div class="school-step__q" style="margin-bottom:20px;">Your details</div>
-        <div class="school-form__grid">
-          <div class="school-form__field">
-            <label class="school-form__label" for="sch-name">Your name</label>
-            <input class="school-form__input" id="sch-name" type="text" placeholder="Ms. Johnson" autocomplete="name">
-          </div>
-          <div class="school-form__field">
-            <label class="school-form__label" for="sch-school">School name</label>
-            <input class="school-form__input" id="sch-school" type="text" placeholder="Greenfield Primary">
-          </div>
-          <div class="school-form__field">
-            <label class="school-form__label" for="sch-email">Email address</label>
-            <input class="school-form__input" id="sch-email" type="email" placeholder="you@school.sch.uk" autocomplete="email">
-          </div>
-          <div class="school-form__field">
-            <label class="school-form__label" for="sch-role">Your role</label>
-            <select class="school-form__select" id="sch-role">
-              <option value="">Select your role...</option>
-              <option>Class Teacher</option>
-              <option>Head Teacher</option>
-              <option>Librarian</option>
-              <option>SENCO</option>
-              <option>PSHE Lead</option>
-              <option>Teaching Assistant</option>
-              <option>Other</option>
-            </select>
-          </div>
-        </div>
-        <div class="school-form__field" style="margin-bottom:22px;">
-          <label class="school-form__label" for="sch-notes">Anything else? <span style="font-weight:300;opacity:0.6;">(optional)</span></label>
-          <textarea class="school-form__textarea" id="sch-notes" placeholder="e.g. a specific PSHE theme this term, a mixed-age class, a particular challenge you want to address..."></textarea>
-        </div>
-        <button class="school-form__submit" onclick="sendSchoolEnquiry()">Send enquiry &nbsp;&#8594;</button>
-        <p class="school-form__note">We'll reply within 48 hours with a tailored quote. No pressure, no obligation.</p>
-      </div>
-
-    </div>
-
-        <!-- ── Mobile step-by-step wizard (hidden on desktop) ──── -->
+    <!-- ── Mobile step-by-step wizard (hidden on desktop) ──── -->
     <div class="school-mob-wizard" id="schoolMobWizard">
 
       <div class="smw-head">
@@ -3860,7 +3642,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
           <!-- Slide 2: Book -->
           <div class="smw-slide">
             <div class="smw-q">Which book?</div>
-            <div class="smw-opts">
+            <div class="smw-opts smw-grid-3">
               <button class="smw-opt" onclick="smwPickBook(this,'book1')">
                 <span class="smw-opt__icon">📗</span>
                 <div><div class="smw-opt__name">Little Fox and the Busy Day</div><div class="smw-opt__desc">Book 1 — pace, listening, slowing down</div></div>
@@ -3955,10 +3737,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
           <div class="smw-slide">
             <div class="smw-q" style="margin-bottom:16px;">Almost there</div>
             <div class="smw-form">
-              <input class="smw-input" id="smwName" type="text" placeholder="Your name" autocomplete="name">
-              <input class="smw-input" id="smwSchool" type="text" placeholder="School name">
-              <input class="smw-input" id="smwEmail" type="email" placeholder="Your email" autocomplete="email">
-              <select class="smw-input smw-select" id="smwRole">
+              <div class="smw-form-grid">
+                <input class="smw-input" id="smwName" type="text" placeholder="Your name" autocomplete="name">
+                <input class="smw-input" id="smwSchool" type="text" placeholder="School name">
+                <input class="smw-input" id="smwEmail" type="email" placeholder="Your email" autocomplete="email">
+                <select class="smw-input smw-select" id="smwRole">
                 <option value="">Your role</option>
                 <option>Class Teacher</option>
                 <option>PSHE Lead</option>
@@ -3968,6 +3751,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
                 <option>Teaching Assistant</option>
                 <option>Other</option>
               </select>
+              </div>
               <textarea class="smw-input smw-textarea" id="smwNotes" placeholder="Anything else? (optional)"></textarea>
               <button class="smw-submit" onclick="smwSend()">Send enquiry</button>
               <p class="smw-note">We reply within 48 hours. No pressure, no obligation.</p>
@@ -4626,6 +4410,10 @@ window.addEventListener('resize', function() {
   document.addEventListener('DOMContentLoaded', function() {
     var firstOpen = document.querySelector('.school-acc-item.open .school-acc-body');
     if (firstOpen) firstOpen.style.maxHeight = firstOpen.scrollHeight + 'px';
+    // Init wizard
+    smwGoTo(0);
+    // Privacy bar
+    try { if (localStorage.getItem('privacyDismissed')) { var pb = document.getElementById('privacyBar'); if(pb) pb.style.display='none'; } } catch(e) {}
   });
 
 
@@ -4923,400 +4711,7 @@ window.addEventListener('resize', function() {
   }
 
 
-/* ─── Mobile pricing system ────────────────────────────────────────── */
-var mobProductIdx = 1; // 0=book, 1=club, 2=gift
-var mobBookIdx = 1;    // 0=book1, 1=book2, ...9=book10
-
-var MOB_PRICES = [
-  {amt: '\u00a313.99', per: ''},
-  {amt: '\u00a318', per: '/month'},
-  {amt: '\u00a349.99', per: ''}
-];
-var MOB_BOOK_URL = 'https://buy.stripe.com/test_8x2cMXboybYXbNH8V96AM02';
-var MOB_CLUB_URL = 'https://buy.stripe.com/test_28E8wH50a3sr3hb7R56AM00';
-var MOB_GIFT_URL = 'https://buy.stripe.com/test_5kQeV564egfd7xr6N16AM01';
-
-function setMobProduct(idx) {
-  if (idx < 0 || idx > 2) return;
-  mobProductIdx = idx;
-  // Tabs
-  document.querySelectorAll('.mob-tab').forEach(function(t) {
-    t.classList.toggle('mob-tab-on', parseInt(t.dataset.idx) === idx);
-  });
-  // Price
-  var p = MOB_PRICES[idx];
-  var amt = document.getElementById('mobPriceAmt');
-  var per = document.getElementById('mobPricePer');
-  if (amt) amt.textContent = p.amt;
-  if (per) per.textContent = p.per;
-  // Panels
-  var track = document.getElementById('mobPanelsTrack');
-  if (track) track.style.transform = 'translateX(-' + (idx * 100) + '%)';
-  // Arrow buttons: disable at edges
-  var prev = document.getElementById('mobPrevBtn');
-  var next = document.getElementById('mobNextBtn');
-  if (prev) prev.disabled = (idx === 0);
-  if (next) next.disabled = (idx === 2);
-}
-
-function setMobBook(idx) {
-  if (idx < 0 || idx > 9) return;
-  mobBookIdx = idx;
-  var track = document.getElementById('mobBooksTrack');
-  if (track) track.style.transform = 'translateX(-' + (idx * 100) + '%)';
-  // Dots
-  document.querySelectorAll('.mob-bk-dots span').forEach(function(d, i) {
-    d.classList.toggle('mbk-dot-on', i === idx);
-  });
-  // Buy button
-  var btn = document.getElementById('mobBookBuyBtn');
-  if (!btn) return;
-  var avail = (idx < 2);
-  btn.classList.toggle('mob-btn-dim', !avail);
-  btn.href = avail ? MOB_BOOK_URL : '#';
-  btn.textContent = avail ? 'Buy this Book \u00a0\u2192' : 'Coming Soon';
-  // Disable arrow at extremes
-  var prev = document.querySelector('.mob-bk-prev');
-  var next = document.querySelector('.mob-bk-next');
-  if (prev) prev.disabled = (idx === 0);
-  if (next) next.disabled = (idx === 9);
-}
-
-function toggleBlurb(btn) {
-  var blurb = btn.previousElementSibling;
-  var preview = blurb.querySelector('.mbk-preview');
-  var full = blurb.querySelector('.mbk-full');
-  if (!full) return;
-  var expanded = full.style.display !== 'none';
-  if (expanded) {
-    full.style.display = 'none';
-    preview.style.display = '';
-    btn.textContent = 'Read more \u2193';
-  } else {
-    preview.style.display = 'none';
-    full.style.display = '';
-    btn.textContent = 'Read less \u2191';
-  }
-}
-
-function toggleMobAcc() {
-  var h = document.getElementById('mobAccHidden');
-  var b = document.getElementById('mobAccBtn');
-  if (!h || !b) return;
-  var shown = h.style.display !== 'none' && h.style.display !== '';
-  h.style.display = shown ? 'none' : 'flex';
-  b.textContent = shown ? '+ See all 8 items in your box' : '\u2212 Hide items';
-}
-
-function openBookModal() {
-  var m = document.getElementById('bookModal');
-  if (m) m.setAttribute('aria-hidden', 'false');
-}
-function closeBookModal() {
-  var m = document.getElementById('bookModal');
-  if (m) m.setAttribute('aria-hidden', 'true');
-}
-function selectClubBook(n) {
-  document.querySelectorAll('.mob-modal-pick').forEach(function(b) {
-    b.classList.toggle('mob-pick-on', parseInt(b.dataset.book) === n);
-  });
-  var cta = document.getElementById('mobModalCta');
-  if (cta) { cta.href = MOB_CLUB_URL; cta.classList.add('mob-cta-on'); }
-}
-
-window.addEventListener('load', function() {
-  if (window.innerWidth > 768) return;
-  // Copy club photo from hidden panel
-  // mobClubPhoto now has src embedded directly — no copy needed
-  // Hide accordion extras
-  var h = document.getElementById('mobAccHidden');
-  if (h) h.style.display = 'none';
-  // Initialise
-  setMobProduct(1);
-  setMobBook(1);
-});
-
-window.addEventListener('resize', function() {
-  if (window.innerWidth <= 768) setMobProduct(mobProductIdx);
-});
-
-  // ── Peek Inside carousel ─────────────────────────────────────────────────
-  var peekIdx = 0;
-  var peekTotal = 4;
-  function peekGo(idx) {
-    peekIdx = idx;
-    var track = document.getElementById('peekTrack');
-    if (track) track.style.transform = 'translateX(-' + (idx * 100) + '%)';
-    document.querySelectorAll('.peek-dot').forEach(function(d, i) {
-      d.classList.toggle('active', i === idx);
-    });
-  }
-  function peekNav(dir) {
-    peekGo(Math.max(0, Math.min(peekTotal - 1, peekIdx + dir)));
-  }
-  (function() {
-    var track = document.getElementById('peekTrack');
-    if (!track) return;
-    var startX = 0;
-    track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, {passive:true});
-    track.addEventListener('touchend', function(e) {
-      var dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) peekNav(dx < 0 ? 1 : -1);
-    }, {passive:true});
-  })();
-
-  // ── FAQ accordion ─────────────────────────────────────────────────────────
-  function toggleFaq(btn) {
-    var isOpen = btn.classList.contains('open');
-    document.querySelectorAll('.faq-q.open').forEach(function(q) {
-      q.classList.remove('open');
-      q.setAttribute('aria-expanded', 'false');
-      q.nextElementSibling.style.display = 'none';
-    });
-    if (!isOpen) {
-      btn.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-      btn.nextElementSibling.style.display = 'block';
-    }
-  }
-
-
-  // ── School accordion ──────────────────────────────────────────────────────
-  function toggleSchoolAcc(btn) {
-    var item = btn.closest('.school-acc-item');
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.school-acc-item').forEach(function(i) {
-      i.classList.remove('open');
-      var body = i.querySelector('.school-acc-body');
-      if (body) body.style.maxHeight = '0';
-      var hdr = i.querySelector('.school-acc-header');
-      if (hdr) hdr.setAttribute('aria-expanded','false');
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      var body = item.querySelector('.school-acc-body');
-      if (body) body.style.maxHeight = body.scrollHeight + 'px';
-      btn.setAttribute('aria-expanded','true');
-    }
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    var firstOpen = document.querySelector('.school-acc-item.open .school-acc-body');
-    if (firstOpen) firstOpen.style.maxHeight = firstOpen.scrollHeight + 'px';
-  });
-
-  // ── School enquiry builder ──────────────────────────────────────────────
-  var schoolSel = { format: null, quantity: null, extras: [] };
-
-  function selectSchoolOpt(el, group) {
-    document.querySelectorAll('#step-' + group + ' .school-opt').forEach(function(o) {
-      o.classList.remove('selected');
-    });
-    el.classList.add('selected');
-    schoolSel[group] = el.dataset.val;
-    // Show/hide class size inputs on desktop
-    if (group === 'quantity') {
-      var ds = document.getElementById('desk-size-sharing');
-      var df = document.getElementById('desk-size-full');
-      if (ds) ds.style.display = el.dataset.val === 'sharing' ? 'flex' : 'none';
-      if (df) df.style.display = el.dataset.val === 'full'    ? 'flex' : 'none';
-    }
-  }
-
-  function toggleSchoolExtra(el) {
-    el.classList.toggle('selected');
-    var val = el.dataset.val;
-    var idx = schoolSel.extras.indexOf(val);
-    if (idx > -1) { schoolSel.extras.splice(idx, 1); }
-    else { schoolSel.extras.push(val); }
-  }
-
-  function sendSchoolEnquiry() {
-    var name   = document.getElementById('sch-name').value.trim();
-    var school = document.getElementById('sch-school').value.trim();
-    var email  = document.getElementById('sch-email').value.trim();
-    var role   = document.getElementById('sch-role').value;
-    var notes  = document.getElementById('sch-notes').value.trim();
-
-    if (!name || !school || !email) {
-      alert('Please fill in your name, school name, and email address before sending.');
-      return;
-    }
-
-    var fmtMap = {
-      digital: 'Digital licence (projected on screen)',
-      physical: 'Physical books (printed in London)',
-      both: 'Both: digital for sessions and physical for children to keep'
-    };
-    var qtyMap = {
-      taster:   'Taster: 1 copy + 30 classroom activity sheets',
-      sharing:  'Sharing: 1 between 2 (approx. 15 copies)',
-      full:     'Full class: 1 each (approx. 30 copies)',
-      multiple: 'Multiple classes, school-wide package'
-    };
-    var extMap = {
-      author:  'Author visit (in-person or virtual)',
-      termly:  'Termly subscription (one book per term)',
-      cpd:     'CPD pack for staff'
-    };
-
-    var subject = 'School Enquiry \u2014 ' + school;
-    var body = 'Hi,\n\nI\'d like to enquire about Little Fox for my school.\n\n';
-    body += '\u2014 Name: ' + name + '\n';
-    body += '\u2014 School: ' + school + '\n';
-    body += '\u2014 Role: ' + (role || 'Not specified') + '\n\n';
-    body += '\u2014 Format: ' + (schoolSel.format ? fmtMap[schoolSel.format] : 'Not selected') + '\n';
-    var deskSize = schoolSel.quantity === 'sharing' ? (document.getElementById('deskSizeSharing') || {}).value : schoolSel.quantity === 'full' ? (document.getElementById('deskSizeFull') || {}).value : null;
-    body += '\u2014 Quantity: ' + (schoolSel.quantity ? qtyMap[schoolSel.quantity] : 'Not selected') + (deskSize ? ' (' + deskSize + ' children)' : '') + '\n';
-    if (schoolSel.extras.length > 0) {
-      body += '\u2014 Add-ons: ' + schoolSel.extras.map(function(e){ return extMap[e]; }).join(', ') + '\n';
-    }
-    if (notes) { body += '\nAdditional notes:\n' + notes + '\n'; }
-    body += '\nReply to: ' + email + '\n\nLooking forward to hearing from you.';
-
-    window.location.href = 'mailto:hello@wildlearningcollective.com'
-      + '?subject=' + encodeURIComponent(subject)
-      + '&body=' + encodeURIComponent(body);
-  }
-
-  /* ── Mobile school wizard ──────────────────────────────────────────── */
-  var smwStep = 0;
-  var smwData = { format: null, qty: null, classSize: null, extras: [] };
-
-  function smwGoTo(step) {
-    var slides = document.querySelectorAll('#schoolMobWizard .smw-slide');
-    slides.forEach(function(sl, i) {
-      sl.classList.remove('smw-active', 'smw-gone');
-      if (i < step) sl.classList.add('smw-gone');
-      if (i === step) sl.classList.add('smw-active');
-    });
-    smwStep = step;
-    for (var i = 0; i < 4; i++) {
-      var d = document.getElementById('smwDot' + i);
-      if (d) d.classList.toggle('on', i === step);
-    }
-    var backBtn = document.getElementById('smwBackBtn');
-    if (backBtn) backBtn.classList.toggle('show', step > 0);
-  }
-
-  function smwGoBack() {
-    if (smwStep <= 0) return;
-    // If going back from step 2, hide size input rows
-    var rs = document.getElementById('smwSizeSharing');
-    var rf = document.getElementById('smwSizeFull');
-    if (smwStep === 1) {
-      if (rs) rs.classList.remove('show');
-      if (rf) rf.classList.remove('show');
-    }
-    smwGoTo(smwStep - 1);
-  }
-  // Initialise first slide
-  
-  // ── Email capture ───────────────────────────────────────────────────────────
-  function handleEmailCapture(e) {
-    e.preventDefault();
-    var email = document.getElementById('captureEmail').value.trim();
-    var msg = document.getElementById('captureMsg');
-    if (!email) return;
-    // TODO: replace with Mailchimp AJAX submission or form action URL
-    // For now, open mailto so the email lands in your inbox
-    var sub = encodeURIComponent('Newsletter signup: ' + email);
-    var body = encodeURIComponent('Please add ' + email + ' to the newsletter list and send the 10% discount code.');
-    window.open('mailto:hello@wildlearningcollective.com?subject=' + sub + '&body=' + body);
-    msg.textContent = 'Thanks! Check your inbox shortly for your 10% code.';
-    msg.style.color = 'var(--faded-yellow)';
-    document.getElementById('captureEmail').value = '';
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    // Privacy bar: hide if already dismissed
-    try { if (localStorage.getItem('privacyDismissed')) { var pb = document.getElementById('privacyBar'); if(pb) pb.style.display='none'; } } catch(e) {}
-    var firstSlide = document.querySelector('#schoolMobWizard .smw-slide');
-    if (firstSlide) firstSlide.classList.add('smw-active');
-  });
-
-  function smwPickFormat(el, val) {
-    el.closest('.smw-opts').querySelectorAll('.smw-opt').forEach(function(b) { b.classList.remove('on'); });
-    el.classList.add('on');
-    smwData.format = val;
-    setTimeout(function() { smwGoTo(1); }, 300);
-  }
-
-  function smwPickQty(el, val) {
-    el.closest('.smw-opts').querySelectorAll('.smw-opt').forEach(function(b) { b.classList.remove('on'); });
-    el.classList.add('on');
-    smwData.qty = val;
-    smwData.classSize = null;
-    var rs = document.getElementById('smwSizeSharing');
-    var rf = document.getElementById('smwSizeFull');
-    if (rs) rs.classList.remove('show');
-    if (rf) rf.classList.remove('show');
-    if (val === 'sharing' && rs) { rs.classList.add('show'); }
-    else if (val === 'full' && rf) { rf.classList.add('show'); }
-    else { setTimeout(function() { smwGoTo(2); }, 300); }
-  }
-
-  function smwAdvanceQty() {
-    var sEl = smwData.qty === 'sharing'
-      ? document.getElementById('smwSizeInputSharing')
-      : document.getElementById('smwSizeInputFull');
-    smwData.classSize = sEl ? sEl.value : null;
-    smwGoTo(2);
-  }
-
-  function smwToggleExtra(el, val) {
-    el.classList.toggle('on');
-    var i = smwData.extras.indexOf(val);
-    if (el.classList.contains('on')) { if (i === -1) smwData.extras.push(val); }
-    else { if (i > -1) smwData.extras.splice(i, 1); }
-  }
-
-  function smwSend() {
-    var name   = (document.getElementById('smwName')   || {}).value || '';
-    var school = (document.getElementById('smwSchool') || {}).value || '';
-    var email  = (document.getElementById('smwEmail')  || {}).value || '';
-    var role   = (document.getElementById('smwRole')   || {}).value || '';
-    var notes  = (document.getElementById('smwNotes')  || {}).value || '';
-    name = name.trim(); school = school.trim(); email = email.trim();
-    if (!name || !school || !email) { alert('Please fill in your name, school, and email.'); return; }
-    var fmtMap = { digital: 'Digital licence', physical: 'Physical books', both: 'Both (digital + physical)' };
-    var qtyMap = { taster: 'Taster (1 copy + 30 sheets)', sharing: '1 between 2', full: 'Full class (1 each)', multiple: 'Multiple classes' };
-    var extMap = { author: 'Author visit', termly: 'Termly subscription', cpd: 'CPD pack' };
-    var subject = 'School Enquiry \u2014 ' + school;
-    var body = 'Hi,\n\nI\'d like to find out more about Little Fox for my school.\n\n';
-    body += '\u2014 Name: ' + name + '\n';
-    body += '\u2014 School: ' + school + '\n';
-    body += '\u2014 Role: ' + (role || 'Not specified') + '\n\n';
-    body += '\u2014 Format: ' + (smwData.format ? fmtMap[smwData.format] : 'Not selected') + '\n';
-    body += '\u2014 Quantity: ' + (smwData.qty ? qtyMap[smwData.qty] : 'Not selected');
-    if (smwData.classSize) body += ' (' + smwData.classSize + ' children)';
-    body += '\n';
-    if (smwData.extras.length > 0) body += '\u2014 Add-ons: ' + smwData.extras.map(function(e){ return extMap[e]; }).join(', ') + '\n';
-    if (notes) body += '\nAdditional notes:\n' + notes + '\n';
-    body += '\nReply to: ' + email + '\n\nLooking forward to hearing from you.';
-    window.location.href = 'mailto:hello@wildlearningcollective.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  }
-
-  /* ── Lesson mobile carousel ──────────────────────────────────────── */
-  var lmcIdx = 0;
-  function lmcGoTo(idx) {
-    lmcIdx = idx;
-    var t = document.getElementById('lmcTrack');
-    if (t) t.style.transform = 'translateX(-' + (idx * 100) + '%)';
-    document.querySelectorAll('.lmc-dot').forEach(function(d, i) { d.classList.toggle('active', i === idx); });
-  }
-  (function() {
-    var lv = document.querySelector('.lmc-viewport');
-    if (!lv) return;
-    var sx = 0;
-    lv.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; }, { passive: true });
-    lv.addEventListener('touchend', function(e) {
-      var dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) lmcGoTo(Math.max(0, Math.min(1, lmcIdx + (dx < 0 ? 1 : -1))));
-    }, { passive: true });
-  })();
-
-
-  // ── Philosophy carousel (mobile) ──────────────────────────────────────────
+// ── Philosophy carousel (mobile) ──────────────────────────────────────────
   var philIdx = 0;
   var philTotal = 4;
   function philGo(idx) {
