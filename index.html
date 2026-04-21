@@ -2800,6 +2800,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   font-size: 12.5px; color: #f87171; text-align: center; margin-top: 6px; display: none;
 }
 .smw-send-err.show { display: block; }
+.smw-send-err.show { display: block; }
 /* Summary labels */
 .smw-summary-title {
   font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
@@ -5101,40 +5102,7 @@ window.addEventListener('resize', function() {
     else smwSel.extras.push(val);
   }
 
-  function smwSend() {
-    var name   = (document.getElementById('smwName') || {}).value || '';
-    var school = (document.getElementById('smwSchool') || {}).value || '';
-    var email  = (document.getElementById('smwEmail') || {}).value || '';
-    var role   = (document.getElementById('smwRole') || {}).value || '';
-    var notes  = (document.getElementById('smwNotes') || {}).value || '';
-    name = name.trim(); school = school.trim(); email = email.trim();
-    if (!name || !school || !email) { alert('Please fill in your name, school name, and email.'); return; }
-    var fmtMap  = { digital:'Digital licence', physical:'Physical books', both:'Both: digital + physical' };
-    var ygMap   = { 'reception':'Reception', 'ks1':'KS1 (Year 1–2)', 'ks2-lower':'Lower KS2 (Y3–4)', 'ks2-upper':'Upper KS2 (Y5–6)', 'mixed':'Mixed / All school' };
-    var bookMap = { book1:'Little Fox and the Busy Day (Book 1)', book2:'Little Fox Thinks It Through (Book 2)', recommend:'Please recommend the best match' };
-    var qtyMap  = { taster:'Taster', sharing:'Sharing (1 between 2)', full:'Full class (1 each)', multiple:'Multiple classes' };
-    var scaleMap= { '2-3':'2–3 classes','year-group':'Whole year group','school':'Whole school' };
-    var extMap  = { author:'Author visit', termly:'Termly subscription', cpd:'CPD pack for staff' };
-    var subject = 'School Enquiry \u2014 ' + school;
-    var body = 'Hi,\n\nI\'d like to enquire about Little Fox for my school.\n\n';
-    body += '\u2014 Name: ' + name + '\n\u2014 School: ' + school + '\n';
-    if (role) body += '\u2014 Role: ' + role + '\n';
-    body += '\n';
-    if (smwSel.format)    body += '\u2014 Format: ' + (fmtMap[smwSel.format]||smwSel.format) + '\n';
-    if (smwSel.yearGroup) body += '\u2014 Year group: ' + (ygMap[smwSel.yearGroup]||smwSel.yearGroup) + '\n';
-    if (smwSel.book)      body += '\u2014 Book: ' + (bookMap[smwSel.book]||smwSel.book) + '\n';
-    if (smwSel.quantity)  {
-      body += '\u2014 Quantity: ' + (qtyMap[smwSel.quantity]||smwSel.quantity);
-      if (smwSel.classSize) body += ' (' + smwSel.classSize + ' children)';
-      body += '\n';
-    }
-    if (smwSel.scale) body += '\u2014 Scale: ' + (scaleMap[smwSel.scale]||smwSel.scale) + '\n';
-    if (smwSel.multiYearGroups.length) body += '\u2014 Year groups: ' + smwSel.multiYearGroups.map(function(v){return ygMap[v]||v;}).join(', ') + '\n';
-    if (smwSel.extras.length) body += '\u2014 Add-ons: ' + smwSel.extras.map(function(e){return extMap[e]||e;}).join(', ') + '\n';
-    if (notes) body += '\nNotes:\n' + notes + '\n';
-    body += '\nThanks,\n' + name;
-    window.location.href = 'mailto:hello@thewildlearningcollective.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  }
+  // smwSend defined earlier with Formspree integration
 
 
 // ── Philosophy carousel (mobile) ──────────────────────────────────────────
