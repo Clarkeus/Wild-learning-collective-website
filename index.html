@@ -89,7 +89,6 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; }
 body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.6; }
-html { overflow-x: hidden; }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
@@ -1255,6 +1254,29 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
    ═══════════════════════════════════════════════════════════════════════ */
 .mob-modal { display: none; }
 .mob-pricing { display: none; }
+/* Modals work at ALL screen sizes when open */
+.mob-modal[aria-hidden="false"] {
+  display: flex; position: fixed; inset: 0; z-index: 50000;
+  align-items: center; justify-content: center;
+}
+.mob-modal[aria-hidden="false"] .mob-modal-bg {
+  position: absolute; inset: 0; background: rgba(60,40,20,0.5); backdrop-filter: blur(3px);
+}
+.mob-modal[aria-hidden="false"] .mob-modal-box {
+  position: relative; background: var(--cream); border-radius: 20px;
+  padding: 32px 28px 28px; width: min(480px, calc(100vw - 32px));
+  max-height: 88vh; overflow-y: auto;
+  animation: mobSlideUp 0.28s cubic-bezier(0.32,0,0.67,0) forwards;
+}
+.mob-modal[aria-hidden="false"] .mob-modal-x {
+  position: absolute; top: 14px; right: 16px;
+  background: rgba(90,70,50,0.10); border: none; border-radius: 50%;
+  width: 28px; height: 28px; font-size: 13px; cursor: pointer; color: var(--ink); font-family: var(--sans);
+}
+.mob-gift-month-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--forest); margin: 14px 0 6px;
+}
 
 /* ═══ Hero classroom banner — mobile only ═══ */
 
@@ -2925,6 +2947,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   </ul>
 </nav>
 
+<div style="overflow-x:hidden">
+
 <!-- ─── Hero ────────────────────────────────────────────────────────────── -->
 <main id="main-content" tabindex="-1">
 <section class="hero">
@@ -3352,9 +3376,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
               <div class="mob-gift-row">&#128260; <span>No auto-renewal. It simply stops after 3 months.</span></div>
             </div>
             <p class="mob-gift-note">Perfect for birthdays, new babies, and the children in your life who love stories.</p>
-            <a class="mob-pnl-btn" href="https://buy.stripe.com/test_5kQeV564egfd7xr6N16AM01">
+            <button class="mob-pnl-btn" onclick="openGiftModal()">
               Send as Gift &nbsp;&#8594;
-            </a>
+            </button>
             <p class="mob-pnl-note">Delivered in 3 to 5 working days</p>
           </div><!-- end panel gift -->
 
@@ -3411,6 +3435,35 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   </div>
 
 
+
+  <!-- Gift book-picker modal -->
+  <div class="mob-modal" id="giftModal" aria-hidden="true">
+    <div class="mob-modal-bg" onclick="closeGiftModal()"></div>
+    <div class="mob-modal-box">
+      <button class="mob-modal-x" onclick="closeGiftModal()">&#10005;</button>
+      <p class="mob-modal-eye">Gift Box &mdash; 3 months</p>
+      <h3 class="mob-modal-h">Choose the 3 books</h3>
+      <p class="mob-modal-sub">Pick one book per month. We'll send them in the order you choose.</p>
+      <p class="mob-gift-month-label">Month 1</p>
+      <div class="mob-modal-picks" id="giftSlot1">
+        <button class="mob-modal-pick" data-slot="1" data-book="1" onclick="selectGiftBook(1,1)"><strong>Book 1</strong><span>The Busy Day</span></button>
+        <button class="mob-modal-pick" data-slot="1" data-book="2" onclick="selectGiftBook(1,2)"><strong>Book 2</strong><span>Thinks It Through</span></button>
+      </div>
+      <p class="mob-gift-month-label">Month 2</p>
+      <div class="mob-modal-picks" id="giftSlot2">
+        <button class="mob-modal-pick" data-slot="2" data-book="1" onclick="selectGiftBook(2,1)"><strong>Book 1</strong><span>The Busy Day</span></button>
+        <button class="mob-modal-pick" data-slot="2" data-book="2" onclick="selectGiftBook(2,2)"><strong>Book 2</strong><span>Thinks It Through</span></button>
+      </div>
+      <p class="mob-gift-month-label">Month 3</p>
+      <div class="mob-modal-picks" id="giftSlot3">
+        <button class="mob-modal-pick" data-slot="3" data-book="1" onclick="selectGiftBook(3,1)"><strong>Book 1</strong><span>The Busy Day</span></button>
+        <button class="mob-modal-pick" data-slot="3" data-book="2" onclick="selectGiftBook(3,2)"><strong>Book 2</strong><span>Thinks It Through</span></button>
+      </div>
+      <a class="mob-modal-cta" id="giftModalCta" href="https://buy.stripe.com/test_5kQeV564egfd7xr6N16AM01">
+        Send as Gift &nbsp;&#8594;
+      </a>
+    </div>
+  </div>
 
   <!-- Premium product cards (desktop only) — replaces old tabs+panels -->
   <div class="product-cards-wrap fade-up">
@@ -3470,7 +3523,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
         <li>Narrated audio tracks included</li>
         <li>Cancel any time, no commitment</li>
       </ul>
-      <a class="pcard__cta pcard__cta--featured" href="https://buy.stripe.com/test_28E8wH50a3sr3hb7R56AM00">Join the Club &rarr;</a>
+      <button class="pcard__cta pcard__cta--featured" onclick="openBookModal()">Join the Club &rarr;</button>
       <p class="pcard__reassure">Cancel any time &nbsp;·&nbsp; Free UK delivery</p>
     </div>
 
@@ -3490,7 +3543,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
         <li>Gift wrap &amp; personalised card</li>
         <li>No auto-renewal. Simply stops after 3 months.</li>
       </ul>
-      <a class="pcard__cta" href="https://buy.stripe.com/test_5kQeV564egfd7xr6N16AM01">Send as Gift &rarr;</a>
+      <button class="pcard__cta" onclick="openGiftModal()">Send as Gift &rarr;</button>
       <p class="pcard__reassure">Free UK delivery &nbsp;·&nbsp; No hidden fees</p>
     </div>
 
@@ -4519,11 +4572,35 @@ function closeBookModal() {
   if (m) m.setAttribute('aria-hidden', 'true');
 }
 function selectClubBook(n) {
-  document.querySelectorAll('.mob-modal-pick').forEach(function(b) {
+  document.querySelectorAll('#bookModal .mob-modal-pick').forEach(function(b) {
     b.classList.toggle('mob-pick-on', parseInt(b.dataset.book) === n);
   });
   var cta = document.getElementById('mobModalCta');
   if (cta) { cta.href = MOB_CLUB_URL; cta.classList.add('mob-cta-on'); }
+}
+function openGiftModal() {
+  // Reset selections
+  giftSelections = {1: null, 2: null, 3: null};
+  document.querySelectorAll('#giftModal .mob-modal-pick').forEach(function(b){ b.classList.remove('mob-pick-on'); });
+  var cta = document.getElementById('giftModalCta');
+  if (cta) cta.classList.remove('mob-cta-on');
+  var m = document.getElementById('giftModal');
+  if (m) m.setAttribute('aria-hidden', 'false');
+}
+function closeGiftModal() {
+  var m = document.getElementById('giftModal');
+  if (m) m.setAttribute('aria-hidden', 'true');
+}
+var giftSelections = {1: null, 2: null, 3: null};
+function selectGiftBook(slot, book) {
+  giftSelections[slot] = book;
+  document.querySelectorAll('#giftSlot' + slot + ' .mob-modal-pick').forEach(function(b) {
+    b.classList.toggle('mob-pick-on', parseInt(b.dataset.book) === book);
+  });
+  if (giftSelections[1] && giftSelections[2] && giftSelections[3]) {
+    var cta = document.getElementById('giftModalCta');
+    if (cta) cta.classList.add('mob-cta-on');
+  }
 }
 
 window.addEventListener('load', function() {
@@ -5050,5 +5127,6 @@ window.addEventListener('resize', function() {
   <button onclick="dismissPrivacy()" style="flex-shrink:0;padding:8px 20px;border-radius:20px;background:var(--faded-yellow);color:var(--ink);font-family:var(--sans);font-size:12px;font-weight:600;border:none;cursor:pointer;letter-spacing:0.04em;white-space:nowrap;">Got it</button>
 </div>
 
+</div><!-- end overflow-x:hidden wrapper -->
 </body>
 </html>
