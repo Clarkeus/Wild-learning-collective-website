@@ -2568,11 +2568,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 .smw-opts { display: flex; flex-direction: column; gap: 10px; }
 .smw-opt {
-  display: flex; align-items: flex-start; gap: 13px;
+  display: flex; align-items: center; gap: 13px;
   background: rgba(242,232,213,0.06); border: 1px solid rgba(242,232,213,0.1);
-  border-radius: 13px; padding: 14px 16px;
+  border-radius: 13px; padding: 18px 18px;
   text-align: left; width: 100%; font-family: var(--sans);
   transition: background 0.18s, border-color 0.18s; cursor: pointer;
+  min-height: 72px;
 }
 .smw-opt:hover { background: rgba(242,232,213,0.09); border-color: rgba(242,232,213,0.22); }
 .smw-opt.on { background: rgba(214,194,122,0.12); border-color: rgba(214,194,122,0.5); }
@@ -2704,7 +2705,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .smw-grid-3 { grid-template-columns: repeat(3, 1fr); }
   .smw-flip-grid { grid-template-columns: repeat(3, 1fr); }
   .smw-opts { gap: 12px; }
-  .smw-opt { padding: 16px 20px; }
+  .smw-opt { padding: 20px 24px; min-height: 80px; }
   .smw-opt__name { font-size: 15px; }
   .smw-opt__desc { font-size: 13px; }
 }
@@ -2777,7 +2778,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .smw-viewport { transition: height 0.42s cubic-bezier(0.4,0,0.2,1); }
 
 .smw-success {
-  text-align: center; padding: 12px 0 8px;
+  text-align: center; padding: 28px 0 20px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 240px;
 }
 .smw-success__icon { font-size: 52px; margin-bottom: 16px; line-height: 1; }
 .smw-success__title {
@@ -4807,7 +4810,7 @@ window.addEventListener('resize', function() {
     // Success slide: hide the progress header
     var head = document.querySelector('.smw-head');
     if (head) head.classList.toggle('hidden', idx === 8);
-    setTimeout(smwUpdateHeight, 30);
+    setTimeout(smwUpdateHeight, idx === 8 ? 160 : 30);
   }
 
   function smwGoBack() {
@@ -4960,159 +4963,6 @@ window.addEventListener('resize', function() {
     });
   }
 
-  // ── Mobile wizard (updated for 7 slides: 0-6) ─────────────────────────────
-  var smwIdx = 0;
-  var smwQtyType = null; // 'size' | 'multiple' | null
-  document.addEventListener('DOMContentLoaded', function(){ setTimeout(smwUpdateHeight, 100); });
-  var smwSel = { format:null, yearGroup:null, book:null, quantity:null, classSize:null, scale:null, multiYearGroups:[], extras:[] };
-
-  function smwUpdateHeight() {
-    var vp = document.querySelector('.smw-viewport');
-    var slides = document.querySelectorAll('#smwTrack .smw-slide');
-    if (!vp || !slides[smwIdx]) return;
-    vp.style.height = slides[smwIdx].offsetHeight + 'px';
-  }
-  function smwBuildSummary() {
-    var fmtMap  = { digital:'Digital licence', physical:'Physical books', both:'Both: digital + physical' };
-    var ygMap   = { 'reception':'Reception', 'ks1':'KS1 — Year 1 & 2', 'ks2-lower':'Lower KS2 — Y3 & 4', 'ks2-upper':'Upper KS2 — Y5 & 6', 'mixed':'Mixed / All school' };
-    var bookMap = { book1:'Little Fox and the Busy Day', book2:'Little Fox Thinks It Through', recommend:'Please recommend best match' };
-    var qtyMap  = { taster:'Taster (1 copy + 30 activity sheets)', sharing:'Sharing — 1 between 2', full:'Full class — 1 each', multiple:'Multiple classes' };
-    var scaleMap= { '2-3':'2–3 classes','year-group':'Whole year group','school':'Whole school' };
-    var extMap  = { author:'Author visit', termly:'Termly subscription', cpd:'CPD pack for staff' };
-    var rows = [];
-    function row(label, val) { if (val) rows.push('<div class="smw-summary-row"><span class="smw-summary-label">' + label + '</span><span class="smw-summary-val">' + val + '</span></div>'); }
-    row('Format', fmtMap[smwSel.format] || smwSel.format);
-    row('Year group', ygMap[smwSel.yearGroup] || smwSel.yearGroup);
-    row('Book', bookMap[smwSel.book] || smwSel.book);
-    var qtyStr = qtyMap[smwSel.quantity] || smwSel.quantity;
-    if (smwSel.classSize) qtyStr += ' — ' + smwSel.classSize + ' children';
-    row('Books', qtyStr);
-    if (smwSel.scale) row('Scale', scaleMap[smwSel.scale] || smwSel.scale);
-    if (smwSel.extras && smwSel.extras.length) row('Add‑ons', smwSel.extras.map(function(e){ return extMap[e]||e; }).join(', '));
-    var el = document.getElementById('smwSummaryRows');
-    if (el) el.innerHTML = rows.join('');
-  }
-  function smwReset() {
-    smwSel = { format:null, yearGroup:null, book:null, quantity:null, classSize:null, scale:null, multiYearGroups:[], extras:[] };
-    smwSel.extras = [];
-    // Reset all selections
-    document.querySelectorAll('#smwTrack .smw-opt, #smwTrack .smw-chip, #smwTrack .smw-extra, #smwTrack .smw-scale-opt').forEach(function(el){ el.classList.remove('on','selected'); });
-    document.querySelectorAll('#smwTrack input, #smwTrack textarea').forEach(function(el){ el.value = ''; });
-    var trk = document.getElementById('smwTrack');
-    if (trk) trk.style.transition = 'none';
-    smwGoTo(0);
-    requestAnimationFrame(function(){ requestAnimationFrame(function(){ if (trk) trk.style.transition = ''; }); });
-  }
-  function smwGoTo(idx) {
-    var track = document.getElementById('smwTrack');
-    if (track) track.style.transform = 'translateX(-' + (idx * 100) + '%)';
-    smwIdx = idx;
-    // Build summary when entering slide 6
-    if (idx === 6) smwBuildSummary();
-    // Update dots (6 dots, slide 4 shares dot with slide 3)
-    var dotMap = [0,1,2,3,3,4,5,5,5];
-    var activeDot = dotMap[idx] !== undefined ? dotMap[idx] : idx;
-    for (var i = 0; i < 6; i++) {
-      var d = document.getElementById('smwDot' + i);
-      if (d) d.classList.toggle('on', i === activeDot);
-    }
-    var backBtn = document.getElementById('smwBackBtn');
-    if (backBtn) backBtn.style.visibility = (idx === 0) ? 'hidden' : 'visible';
-    // Success slide: hide the progress header
-    var head = document.querySelector('.smw-head');
-    if (head) head.classList.toggle('hidden', idx === 8);
-    setTimeout(smwUpdateHeight, 30);
-  }
-
-  function smwGoBack() {
-    // If we're on the extras slide (5) and came from taster, skip back over class-size slide
-    if (smwIdx === 5 && smwSel.quantity === 'taster') { smwGoTo(3); return; }
-    if (smwIdx === 4) { smwGoTo(3); return; }
-    if (smwIdx > 0) smwGoTo(smwIdx - 1);
-  }
-
-  function smwPickFormat(el, val) {
-    document.querySelectorAll('#smwTrack .smw-slide:nth-child(1) .smw-opt').forEach(function(o){ o.classList.remove('selected'); });
-    el.classList.add('selected');
-    smwSel.format = val;
-    setTimeout(function(){ smwGoTo(1); }, 180);
-  }
-
-  function smwPickYearGroup(el, val) {
-    document.querySelectorAll('#smwTrack .smw-slide:nth-child(2) .smw-chip').forEach(function(c){ c.classList.remove('on'); });
-    el.classList.add('on');
-    smwSel.yearGroup = val;
-    setTimeout(function(){ smwGoTo(2); }, 180);
-  }
-
-  function smwPickBook(el, val) {
-    document.querySelectorAll('#smwTrack .smw-slide:nth-child(3) .smw-opt').forEach(function(o){ o.classList.remove('selected'); });
-    el.classList.add('selected');
-    smwSel.book = val;
-    setTimeout(function(){ smwGoTo(3); }, 180);
-  }
-
-  function smwPickQty(el, val) {
-    smwSel.quantity = val;
-    if (val === 'sharing' || val === 'full') {
-      smwQtyType = 'size';
-      var q = document.getElementById('smw4ClassSizeQ');
-      if (q) q.textContent = val === 'sharing' ? 'How many children share one book?' : 'How many children in the class?';
-      document.getElementById('smw4ClassSize').style.display = '';
-      document.getElementById('smw4Multiple').style.display = 'none';
-      var inp = document.getElementById('smwClassSizeInput');
-      if (inp) inp.value = '';
-      setTimeout(function(){ smwGoTo(4); setTimeout(function(){ var i=document.getElementById('smwClassSizeInput'); if(i)i.focus(); },300); }, 180);
-    } else if (val === 'multiple') {
-      smwQtyType = 'multiple';
-      document.getElementById('smw4ClassSize').style.display = 'none';
-      document.getElementById('smw4Multiple').style.display = '';
-      setTimeout(function(){ smwGoTo(4); }, 180);
-    } else {
-      // taster: skip slide 4 WITHOUT transition flash
-      smwSel.classSize = null;
-      setTimeout(function(){
-        var trk = document.getElementById('smwTrack');
-        if (trk) { trk.style.transition = 'none'; }
-        smwGoTo(5);
-        requestAnimationFrame(function(){ requestAnimationFrame(function(){
-          if (trk) trk.style.transition = '';
-        }); });
-      }, 180);
-    }
-  }
-
-  function smwConfirmClassSize() {
-    var inp = document.getElementById('smwClassSizeInput');
-    var val = inp ? inp.value.trim() : '';
-    if (!val) { if(inp){inp.style.borderColor='var(--fox)';setTimeout(function(){inp.style.borderColor='';},1500);} return; }
-    smwSel.classSize = val;
-    smwGoTo(5);
-  }
-
-  function smwPickScale(el, val) {
-    document.querySelectorAll('.smw-scale-opt').forEach(function(o){ o.classList.remove('on'); });
-    el.classList.add('on');
-    smwSel.scale = val;
-    // Auto-advance after brief highlight
-    setTimeout(function(){ smwGoTo(5); }, 260);
-  }
-
-  function smwToggleYg(el, val) {
-    el.classList.toggle('on');
-    var idx = smwSel.multiYearGroups.indexOf(val);
-    if (idx > -1) smwSel.multiYearGroups.splice(idx,1);
-    else smwSel.multiYearGroups.push(val);
-  }
-
-  function smwToggleExtra(el, val) {
-    el.classList.toggle('on');
-    var idx = smwSel.extras.indexOf(val);
-    if (idx > -1) smwSel.extras.splice(idx,1);
-    else smwSel.extras.push(val);
-  }
-
-  // smwSend defined earlier with Formspree integration
 
 
 // ── Philosophy carousel (mobile) ──────────────────────────────────────────
