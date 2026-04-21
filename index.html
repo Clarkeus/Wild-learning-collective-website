@@ -4928,11 +4928,23 @@ window.addEventListener('resize', function() {
     };
     var btn = document.querySelector('#smwTrack .smw-slide:nth-child(8) .smw-submit');
     if (btn) btn.classList.add('smw-submit--loading');
-    // ⬇ FORMSPREE: replace YOUR_FORM_ID with your form ID from formspree.io
+    // Use FormData to avoid CORS preflight issues
+    var fd = new FormData();
+    fd.append('name',      payload.name);
+    fd.append('email',     payload.email);
+    fd.append('school',    payload.school);
+    fd.append('role',      payload.role);
+    fd.append('format',    payload.format);
+    fd.append('yearGroup', payload.yearGroup);
+    fd.append('book',      payload.book);
+    fd.append('quantity',  payload.quantity);
+    fd.append('scale',     payload.scale);
+    fd.append('addons',    payload.addons);
+    fd.append('notes',     payload.notes);
     fetch('https://formspree.io/f/mvzdqezp', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
+      headers: { 'Accept': 'application/json' },
+      body: fd
     }).then(function(r) {
       if (btn) btn.classList.remove('smw-submit--loading');
       if (r.ok) {
@@ -4943,10 +4955,8 @@ window.addEventListener('resize', function() {
       }
     }).catch(function() {
       if (btn) btn.classList.remove('smw-submit--loading');
-      // Fallback: open mailto if fetch fails (e.g. Formspree not yet set up)
-      var subject = 'School Enquiry — ' + school;
-      var body = 'Name: ' + name + '\nSchool: ' + school + '\nEmail: ' + email + '\nRole: ' + (role||'') + '\n\nFormat: ' + payload.format + '\nYear group: ' + payload.yearGroup + '\nBook: ' + payload.book + '\nQuantity: ' + payload.quantity + '\nScale: ' + payload.scale + '\nAdd-ons: ' + payload.addons + '\n\nNotes: ' + (notes||'');
-      window.location.href = 'mailto:hello@thewildlearningcollective.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var err = document.getElementById('smwSendErr');
+      if (err) { err.textContent = 'Could not connect. Please email hello@thewildlearningcollective.com directly.'; err.classList.add('show'); }
     });
   }
 
