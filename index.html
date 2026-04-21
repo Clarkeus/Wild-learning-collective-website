@@ -108,6 +108,10 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 0 32px; height: 68px;
   display: flex; align-items: center; justify-content: space-between;
+  background: rgba(242,232,213,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(90,70,50,0.08);
   transition: background 0.4s, box-shadow 0.4s;
 }
 .nav.scrolled {
@@ -2897,21 +2901,23 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     </div>
   </a>
   <ul class="nav__links" aria-label="Main navigation">
-    <li><a class="nav__link" href="#book">The Book</a></li>
-    <li><a class="nav__link" href="#club">The Club</a></li>
+    <li><a class="nav__link" href="#book">Books</a></li>
+    <li><a class="nav__link" href="#book">Bundles</a></li>
     <li><a class="nav__link" href="#challenge">Wild Challenge</a></li>
     <li><a class="nav__link" href="#schools">Schools</a></li>
+    <li><a class="nav__link" href="#faq">FAQ</a></li>
   </ul>
-  <a class="nav__cta" href="#club">Join the Club &rarr;</a>
+  <a class="nav__cta" href="#schools">Schools enquiry &rarr;</a>
   <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
-    <li><a class="nav__link" href="#book">The Book</a></li>
-    <li><a class="nav__link" href="#club">The Club</a></li>
+    <li><a class="nav__link" href="#book">Books</a></li>
+    <li><a class="nav__link" href="#book">Bundles</a></li>
     <li><a class="nav__link" href="#challenge">Wild Challenge</a></li>
     <li><a class="nav__link" href="#schools">Schools</a></li>
-    <li style="margin-top:8px"><a class="nav__cta" href="#club">Join the Club &rarr;</a></li>
+    <li><a class="nav__link" href="#faq">FAQ</a></li>
+    <li style="margin-top:8px"><a class="nav__cta" href="#schools">Schools enquiry &rarr;</a></li>
   </ul>
 </nav>
 
