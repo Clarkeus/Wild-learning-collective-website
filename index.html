@@ -110,13 +110,20 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 
 /* ─── Navigation ─────────────────────────────────────────────────────────── */
 .nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  position: fixed; top: 0; left: 0; right: 0; width: 100%;
+  z-index: 9999;
   padding: 0 32px; height: 64px;
   display: flex; align-items: center; justify-content: space-between;
   background: var(--forest-dense);
   border-bottom: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 2px 20px rgba(0,0,0,0.18);
   transition: box-shadow 0.3s;
+  /* Safari fix — force hardware-accelerated layer so position:fixed renders */
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  will-change: transform;
 }
 .nav.scrolled {
   box-shadow: 0 2px 28px rgba(0,0,0,0.22);
