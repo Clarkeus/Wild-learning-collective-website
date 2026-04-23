@@ -1274,8 +1274,125 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   width: 28px; height: 28px; font-size: 13px; cursor: pointer; color: var(--ink); font-family: var(--sans);
 }
 .mob-gift-month-label {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--forest); margin: 14px 0 6px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--forest); margin: 18px 0 8px;
+}
+.mob-gift-month-label:first-of-type { margin-top: 2px; }
+
+/* ── Book-picker modal internals — work at ALL screen sizes ─────────────── */
+.mob-modal[aria-hidden="false"] .mob-modal-box {
+  padding: 36px 32px 30px;
+  width: min(520px, calc(100vw - 32px));
+  box-shadow: 0 30px 80px rgba(40, 25, 10, 0.28);
+}
+.mob-modal[aria-hidden="false"] .mob-modal-x {
+  top: 16px; right: 18px;
+  width: 30px; height: 30px;
+  background: rgba(90, 70, 50, 0.08);
+  font-size: 14px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.mob-modal[aria-hidden="false"] .mob-modal-x:hover {
+  background: rgba(90, 70, 50, 0.18);
+  transform: rotate(90deg);
+}
+.mob-modal-eye {
+  font-size: 11px; font-weight: 600; color: var(--forest);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin: 0 0 8px;
+}
+.mob-modal-h {
+  font-family: var(--serif); font-size: 26px; font-weight: 600;
+  color: var(--ink); margin: 0 0 10px;
+  line-height: 1.2; letter-spacing: -0.005em;
+}
+.mob-modal-sub {
+  font-size: 14px; color: var(--soil); font-weight: 300;
+  line-height: 1.55; margin: 0 0 22px;
+}
+.mob-modal-picks {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  margin: 0 0 16px;
+}
+.mob-modal-pick {
+  position: relative;
+  display: flex; flex-direction: column; align-items: stretch;
+  padding: 0 0 14px;
+  background: var(--cream-haze);
+  border: 2px solid rgba(90, 70, 50, 0.12);
+  border-radius: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: var(--sans);
+  text-align: center;
+  -webkit-appearance: none; appearance: none;
+  transition: border-color 0.2s ease, background 0.2s ease,
+              box-shadow 0.2s ease, transform 0.15s ease;
+}
+.mob-modal-pick:hover {
+  border-color: var(--fox);
+  box-shadow: 0 8px 20px rgba(196, 98, 45, 0.16);
+  transform: translateY(-1px);
+}
+.mob-modal-pick:focus-visible {
+  outline: none;
+  border-color: var(--fox);
+  box-shadow: 0 0 0 3px rgba(196, 98, 45, 0.25);
+}
+.mob-modal-pick.mob-pick-on {
+  border-color: var(--fox);
+  background: rgba(196, 98, 45, 0.08);
+  box-shadow: 0 8px 22px rgba(196, 98, 45, 0.22);
+}
+.mob-modal-pick.mob-pick-on::after {
+  content: '✓';
+  position: absolute; top: 10px; right: 10px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--fox); color: #fff;
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(196, 98, 45, 0.40);
+}
+.mob-pick-cover {
+  width: 100%; height: 110px; position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.mob-pick-num {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--fox);
+  margin: 12px 0 3px;
+}
+.mob-pick-title {
+  font-size: 13px; font-weight: 600; color: var(--ink);
+  line-height: 1.3; padding: 0 10px;
+}
+.mob-modal-cta {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%;
+  padding: 15px 22px;
+  background: var(--fox); color: #fff;
+  border-radius: 50px;
+  font-family: var(--sans);
+  font-size: 15px; font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none; text-align: center;
+  margin-top: 8px;
+  opacity: 0.38; pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.mob-modal-cta.mob-cta-on {
+  opacity: 1; pointer-events: auto;
+  box-shadow: 0 8px 22px rgba(196, 98, 45, 0.30);
+}
+.mob-modal-cta.mob-cta-on:hover { transform: translateY(-1px); }
+@media (min-width: 769px) {
+  .mob-modal[aria-hidden="false"] .mob-modal-box { padding: 40px 38px 34px; }
+  .mob-modal-h { font-size: 28px; }
+  .mob-modal-sub { font-size: 14.5px; margin-bottom: 24px; }
+  .mob-pick-cover { height: 128px; }
+  .mob-pick-title { font-size: 14px; }
+  .mob-modal-picks { gap: 16px; }
 }
 
 /* ═══ Hero classroom banner — mobile only ═══ */
