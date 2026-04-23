@@ -2630,6 +2630,68 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   transition: background 0.2s;
 }
 .lesson-card__dl:hover { background: rgba(63,90,68,0.15); }
+
+/* ── KS1 / KS2 toggle ─────────────────────────────────────────────── */
+.ks-toggle {
+  display: inline-flex; gap: 6px;
+  background: rgba(63,90,68,0.08);
+  border: 1px solid rgba(63,90,68,0.18);
+  border-radius: 999px;
+  padding: 5px;
+  margin: 0 auto 28px;
+  position: relative; left: 50%; transform: translateX(-50%);
+}
+.ks-pill {
+  appearance: none; -webkit-appearance: none;
+  background: transparent; border: 0; cursor: pointer;
+  padding: 9px 20px; border-radius: 999px;
+  display: inline-flex; flex-direction: column; align-items: center;
+  color: var(--soil); line-height: 1.1;
+  font-family: var(--sans);
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.ks-pill__label {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+}
+.ks-pill__sub {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; opacity: 0.7; margin-top: 2px;
+}
+.ks-pill:hover { color: var(--forest); }
+.ks-pill.ks-active {
+  background: var(--forest);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(63,90,68,0.25);
+}
+.ks-pill.ks-active .ks-pill__sub { opacity: 0.85; }
+.ks-pill:focus-visible {
+  outline: 2px solid var(--fox); outline-offset: 2px;
+}
+/* Card preview thumbnail (new) */
+.lesson-card__preview {
+  width: 100%;
+  aspect-ratio: 1 / 1.25;
+  background: #fff;
+  border: 1px solid rgba(63,90,68,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.lesson-card__img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.lesson-card:hover .lesson-card__img { transform: scale(1.02); }
+@media (max-width: 720px) {
+  .ks-toggle { margin-bottom: 22px; }
+  .ks-pill { padding: 8px 16px; }
+  .ks-pill__label { font-size: 12px; }
+  .ks-pill__sub { font-size: 9px; }
+}
+
 .lesson-steps-inner {
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px;
 }
@@ -3829,24 +3891,62 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
         <p style="font-size:15px;font-weight:300;color:var(--soil);max-width:500px;margin:0 auto;line-height:1.75;">Take children outdoors. Everyone faces the same thing. Every drawing, every word, every feeling comes back different. Perspective is taught, not explained.</p>
       </div>
 
+      <!-- Key stage toggle -->
+      <div style="text-align:center;" class="fade-up">
+        <div class="ks-toggle" role="tablist" aria-label="Choose key stage">
+          <button type="button" class="ks-pill ks-active" role="tab" aria-selected="true" data-stage="ks1" onclick="setKeyStage('ks1')">
+            <span class="ks-pill__label">Key Stage 1</span>
+            <span class="ks-pill__sub">Year 1–2</span>
+          </button>
+          <button type="button" class="ks-pill" role="tab" aria-selected="false" data-stage="ks2" onclick="setKeyStage('ks2')">
+            <span class="ks-pill__label">Key Stage 2</span>
+            <span class="ks-pill__sub">Year 3–6</span>
+          </button>
+        </div>
+      </div>
+
       <!-- Desktop grid -->
       <div class="lesson-preview-grid fade-up">
         <div class="lesson-card">
-          <div class="lesson-card__icon">📋</div>
+          <div class="lesson-card__preview">
+            <img class="lesson-card__img" alt="Teacher lesson plan preview"
+                 src="teacher%20plan/ks1%20teacher%20sheet.png"
+                 data-ks1="teacher%20plan/ks1%20teacher%20sheet.png"
+                 data-ks2="teacher%20plan/ks2%20teacher%20plan.png">
+          </div>
           <div class="lesson-card__tag">For the teacher</div>
-          <div class="lesson-card__title">Year 1 and 2 Lesson Plan</div>
-          <p class="lesson-card__desc">A full 60-minute outdoor session. Five clear steps, PSHE links, timing, and discussion prompts. Everything you need to take Little Fox outside the classroom.</p>
-          <a class="lesson-card__dl" href="LittleFox_TeacherLessonPlan.pdf" target="_blank">
+          <div class="lesson-card__title"
+               data-ks1="KS1 Lesson Plan · Year 1–2"
+               data-ks2="KS2 Lesson Plan · Year 3–6">KS1 Lesson Plan · Year 1–2</div>
+          <p class="lesson-card__desc"
+             data-ks1="A 45–60 minute outdoor session in four clear steps. Introduction, outdoor observation, sharing, and a short reflection. Gentle prompts and PSHE links designed for Year 1 and 2."
+             data-ks2="A 60–75 minute outdoor session in five steps, ending with Reflect &amp; Remember. Deeper questioning, richer vocabulary, and extension prompts for Year 3 to Year 6.">A 45–60 minute outdoor session in four clear steps. Introduction, outdoor observation, sharing, and a short reflection. Gentle prompts and PSHE links designed for Year 1 and 2.</p>
+          <a class="lesson-card__dl"
+             href="teacher%20plan/ks1%20teacher%20sheet.png" target="_blank"
+             data-ks1="teacher%20plan/ks1%20teacher%20sheet.png"
+             data-ks2="teacher%20plan/ks2%20teacher%20plan.png">
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download lesson plan
           </a>
         </div>
         <div class="lesson-card">
-          <div class="lesson-card__icon">✏️</div>
+          <div class="lesson-card__preview">
+            <img class="lesson-card__img" alt="Pupil activity sheet preview"
+                 src="work%20sheets/ks1%20work%20sheet.png"
+                 data-ks1="work%20sheets/ks1%20work%20sheet.png"
+                 data-ks2="work%20sheets/ks2%20work%20sheet.png">
+          </div>
           <div class="lesson-card__tag">For the child</div>
-          <div class="lesson-card__title">Pupil Activity Sheet</div>
-          <p class="lesson-card__desc">Draw what you see. Find three words. Choose a feeling. Compare with the person next to you. Simple enough for Year 1. Rich enough to stay with them.</p>
-          <a class="lesson-card__dl" href="LittleFox_PupilActivitySheet.pdf" target="_blank">
+          <div class="lesson-card__title"
+               data-ks1="KS1 Activity Sheet"
+               data-ks2="KS2 Activity Sheet">KS1 Activity Sheet</div>
+          <p class="lesson-card__desc"
+             data-ks1="What Do You See? Draw what you notice, find three words, choose a feeling, and write what stood out. Simple prompts, rich thinking."
+             data-ks2="What Do You See From Where You Stand? Five or six describing words, a full sentence, a word bank for ideas, and space for deeper thinking.">What Do You See? Draw what you notice, find three words, choose a feeling, and write what stood out. Simple prompts, rich thinking.</p>
+          <a class="lesson-card__dl"
+             href="work%20sheets/ks1%20work%20sheet.png" target="_blank"
+             data-ks1="work%20sheets/ks1%20work%20sheet.png"
+             data-ks2="work%20sheets/ks2%20work%20sheet.png">
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download activity sheet
           </a>
@@ -3859,17 +3959,28 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
           <div class="lmc-track" id="lmcTrack">
             <div class="lmc-slide">
               <div class="lmc-card">
-                <div class="lmc-illus lmc-illus--teacher">
-                  <div class="lmc-illus__blob" style="width:130px;height:130px;top:-40px;right:-30px;"></div>
-                  <div class="lmc-illus__blob" style="width:80px;height:80px;bottom:-25px;left:-15px;"></div>
-                  <div class="lmc-illus__icon">🌿📋</div>
-                  <div class="lmc-illus__label">Year 1 &amp; 2 &middot; KS1 &middot; 60 min &middot; Outdoors</div>
+                <div class="lmc-illus lmc-illus--teacher" style="padding:0;background:#fff;">
+                  <img class="lesson-card__img" alt="Teacher lesson plan preview"
+                       src="teacher%20plan/ks1%20teacher%20sheet.png"
+                       data-ks1="teacher%20plan/ks1%20teacher%20sheet.png"
+                       data-ks2="teacher%20plan/ks2%20teacher%20plan.png"
+                       style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+                  <div class="lmc-illus__label"
+                       data-ks1="Year 1 &amp; 2 &middot; KS1 &middot; 45–60 min &middot; Outdoors"
+                       data-ks2="Year 3–6 &middot; KS2 &middot; 60–75 min &middot; Outdoors">Year 1 &amp; 2 &middot; KS1 &middot; 45–60 min &middot; Outdoors</div>
                 </div>
                 <div class="lmc-body">
                   <div class="lmc-tag">For the teacher</div>
-                  <div class="lmc-title">Lesson Plan</div>
-                  <div class="lmc-desc">Five clear steps, PSHE links, timing, and discussion prompts. Take Little Fox outside.</div>
-                  <a class="lmc-dl" href="LittleFox_TeacherLessonPlan.pdf" target="_blank">
+                  <div class="lmc-title"
+                       data-ks1="KS1 Lesson Plan"
+                       data-ks2="KS2 Lesson Plan">KS1 Lesson Plan</div>
+                  <div class="lmc-desc"
+                       data-ks1="Four clear steps, PSHE links, timing, and gentle prompts for Year 1 and 2."
+                       data-ks2="Five steps including Reflect &amp; Remember. Deeper questioning for Year 3–6.">Four clear steps, PSHE links, timing, and gentle prompts for Year 1 and 2.</div>
+                  <a class="lmc-dl"
+                     href="teacher%20plan/ks1%20teacher%20sheet.png" target="_blank"
+                     data-ks1="teacher%20plan/ks1%20teacher%20sheet.png"
+                     data-ks2="teacher%20plan/ks2%20teacher%20plan.png">
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Download
                   </a>
@@ -3878,17 +3989,28 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
             </div>
             <div class="lmc-slide">
               <div class="lmc-card">
-                <div class="lmc-illus lmc-illus--pupil">
-                  <div class="lmc-illus__blob" style="width:110px;height:110px;top:-30px;left:-20px;"></div>
-                  <div class="lmc-illus__blob" style="width:90px;height:90px;bottom:-30px;right:-20px;"></div>
-                  <div class="lmc-illus__icon">✏️🖼</div>
-                  <div class="lmc-illus__label">Draw &middot; Describe &middot; Feel &middot; Compare</div>
+                <div class="lmc-illus lmc-illus--pupil" style="padding:0;background:#fff;">
+                  <img class="lesson-card__img" alt="Pupil activity sheet preview"
+                       src="work%20sheets/ks1%20work%20sheet.png"
+                       data-ks1="work%20sheets/ks1%20work%20sheet.png"
+                       data-ks2="work%20sheets/ks2%20work%20sheet.png"
+                       style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+                  <div class="lmc-illus__label"
+                       data-ks1="Draw &middot; Describe &middot; Feel &middot; Compare"
+                       data-ks2="Describe &middot; Write &middot; Reflect &middot; Compare">Draw &middot; Describe &middot; Feel &middot; Compare</div>
                 </div>
                 <div class="lmc-body">
                   <div class="lmc-tag">For the child</div>
-                  <div class="lmc-title">Pupil Activity Sheet</div>
-                  <div class="lmc-desc">Every child draws the same thing. Every answer comes back different. That is the lesson.</div>
-                  <a class="lmc-dl" href="LittleFox_PupilActivitySheet.pdf" target="_blank">
+                  <div class="lmc-title"
+                       data-ks1="KS1 Activity Sheet"
+                       data-ks2="KS2 Activity Sheet">KS1 Activity Sheet</div>
+                  <div class="lmc-desc"
+                       data-ks1="Draw, find three words, pick a feeling, and write what you noticed. Simple prompts, rich thinking."
+                       data-ks2="Five or six describing words, a full sentence, a word bank for ideas, and space for deeper thinking.">Draw, find three words, pick a feeling, and write what you noticed. Simple prompts, rich thinking.</div>
+                  <a class="lmc-dl"
+                     href="work%20sheets/ks1%20work%20sheet.png" target="_blank"
+                     data-ks1="work%20sheets/ks1%20work%20sheet.png"
+                     data-ks2="work%20sheets/ks2%20work%20sheet.png">
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Download
                   </a>
@@ -5280,6 +5402,34 @@ window.addEventListener('resize', function() {
       if (Math.abs(dx) > 40) lmcNav(dx < 0 ? 1 : -1);
     }, {passive:true});
   })();
+
+  // ── KS1 / KS2 toggle for lesson materials ───────────────────────────
+  function setKeyStage(stage) {
+    if (stage !== 'ks1' && stage !== 'ks2') return;
+    // Update pills
+    document.querySelectorAll('.ks-pill').forEach(function(p){
+      var on = p.getAttribute('data-stage') === stage;
+      p.classList.toggle('ks-active', on);
+      p.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    // Update every element carrying data-ks1/data-ks2
+    var attr = 'data-' + stage;
+    document.querySelectorAll('[data-ks1][data-ks2]').forEach(function(el){
+      var val = el.getAttribute(attr);
+      if (val == null) return;
+      var tag = el.tagName;
+      if (tag === 'IMG') {
+        el.setAttribute('src', val);
+      } else if (tag === 'A') {
+        el.setAttribute('href', val);
+      } else {
+        // Titles / descriptions / labels — support basic HTML entities (&amp;)
+        el.innerHTML = val;
+      }
+    });
+  }
+  // Expose globally for inline onclick
+  window.setKeyStage = setKeyStage;
 
   var philIdx = 0;
   var philTotal = 4;
