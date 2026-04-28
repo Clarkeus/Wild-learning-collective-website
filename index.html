@@ -3814,62 +3814,141 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 <!-- ─── More Books ────────────────────────────────────────────────────────── -->
 
 <!-- ─── Wild Challenge ────────────────────────────────────────────────────── -->
-<section class="section" id="challenge" style="background:var(--cream);">
+<section id="challenge" style="background:var(--ink);padding:72px 0 64px;">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="challenge-grid">
-      <div class="fade-up">
-        <div class="section__eyebrow">Every Month</div>
-        <h2 class="section__title" style="margin-bottom:20px;">The Wild Challenge</h2>
-        <p style="font-size:16px;font-weight:300;color:var(--soil);line-height:1.72;margin-bottom:16px;">
-          Every Club box includes a Wild Challenge card, a nature task tied to that month's story. Pick up litter to keep Fox's forest safe. Find something living. Leave a place better than you found it.
-        </p>
-        <p style="font-size:16px;font-weight:300;color:var(--soil);line-height:1.72;margin-bottom:24px;">
-          Each month we choose a family whose challenge entry made us smile, think, or want to go outside. Winners are featured in our newsletter and receive an exclusive bonus character card not available anywhere else.
-        </p>
-        <div style="background:var(--cream-haze);border:1px solid rgba(90,70,50,0.09);border-radius:14px;padding:24px;margin-bottom:24px;">
-          <div style="font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);margin-bottom:10px;">On Safeguarding</div>
-          <p style="font-size:14px;font-weight:300;color:var(--soil);line-height:1.65;">
-            We never publish photos of children on our public website. Challenge entries (photos of nature, activities, and places) are shared only in our private subscriber community, with explicit consent. Your child's face stays private. Their actions speak for themselves.
-          </p>
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:40px;" class="fade-up">
+      <div class="section__eyebrow" style="color:var(--faded-yellow);">Every Month</div>
+      <h2 class="section__title" style="color:var(--cream);margin-bottom:14px;">The Wild Challenge</h2>
+      <p style="font-size:16px;font-weight:300;color:rgba(242,232,213,0.65);max-width:480px;margin:0 auto;line-height:1.65;">
+        Each Club box comes with a nature challenge card. Every month we celebrate the family whose entry made us feel something.
+      </p>
+    </div>
+
+    <!-- Winner carousel -->
+    <div class="wc-carousel-wrap" style="position:relative;">
+      <div class="wc-carousel" id="wcCarousel">
+
+        <!-- Card 1: This month — Okafor family -->
+        <div class="wc-card">
+          <div class="wc-card__photo">
+            <img src="wild%20challenge%20pic%20okafor%20family.png" alt="The Okafor family's Wild Challenge entry — picking up litter in the forest" loading="lazy">
+            <div class="wc-card__badge">This month</div>
+          </div>
+          <div class="wc-card__body">
+            <div class="wc-card__name">The Okafor family</div>
+            <p class="wc-card__reason">"They picked up litter on every walk for a week. Then Elias wrote: <em>the forest felt happier after.</em> That was enough."</p>
+            <div class="wc-card__prize">🌿 Won a bonus character card</div>
+          </div>
         </div>
-        <a class="btn btn--primary" href="#club">Join to enter this month's challenge</a>
+
+        <!-- Card 2: Last month — Chloe -->
+        <div class="wc-card">
+          <div class="wc-card__photo">
+            <img src="wild%20challenge%20pic%20chloe.png" alt="Chloe's Wild Challenge entry — sitting quietly in the forest and writing about how it felt" loading="lazy">
+            <div class="wc-card__badge">Last month</div>
+          </div>
+          <div class="wc-card__body">
+            <div class="wc-card__name">Chloe, age 8</div>
+            <p class="wc-card__reason">"She sat on a log for ten minutes and wrote down what she noticed. <em>The trees were breathing,</em> she said. We didn't expect that."</p>
+            <div class="wc-card__prize">🌿 Won a bonus character card</div>
+          </div>
+        </div>
+
       </div>
-      <div class="fade-up">
-        <!-- Winner card — illustrated, no real child photos -->
-        <div style="background:var(--forest-dense);border-radius:20px;padding:36px;color:var(--cream);">
-          <div style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded-yellow);margin-bottom:20px;">This Month's Challenge</div>
-          <div style="font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.25;margin-bottom:16px;">
-            Find something in nature that doesn't belong there. Take it home.
-          </div>
-          <p style="font-size:14px;font-weight:300;color:rgba(242,232,213,0.65);line-height:1.6;margin-bottom:24px;">
-            Fox's forest stays beautiful because someone cared. Show us what you found, and what you did with it. Share using <strong style="color:var(--faded-yellow);">#WildChallenge</strong>
-          </p>
-          <div style="border-top:1px solid rgba(242,232,213,0.1);padding-top:20px;">
-            <div style="font-size:12px;color:rgba(242,232,213,0.45);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;">Last Month's Winner</div>
-            <div style="display:flex;align-items:center;gap:14px;">
-              <!-- Fox celebration SVG instead of child photo -->
-              <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="30" cy="30" r="28" fill="rgba(214,194,122,0.15)"/>
-                <ellipse cx="30" cy="34" rx="12" ry="14" fill="#C4622D"/>
-                <ellipse cx="30" cy="38" rx="7" ry="9" fill="#F4EDE4"/>
-                <circle cx="30" cy="20" r="11" fill="#C4622D"/>
-                <polygon points="23,13 18,5 26,11" fill="#C4622D"/>
-                <polygon points="37,13 42,5 34,11" fill="#C4622D"/>
-                <ellipse cx="30" cy="25" rx="6" ry="4" fill="#F4EDE4"/>
-                <circle cx="26" cy="18" r="2" fill="#5A4632"/>
-                <circle cx="34" cy="18" r="2" fill="#5A4632"/>
-              </svg>
-              <div>
-                <div style="font-size:15px;font-weight:500;color:var(--cream);">The Okafor family</div>
-                <div style="font-size:13px;color:rgba(242,232,213,0.5);">Collected 2kg of litter from their local park</div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <!-- Dots -->
+      <div class="wc-dots" id="wcDots">
+        <button class="wc-dot wc-dot--on" onclick="wcGoTo(0)" aria-label="Winner 1"></button>
+        <button class="wc-dot" onclick="wcGoTo(1)" aria-label="Winner 2"></button>
       </div>
     </div>
+
+    <!-- CTA + safeguarding -->
+    <div style="text-align:center;margin-top:40px;" class="fade-up">
+      <a class="btn btn--primary" href="#book" style="margin-bottom:20px;display:inline-block;">Join to enter this month's challenge</a>
+      <p style="font-size:12px;color:rgba(242,232,213,0.35);max-width:400px;margin:0 auto;line-height:1.6;">
+        We never publish children's faces. Challenge entries are shared only in our private subscriber community with consent. Their actions speak for themselves.
+      </p>
+    </div>
+
   </div>
 </section>
+
+<style>
+.wc-carousel-wrap { max-width: 480px; margin: 0 auto; }
+.wc-carousel {
+  display: flex; overflow-x: scroll; scroll-snap-type: x mandatory;
+  scroll-behavior: smooth; gap: 16px;
+  scrollbar-width: none; -ms-overflow-style: none;
+  padding-bottom: 4px;
+}
+.wc-carousel::-webkit-scrollbar { display: none; }
+.wc-card {
+  flex: 0 0 100%; scroll-snap-align: start;
+  background: rgba(242,232,213,0.06);
+  border: 1px solid rgba(242,232,213,0.1);
+  border-radius: 20px; overflow: hidden;
+}
+.wc-card__photo { position: relative; }
+.wc-card__photo img {
+  width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block;
+}
+.wc-card__badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--fox); color: white;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 5px 12px; border-radius: 20px;
+}
+.wc-card__body { padding: 22px 24px 24px; }
+.wc-card__name {
+  font-family: var(--serif); font-size: 20px; font-weight: 600;
+  color: var(--cream); margin-bottom: 10px;
+}
+.wc-card__reason {
+  font-size: 14px; font-weight: 300; color: rgba(242,232,213,0.7);
+  line-height: 1.65; margin-bottom: 14px; font-style: normal;
+}
+.wc-card__reason em { color: var(--faded-yellow); font-style: italic; }
+.wc-card__prize {
+  font-size: 12px; font-weight: 500; color: rgba(242,232,213,0.45);
+  letter-spacing: 0.04em;
+}
+.wc-dots {
+  display: flex; justify-content: center; gap: 8px; margin-top: 20px;
+}
+.wc-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(242,232,213,0.2); border: none; cursor: pointer;
+  padding: 0; transition: background 0.2s;
+}
+.wc-dot--on { background: var(--fox); }
+@media (min-width: 901px) {
+  .wc-carousel-wrap { max-width: 680px; }
+  .wc-carousel { gap: 24px; }
+  .wc-card__body { padding: 28px 32px 32px; }
+  .wc-card__name { font-size: 24px; }
+  .wc-card__reason { font-size: 15px; }
+}
+</style>
+
+<script>
+(function() {
+  var car = document.getElementById('wcCarousel');
+  if (!car) return;
+  car.addEventListener('scroll', function() {
+    var idx = Math.round(car.scrollLeft / car.offsetWidth);
+    document.querySelectorAll('.wc-dot').forEach(function(d, i) {
+      d.classList.toggle('wc-dot--on', i === idx);
+    });
+  }, {passive: true});
+})();
+function wcGoTo(idx) {
+  var car = document.getElementById('wcCarousel');
+  if (car) car.scrollTo({left: idx * car.offsetWidth, behavior: 'smooth'});
+}
+</script>
 
 <!-- ─── Schools ─────────────────────────────────────────────────────────── -->
 <section id="schools" style="background:var(--cream);padding:72px 0 0;">
