@@ -2820,7 +2820,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   border-radius: 20px;
   overflow: hidden;
   max-width: 860px;
-  margin: 72px auto 0;
+  margin: 40px 0 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 .smw-head {
   display: flex; align-items: center; justify-content: space-between;
@@ -2847,7 +2849,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   transition: background 0.3s, width 0.3s;
 }
 .smw-dot.on { background: var(--faded-yellow); width: 18px; }
-.smw-viewport { overflow: hidden; }
+.smw-viewport { overflow: hidden; width: 100%; }
 .smw-track {
   display: flex;
   align-items: flex-start;
@@ -2860,6 +2862,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .smw-q {
   font-family: var(--serif); font-size: 22px; font-weight: 600;
   color: var(--cream); line-height: 1.25; margin-bottom: 20px;
+  word-wrap: break-word; overflow-wrap: break-word;
 }
 .smw-opts { display: flex; flex-direction: column; gap: 10px; }
 .smw-opt {
@@ -2991,10 +2994,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   cursor: pointer; transition: background 0.18s, border-color 0.18s;
 }
 .smw-extra-chip.on { background: rgba(214,194,122,0.14); border-color: rgba(214,194,122,0.55); color: var(--gold); }
+/* Mobile: tighter layout */
+@media (max-width: 480px) {
+  .smw-q { font-size: 18px; }
+  .smw-head { padding: 18px 20px 0; }
+  .smw-slide { padding: 18px 20px 28px; }
+}
 /* Desktop: wider layout */
 @media (min-width: 769px) {
-
-
   .school-mob-wizard { padding: 0; }
   .smw-head { padding: 28px 40px 0; }
   .smw-slide { padding: 28px 40px 40px; }
@@ -4126,7 +4133,7 @@ function wcGoTo(idx) {
               </div>
             </div>
           </div>
-
+        </div>
       </div>
 
       <!-- ── 02 Community & Group Sessions ── -->
