@@ -220,6 +220,23 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   font-size: 17px; font-weight: 300; color: var(--soil); line-height: 1.65;
   margin-bottom: 36px; max-width: 460px;
 }
+.hero__pills {
+  display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 0;
+}
+.hero__pill {
+  display: inline-flex; align-items: center;
+  padding: 10px 18px; border-radius: 50px;
+  border: 1.5px solid rgba(63,90,68,0.35);
+  background: rgba(242,232,213,0.7); backdrop-filter: blur(4px);
+  font-family: var(--sans); font-size: 13.5px; font-weight: 500;
+  color: var(--forest); text-decoration: none;
+  transition: background 0.18s, border-color 0.18s, transform 0.15s;
+}
+.hero__pill:hover { background: rgba(63,90,68,0.08); border-color: var(--forest); transform: translateY(-1px); }
+.hero__pill--peek {
+  background: var(--forest); color: var(--cream); border-color: var(--forest);
+}
+.hero__pill--peek:hover { background: var(--forest-dense); border-color: var(--forest-dense); }
 .hero__fox { display: flex; justify-content: center; align-items: flex-end; padding-bottom: 20px; }
 .hero__fox svg { width: min(300px, 38vw); filter: drop-shadow(0 8px 24px rgba(90,60,30,0.18)); }
 
@@ -533,7 +550,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .hero__content { padding-top: 72px; padding-bottom: 28px; }
   .hero__badge { margin-bottom: 18px; }
   .hero__title { font-size: clamp(46px, 13vw, 58px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 14px; }
-  .hero__sub { font-size: 17px; font-weight: 400; margin-bottom: 24px; }
+  .hero__sub { font-size: 14px; font-weight: 400; margin-bottom: 0; color: var(--soil); }
   .hero__provenance { margin-top: 18px; }
   .subscription__grid { grid-template-columns: 1fr; }
 }
@@ -1940,7 +1957,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     line-height: 0.20;
   }
   .hero__em { font-style: italic; color: var(--forest); }
-.hero__sub { font-size: 17px; font-weight: 400; }
+.hero__sub { font-size: 14px; font-weight: 400; color: var(--soil); }
   .fox-intro { padding: 8px 20px 44px; }
   .mobile-buy-title { font-size: 22px; }
   #book { padding-top: 20px !important; }
@@ -3205,6 +3222,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
       <p class="hero__sub">
         A calm illustrated universe where Little Fox learns to feel, think, and choose. No villains. No winners. No lectures.
       </p>
+      <div class="hero__pills">
+        <a class="hero__pill" href="#challenge">The Wild Challenge</a>
+        <a class="hero__pill" href="#book">Join the Club</a>
+        <a class="hero__pill hero__pill--peek" href="#book">Take a sneak peek</a>
+      </div>
       <div class="hero__provenance">
         <span class="hero__prov-item">Printed in London</span>
         <span class="hero__prov-dot" aria-hidden="true"></span>
