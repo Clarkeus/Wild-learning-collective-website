@@ -2757,6 +2757,63 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 
 /* ─── School enquiry wizard (unified desktop + mobile) ─────────────────── */
+/* ── Classroom panel (mobile interactive states) ─────────── */
+.cp-photo img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
+.cp-mobile { display:none; }
+.cp-desktop { display:block; }
+.cp-state { animation: cpFade 0.22s ease; }
+.cp-hidden { display:none !important; }
+@keyframes cpFade { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+.cp-ks-btns { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:18px 0 14px; }
+.cp-ks-btn {
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+  padding:13px 10px; border-radius:12px;
+  border:1.5px solid rgba(242,232,213,0.25);
+  background:rgba(242,232,213,0.07);
+  color:var(--cream); font-family:var(--sans); cursor:pointer;
+  transition:background 0.18s, border-color 0.18s;
+}
+.cp-ks-btn:hover { background:rgba(242,232,213,0.14); border-color:rgba(242,232,213,0.5); }
+.cp-ks-btn strong { font-size:14px; font-weight:600; }
+.cp-ks-btn span { font-size:11px; color:rgba(242,232,213,0.55); }
+.cp-pkg-btn {
+  display:block; width:100%; margin-top:14px;
+  padding:13px; border-radius:50px; border:none; cursor:pointer;
+  background:var(--faded-yellow); color:var(--ink);
+  font-family:var(--sans); font-size:14px; font-weight:600;
+  transition:opacity 0.18s;
+}
+.cp-pkg-btn:hover { opacity:0.88; }
+.cp-back-btn {
+  background:none; border:none; color:rgba(242,232,213,0.55);
+  font-size:13px; font-family:var(--sans); cursor:pointer;
+  padding:0; margin-bottom:14px; display:inline-flex; align-items:center; gap:4px;
+}
+.cp-back-btn:hover { color:var(--cream); }
+.cp-ks-heading {
+  font-family:var(--serif); font-size:18px; font-weight:600;
+  color:var(--cream); margin-bottom:14px;
+}
+.cp-dl-btn {
+  display:flex; align-items:center; gap:14px;
+  padding:14px 16px; border-radius:12px; margin-bottom:10px;
+  background:rgba(242,232,213,0.07); border:1.5px solid rgba(242,232,213,0.15);
+  text-decoration:none; color:var(--cream);
+  transition:background 0.18s, border-color 0.18s;
+}
+.cp-dl-btn:hover { background:rgba(242,232,213,0.14); border-color:rgba(242,232,213,0.4); }
+.cp-dl-icon { font-size:22px; flex-shrink:0; }
+.cp-dl-btn div { flex:1; }
+.cp-dl-btn div strong { font-size:14px; font-weight:600; display:block; }
+.cp-dl-btn div small { font-size:11px; color:rgba(242,232,213,0.5); }
+.cp-dl-btn svg { flex-shrink:0; opacity:0.5; }
+@media (max-width:900px) {
+  .cp-mobile { display:block; padding:20px; background:var(--forest-dense); }
+  .cp-desktop { display:none; }
+  .cp-photo img { aspect-ratio:4/3; }
+}
+
+
 .school-mob-wizard {
   display: block;
   background: var(--forest-dense);
@@ -2937,61 +2994,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 /* Desktop: wider layout */
 @media (min-width: 769px) {
 
-/* ── Classroom panel ─────────────────────────────────────── */
-.cp-photo img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
-.cp-mobile { display:none; }
-.cp-desktop { display:block; }
-@media (max-width:900px) {
-  .cp-mobile { display:block; padding:20px; }
-  .cp-desktop { display:none; }
-  .cp-photo img { aspect-ratio:4/3; border-radius:0; }
-}
-.cp-state { animation: cpFade 0.22s ease; }
-.cp-hidden { display:none !important; }
-@keyframes cpFade { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
-.cp-ks-btns { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:18px 0 14px; }
-.cp-ks-btn {
-  display:flex; flex-direction:column; align-items:center; gap:2px;
-  padding:13px 10px; border-radius:12px;
-  border:1.5px solid rgba(242,232,213,0.25);
-  background:rgba(242,232,213,0.07);
-  color:var(--cream); font-family:var(--sans); cursor:pointer;
-  transition:background 0.18s, border-color 0.18s;
-}
-.cp-ks-btn:hover { background:rgba(242,232,213,0.14); border-color:rgba(242,232,213,0.5); }
-.cp-ks-btn strong { font-size:14px; font-weight:600; }
-.cp-ks-btn span { font-size:11px; color:rgba(242,232,213,0.55); }
-.cp-pkg-btn {
-  display:block; width:100%; margin-top:14px;
-  padding:13px; border-radius:50px; border:none; cursor:pointer;
-  background:var(--faded-yellow); color:var(--ink);
-  font-family:var(--sans); font-size:14px; font-weight:600;
-  transition:opacity 0.18s;
-}
-.cp-pkg-btn:hover { opacity:0.88; }
-.cp-back-btn {
-  background:none; border:none; color:rgba(242,232,213,0.55);
-  font-size:13px; font-family:var(--sans); cursor:pointer;
-  padding:0; margin-bottom:14px; display:inline-flex; align-items:center; gap:4px;
-}
-.cp-back-btn:hover { color:var(--cream); }
-.cp-ks-heading {
-  font-family:var(--serif); font-size:18px; font-weight:600;
-  color:var(--cream); margin-bottom:14px;
-}
-.cp-dl-btn {
-  display:flex; align-items:center; gap:14px;
-  padding:14px 16px; border-radius:12px; margin-bottom:10px;
-  background:rgba(242,232,213,0.07); border:1.5px solid rgba(242,232,213,0.15);
-  text-decoration:none; color:var(--cream);
-  transition:background 0.18s, border-color 0.18s;
-}
-.cp-dl-btn:hover { background:rgba(242,232,213,0.14); border-color:rgba(242,232,213,0.4); }
-.cp-dl-icon { font-size:22px; flex-shrink:0; }
-.cp-dl-btn div { flex:1; }
-.cp-dl-btn div strong { font-size:14px; font-weight:600; display:block; }
-.cp-dl-btn div small { font-size:11px; color:rgba(242,232,213,0.5); }
-.cp-dl-btn svg { flex-shrink:0; opacity:0.5; }
 
   .school-mob-wizard { padding: 0; }
   .smw-head { padding: 28px 40px 0; }
@@ -3282,7 +3284,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
       <div class="hero__pills">
         <a class="hero__pill" href="#challenge">The Wild Challenge</a>
         <a class="hero__pill" href="#book">Join the Club</a>
-        <a class="hero__pill hero__pill--peek" href="#book">Take a sneak peek</a>
+        <a class="hero__pill hero__pill--peek" href="#peek">Take a sneak peek</a>
       </div>
       <div class="hero__provenance">
         <span class="hero__prov-item">Printed in London</span>
