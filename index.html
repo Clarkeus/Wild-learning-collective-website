@@ -530,7 +530,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .container { padding: 0 20px; }
   .section { padding: 64px 0; }
   .footer__top { grid-template-columns: 1fr; }
-  .hero__title { font-size: 36px; }
+  .hero__content { padding-top: 72px; padding-bottom: 28px; }
+  .hero__badge { margin-bottom: 18px; }
+  .hero__title { font-size: clamp(46px, 13vw, 58px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .hero__sub { font-size: 15px; margin-bottom: 24px; }
+  .hero__provenance { margin-top: 18px; }
   .subscription__grid { grid-template-columns: 1fr; }
 }
 
