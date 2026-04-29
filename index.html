@@ -112,7 +112,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 .nav {
   position: fixed; top: 0; left: 0; right: 0; width: 100%;
   z-index: 9999;
-  padding: 0 32px; height: 64px;
+  padding: 0 max(32px, calc((100vw - 1360px) / 2 + 32px)); height: 64px;
   display: flex; align-items: center; justify-content: space-between;
   background: var(--forest-dense);
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -4164,6 +4164,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .wc-card__body { padding: 20px 28px 28px; }
   .wc-card__name { font-size: 24px; }
   .wc-card__reason { font-size: 15px; }
+}
+
+/* ── Large screens (1400px+) ── */
+@media (min-width: 1400px) {
+  .container { max-width: 1280px; }
+}
+@media (min-width: 1800px) {
+  .container { max-width: 1440px; }
 }
 </style>
 
