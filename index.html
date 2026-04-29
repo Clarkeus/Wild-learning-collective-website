@@ -385,12 +385,26 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 
 /* ─── Philosophy ─────────────────────────────────────────────────────────── */
 /* Uses the Alone/Reflective palette — cooler, quieter */
-.philosophy { background: var(--cool-cream); border-top: 1px solid rgba(90,70,50,0.05); }
+.philosophy { background: var(--cream-haze); border-top: 1px solid rgba(90,70,50,0.05); }
 .philosophy__quote-wrap { text-align: center; margin-bottom: 76px; }
 .philosophy__mark { font-family: var(--serif); font-size: 80px; color: var(--mist); line-height: 0.5; display: block; margin-bottom: 8px; }
 .philosophy__quote {
   font-family: var(--serif); font-size: clamp(20px, 3.5vw, 36px); font-weight: 300;
   font-style: italic; line-height: 1.5; color: var(--ink-slate); max-width: 680px; margin: 0 auto;
+}
+/* Compact quote above carousel */
+.philosophy__quote-compact {
+  text-align: center; padding: 32px 0 24px; display: none;
+}
+.philosophy__quote-text {
+  font-family: var(--serif); font-size: clamp(15px, 2.2vw, 18px); font-weight: 300;
+  font-style: italic; line-height: 1.6; color: var(--soil); max-width: 500px; margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .philosophy__quote-compact { display: block; }
+}
+@media (min-width: 769px) {
+  .philosophy__quote-compact { display: block; padding: 0 0 32px; }
 }
 .philosophy__pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; }
 .pillar__icon {
@@ -4494,14 +4508,8 @@ function wcGoTo(idx) {
 </section>
 
 <!-- ─── Philosophy ────────────────────────────────────────────────────────── -->
-<section class="philosophy section" id="philosophy" style="background:var(--cool-cream);">
+<section class="philosophy section" id="philosophy" style="background:var(--cream-haze);">
   <div class="container">
-    <div class="philosophy__quote-wrap fade-up">
-      <span class="philosophy__mark">"</span>
-      <p class="philosophy__quote">
-        What happens when we slow down long enough to listen, explain, and stay?
-      </p>
-    </div>
     <div class="philosophy__pillars">
       <div class="pillar fade-up">
         <div class="pillar__icon">🌱</div>
@@ -4523,6 +4531,11 @@ function wcGoTo(idx) {
         <h3 class="pillar__title">A 100-book universe</h3>
         <p class="pillar__text">Five series, a locked art canon, a consistent world. Little Fox grows across every book, and so does the child reading alongside him.</p>
       </div>
+    </div>
+
+    <!-- Quote — compact, sits above carousel on mobile and grid on desktop -->
+    <div class="philosophy__quote-compact fade-up">
+      <p class="philosophy__quote-text">&ldquo;What happens when we slow down long enough to listen, explain, and stay?&rdquo;</p>
     </div>
 
     <!-- Mobile philosophy carousel -->
@@ -4563,14 +4576,7 @@ function wcGoTo(idx) {
 </section>
 
 
-<section style="background:var(--cool-cream);padding:40px 0;border-top:1px solid rgba(90,70,50,0.08);">
-    <div class="container" style="text-align:center;">
-      <div style="display:inline-block;background:var(--fox);color:white;font-size:10px;font-weight:700;padding:3px 13px;border-radius:20px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:14px;">Coming Soon</div>
-      <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);margin-bottom:10px;">Little Fox for the Very Young</h3>
-      <p style="font-size:14px;font-weight:300;color:var(--soil);max-width:520px;margin:0 auto 18px;line-height:1.7;">Simple, quiet picture books for ages 1 to 3. <em>Little Fox is Happy. Little Fox is Sad.</em> Big feelings, small words, beautiful illustrations.</p>
-      <a href="mailto:hello@thewildlearningcollective.com?subject=Early%20Interest%20—%20Beginner%20Books" aria-label="Register early interest in beginner books — email Wild Learning Collective" style="font-size:13px;font-weight:600;color:var(--forest);text-decoration:underline;text-underline-offset:3px;">Register early interest &rarr;</a>
-    </div>
-  </section>
+
 
 
 
