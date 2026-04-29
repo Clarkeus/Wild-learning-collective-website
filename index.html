@@ -1542,24 +1542,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   }
 
   /* ══════ PRICE ROW ══════ */
-  .mob-price-row {
-    text-align: center;
-    margin-bottom: 16px;
-    line-height: 1;
-  }
-  .mob-price-amt {
-    font-family: var(--serif);
-    font-size: 46px;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .mob-price-per {
-    font-family: var(--sans);
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--soil);
-  }
-
   /* ══════ PANELS OUTER (relative, holds arrows + viewport) ══════ */
   .mob-panels-outer {
     position: relative;
@@ -1628,6 +1610,15 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     text-align: center;
     margin-top: 7px;
     opacity: 0.68;
+  }
+  .mob-pnl-price-inline {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: center;
+    margin: 8px 0 0;
+    line-height: 1;
   }
 
   /* ══════ PANEL 0: SINGLE BOOK ══════ */
@@ -3665,7 +3656,20 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
        ═══════════════════════════════════════════════════ -->
   <div class="mob-pricing" id="mobPricing">
 
-    <!-- ─ 1. Full-width content panels with arrow nav ─ -->
+    <!-- ─ Package tab selector ─ -->
+    <div class="mob-tabs" id="mobTabs">
+      <button class="mob-tab" data-idx="0" onclick="setMobProduct(0)">
+        <span class="mob-tab-name">Single Book</span>
+      </button>
+      <button class="mob-tab mob-tab-on" data-idx="1" onclick="setMobProduct(1)">
+        <span class="mob-tab-name">Monthly Club</span>
+      </button>
+      <button class="mob-tab" data-idx="2" onclick="setMobProduct(2)">
+        <span class="mob-tab-name">Gift Box</span>
+      </button>
+    </div>
+
+        <!-- ─ Content panels ─ -->
     <div class="mob-panels-outer">
 
       <button class="mob-pnl-arrow mob-pnl-prev" id="mobPrevBtn"
@@ -3697,14 +3701,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
               <button class="mob-bk-arrow mob-bk-next" onclick="setMobBook(mobBookIdx+1)" aria-label="Next book">&#8250;</button>
             </div>
             <!-- Book indicator dots -->
+            <p class="mob-pnl-price-inline">&#163;13.99</p>
             <div class="mob-bk-dots">
               <span class="mbk-dot" onclick="setMobBook(0)"></span><span class="mbk-dotmbk-dot-on" onclick="setMobBook(1)"></span><span class="mbk-dot" onclick="setMobBook(2)"></span><span class="mbk-dot" onclick="setMobBook(3)"></span><span class="mbk-dot" onclick="setMobBook(4)"></span><span class="mbk-dot" onclick="setMobBook(5)"></span><span class="mbk-dot" onclick="setMobBook(6)"></span><span class="mbk-dot" onclick="setMobBook(7)"></span><span class="mbk-dot" onclick="setMobBook(8)"></span><span class="mbk-dot" onclick="setMobBook(9)"></span>
             </div>
-            <a class="mob-pnl-btn" id="mobBookBuyBtn"
-               href="https://buy.stripe.com/test_8x2cMXboybYXbNH8V96AM02">
-              Buy this Book &nbsp;&#8594;
-            </a>
-            <p class="mob-pnl-note">Free UK delivery &middot; Ages 3 to 8</p>
+            
           </div><!-- end panel book -->
 
           <!-- Panel 1: Monthly Club -->
@@ -3749,7 +3750,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
             </div>
             <p class="mob-gift-note">Perfect for birthdays, new babies, and the children in your life who love stories.</p>
             <button class="mob-pnl-btn" onclick="openGiftModal()">
-              Send as Gift &nbsp;&#8594;
+              Send as Gift &nbsp;&mdash;&nbsp; &#163;49.99 &nbsp;&#8594;
             </button>
             <p class="mob-pnl-note">Delivered in 3 to 5 working days</p>
           </div><!-- end panel gift -->
@@ -3762,24 +3763,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 
     </div><!-- end mob-panels-outer -->
 
-    <!-- ─ 2. Price display (updates with active tab) ─ -->
-    <div class="mob-price-row">
-      <span class="mob-price-amt" id="mobPriceAmt">£18</span>
-      <span class="mob-price-per" id="mobPricePer">/month</span>
-    </div>
 
-    <!-- ─ 3. Package tab selector (all 3 visible; active is wider) ─ -->
-    <div class="mob-tabs" id="mobTabs">
-      <button class="mob-tab" data-idx="0" onclick="setMobProduct(0)">
-        <span class="mob-tab-name">Single Book</span>
-      </button>
-      <button class="mob-tab mob-tab-on" data-idx="1" onclick="setMobProduct(1)">
-        <span class="mob-tab-name">Monthly Club</span>
-      </button>
-      <button class="mob-tab" data-idx="2" onclick="setMobProduct(2)">
-        <span class="mob-tab-name">Gift Box</span>
-      </button>
-    </div>
 
   </div><!-- end mob-pricing -->
 
