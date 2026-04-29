@@ -2677,24 +2677,25 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 .ks-pill {
   appearance: none; -webkit-appearance: none;
-  background: transparent; border: 0; cursor: pointer;
+  background: rgba(242,232,213,0.12); border: 1.5px solid rgba(242,232,213,0.2); cursor: pointer;
   padding: 8px 20px; border-radius: 999px;
   display: inline-flex; flex-direction: column; align-items: center;
-  color: var(--soil); line-height: 1.15;
+  color: rgba(242,232,213,0.55); line-height: 1.15;
   font-family: var(--sans);
-  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, border-color 0.18s;
 }
 .ks-pill__label {
   font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
 }
 .ks-pill__sub {
   font-size: 9.5px; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; opacity: 0.6; margin-top: 3px;
+  text-transform: uppercase; opacity: 0.7; margin-top: 3px;
 }
-.ks-pill:hover { color: var(--forest); }
+.ks-pill:hover { color: rgba(242,232,213,0.85); border-color: rgba(242,232,213,0.4); }
 .ks-pill.ks-active {
   background: var(--forest);
   color: #fff;
+  border-color: var(--forest);
   box-shadow: 0 2px 8px rgba(63,90,68,0.22);
 }
 .ks-pill.ks-active .ks-pill__sub { opacity: 0.75; }
@@ -3168,6 +3169,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .school-acc-item.open .school-acc-body { max-height: 900px; }
 /* Panel inside accordion — reset grid to single col, panel fills width */
 .school-accordion .school-panel { grid-template-columns: 1fr 1fr; }
+.school-accordion .school-panel__img { max-height: none; height: 100%; min-height: 360px; }
+.school-accordion .school-panel__img img { height: 100%; min-height: 360px; }
 @media (max-width: 768px) {
   .school-accordion .school-panel { grid-template-columns: 1fr; }
   .school-acc-header { padding: 16px 20px; }
@@ -3175,10 +3178,67 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 
 /* ─── 10% offer widget ─── */
-#offerTab { display:none; align-items:center; justify-content:center; }
-@media (max-width:480px) {
-  #offerBubble span { font-size:12px; }
-  #offerPanel { width:calc(100vw - 40px) !important; }
+#offerWidget {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 0;
+}
+#offerTab {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  background: var(--fox);
+  color: white;
+  padding: 18px 10px;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -3px 0 16px rgba(0,0,0,0.15);
+  transition: opacity 0.2s;
+  user-select: none;
+}
+#offerTab:hover { opacity: 0.88; }
+#offerPanel {
+  display: none;
+  background: var(--forest-dense);
+  border-radius: 14px 0 0 14px;
+  box-shadow: -6px 4px 40px rgba(0,0,0,0.25);
+  width: 300px;
+  overflow: hidden;
+  position: relative;
+}
+#offerClose {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: rgba(242,232,213,0.1);
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--cream);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+#offerClose:hover { background: rgba(242,232,213,0.2); }
+@media (max-width: 480px) {
+  #offerPanel { width: calc(100vw - 60px); }
 }
 
 </style>
@@ -4593,23 +4653,17 @@ function wcGoTo(idx) {
 
 <!-- ─── Email capture ──────────────────────────────────────────────────────── -->
 <!-- ─── 10% off floating widget ──────────────────────────────────────────── -->
-<div id="offerWidget" style="position:fixed;top:80px;right:20px;z-index:9998;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);">
+<div id="offerWidget">
 
-  <!-- Bubble state (default, before scroll) -->
-  <div id="offerBubble" style="background:var(--fox);color:white;padding:10px 16px;border-radius:30px;box-shadow:0 4px 20px rgba(0,0,0,0.18);cursor:pointer;display:flex;align-items:center;gap:10px;font-family:var(--sans);transition:all 0.3s ease;" onclick="toggleOfferPanel()">
-    <span style="font-size:13px;font-weight:700;letter-spacing:0.02em;">🎁 10% off your first order</span>
-    <button onclick="dismissOffer(event)" aria-label="Dismiss offer" style="background:rgba(255,255,255,0.25);border:none;width:20px;height:20px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:white;line-height:1;padding:0;flex-shrink:0;">✕</button>
-  </div>
-
-  <!-- Side tab state (after scroll) -->
-  <div id="offerTab" style="display:none;writing-mode:vertical-rl;text-orientation:mixed;background:var(--fox);color:white;padding:14px 10px;border-radius:8px 0 0 8px;box-shadow:-3px 4px 16px rgba(0,0,0,0.15);cursor:pointer;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;position:fixed;right:0;top:50%;transform:translateY(-50%) rotate(0);transition:all 0.3s ease;" onclick="toggleOfferPanel()">
+  <!-- Side tab — always visible on right edge -->
+  <div id="offerTab" onclick="toggleOfferPanel()" role="button" aria-label="Get 10% off your first order" title="Get 10% off">
     10% OFF
   </div>
 
-  <!-- Expanded panel -->
-  <div id="offerPanel" style="display:none;background:var(--forest-dense);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.25);width:320px;overflow:hidden;margin-top:10px;">
+  <!-- Expanded panel — pops up when tab is clicked -->
+  <div id="offerPanel">
     <div style="padding:22px 22px 0;position:relative;">
-      <button onclick="dismissOffer(event)" aria-label="Close offer" style="position:absolute;top:14px;right:14px;background:rgba(242,232,213,0.1);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;color:var(--cream);font-size:14px;display:flex;align-items:center;justify-content:center;">✕</button>
+      <button onclick="dismissOffer()" aria-label="Close offer" id="offerClose">✕</button>
       <div style="font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded-yellow);margin-bottom:8px;">For parents</div>
       <h3 style="font-family:var(--serif);font-size:20px;font-weight:600;color:var(--cream);line-height:1.25;margin-bottom:8px;">Get 10% off your first order</h3>
       <p style="font-size:13px;font-weight:300;color:rgba(242,232,213,0.6);line-height:1.6;margin-bottom:18px;">Join the Wild Learning Collective — new books, nature challenges, and stories worth reading.</p>
@@ -4629,56 +4683,19 @@ function wcGoTo(idx) {
 
 <script>
 (function() {
-  var widget = document.getElementById('offerWidget');
-  var bubble = document.getElementById('offerBubble');
-  var tab    = document.getElementById('offerTab');
-  var panel  = document.getElementById('offerPanel');
-  var scrolled = false;
   var panelOpen = false;
-  var dismissed = false;
-
-  function updateState() {
-    if (dismissed) return;
-    if (scrolled) {
-      bubble.style.display = 'none';
-      if (!panelOpen) {
-        tab.style.display = 'flex';
-        widget.style.top = '';
-        widget.style.right = '0';
-      }
-    } else {
-      tab.style.display = 'none';
-      bubble.style.display = 'flex';
-      widget.style.top = '80px';
-      widget.style.right = '20px';
-    }
-  }
-
-  window.addEventListener('scroll', function() {
-    var wasScrolled = scrolled;
-    scrolled = window.scrollY > 120;
-    if (wasScrolled !== scrolled && !panelOpen) updateState();
-  }, {passive:true});
 
   window.toggleOfferPanel = function() {
     panelOpen = !panelOpen;
-    panel.style.display = panelOpen ? 'block' : 'none';
-    bubble.style.display = panelOpen ? 'none' : (scrolled ? 'none' : 'flex');
-    tab.style.display = panelOpen ? 'none' : (scrolled ? 'flex' : 'none');
-    if (panelOpen) {
-      widget.style.top = '80px';
-      widget.style.right = '20px';
-    } else {
-      updateState();
-    }
+    document.getElementById('offerPanel').style.display = panelOpen ? 'block' : 'none';
+    document.getElementById('offerTab').style.opacity = panelOpen ? '0.7' : '1';
   };
 
-  window.dismissOffer = function(e) {
-    e.stopPropagation();
-    dismissed = true;
-    widget.style.opacity = '0';
-    widget.style.pointerEvents = 'none';
-    setTimeout(function() { widget.style.display = 'none'; }, 400);
+  window.dismissOffer = function() {
+    var w = document.getElementById('offerWidget');
+    w.style.opacity = '0';
+    w.style.pointerEvents = 'none';
+    setTimeout(function() { w.style.display = 'none'; }, 350);
   };
 })();
 </script>
