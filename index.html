@@ -1613,8 +1613,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 10px 14px 14px;
+    gap: 8px;
+    padding: 8px 14px 12px;
     margin-top: auto;
   }
   /* Dot indicators */
@@ -1688,15 +1688,15 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     background: var(--cream-haze);
     max-height: 260px;
   }
-  .mbk-cover img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center top; }
+  .mbk-cover img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: center top; }
   .mbk-cover svg { display: block; width: 100%; height: auto; }
   .mbk-info { padding: 14px 18px 0; }
-  .mbk-info { padding: 14px 18px 4px; flex: 1; }
+  .mbk-info { padding: 10px 16px 4px; flex: 1; }
   .mbk-num { font-size: 10px; font-weight: 600; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
-  .mbk-title { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.15; }
+  .mbk-title { font-family: var(--serif); font-size: 19px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.15; }
   .mbk-sub { font-size: 12px; color: var(--soil); font-weight: 300; line-height: 1.4; }
   /* Blurb */
-  .mbk-blurb { font-size: 13px; color: var(--soil); line-height: 1.65; font-style: italic; margin: 6px 0 0; }
+  .mbk-blurb { font-size: 12px; color: var(--soil); line-height: 1.6; font-style: italic; margin: 4px 0 0; }
   .mbk-blurb-coming { font-size: 12px; color: var(--soil); font-style: italic; opacity: 0.72; margin: 4px 0 0; }
   .mbk-readmore {
     background: none; border: none; padding: 4px 0 0;
@@ -5259,11 +5259,16 @@ window.addEventListener('load', function() {
     var img = el.querySelector('.mbk-cover img');
     if (img && img.src) BOOK_IMGS[bk] = img.src;
   });
-  // Initialise carousel (slot B = book 0)
+  // Show the Single Book panel first so elements have real dimensions
   mobBookIdx = 0;
-  mobCarouselSnap(false);
-  mobUpdateBookUI(0);
   setMobProduct(0);
+  mobUpdateBookUI(0);
+  // Defer snap until after two paint frames so offsetWidth is non-zero
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      mobCarouselSnap(false);
+    });
+  });
 
   // ── Touch swipe: inner book carousel ──────────────────────────
   var booksOuter = document.getElementById('mobBooksOuter');
@@ -5307,8 +5312,7 @@ window.addEventListener('load', function() {
 
 window.addEventListener('resize', function() {
   if (window.innerWidth <= 900) {
-    setMobProduct(mobProductIdx);
-    mobCarouselSnap(false);
+    requestAnimationFrame(function() { mobCarouselSnap(false); });
   }
 });
 
