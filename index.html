@@ -142,7 +142,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
   transition: background 0.2s, transform 0.15s;
 }
 .nav__cta:hover { background: #b5541f; transform: translateY(-1px); }
-.nav__hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+.nav__hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; background: none; border: none; cursor: pointer; }
 .nav__hamburger span { display: block; width: 22px; height: 2px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
 .nav__mobile { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--forest-dense); padding: 16px 32px 24px; flex-direction: column; gap: 4px; border-bottom: 1px solid rgba(255,255,255,0.08); }
 .nav__mobile.open { display: flex; }
@@ -1663,7 +1663,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     overflow: hidden;
     flex: 1;
     touch-action: pan-y;
+    opacity: 0;
+    transition: opacity 0.18s ease;
   }
+  .mob-books-outer.ready { opacity: 1; }
   .mob-books-viewport { display: contents; }
   .mob-books-track {
     display: flex;
@@ -1672,7 +1675,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     will-change: transform;
   }
   .mbk-slide {
-    /* width set via JS to 82% of outer; JS also handles centering */
+    width: 82%;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -1682,16 +1685,15 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     overflow: hidden;
   }
   .mbk-cover {
-    width: 100%;
     border-radius: 0;
     overflow: hidden;
     background: var(--cream-haze);
-    max-height: 260px;
+    flex: 1 1 0;
+    min-height: 110px;
   }
-  .mbk-cover img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: center top; }
+  .mbk-cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
   .mbk-cover svg { display: block; width: 100%; height: auto; }
-  .mbk-info { padding: 14px 18px 0; }
-  .mbk-info { padding: 10px 16px 4px; flex: 1; }
+  .mbk-info { padding: 10px 16px 4px; flex: 0 0 auto; }
   .mbk-num { font-size: 10px; font-weight: 600; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
   .mbk-title { font-family: var(--serif); font-size: 19px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.15; }
   .mbk-sub { font-size: 12px; color: var(--soil); font-weight: 300; line-height: 1.4; }
@@ -5091,14 +5093,11 @@ var BOOK_IMGS = [];
 
 function mobCarouselOffset() {
   var outer = document.getElementById('mobBooksOuter');
-  if (!outer) return 0;
+  var slide = document.getElementById('mbkSlotB');
+  if (!outer || !slide) return 0;
   var outerW = outer.offsetWidth;
-  var slideW = Math.round(outerW * 0.82);
+  var slideW = slide.offsetWidth || Math.round(outerW * 0.82);
   var gap = 10;
-  ['mbkSlotA','mbkSlotB','mbkSlotC'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.style.width = slideW + 'px';
-  });
   return Math.round((outerW - slideW) / 2) - (slideW + gap);
 }
 
@@ -5145,7 +5144,8 @@ function mobSwipeBook(direction) {
   var track = document.getElementById('mobBooksTrack');
   if (!outer || !track) { mobCarouselBusy = false; return; }
   var outerW = outer.offsetWidth;
-  var slideW = Math.round(outerW * 0.82);
+  var slideEl = document.getElementById('mbkSlotB');
+  var slideW = (slideEl && slideEl.offsetWidth) || Math.round(outerW * 0.82);
   var gap = 10;
   var baseOffset = mobCarouselOffset();
   var targetOffset = baseOffset - direction * (slideW + gap);
@@ -5161,6 +5161,8 @@ function mobSwipeBook(direction) {
     mobCarouselSnap(false);
     mobUpdateBookUI(newBook);
     mobCarouselBusy = false;
+    var outerEl = document.getElementById('mobBooksOuter');
+    if (outerEl && !outerEl.classList.contains('ready')) outerEl.classList.add('ready');
   }, 410);
 }
 
@@ -5263,10 +5265,12 @@ window.addEventListener('load', function() {
   mobBookIdx = 0;
   setMobProduct(0);
   mobUpdateBookUI(0);
-  // Defer snap until after two paint frames so offsetWidth is non-zero
+  // Defer snap until panel is laid out, then fade in cleanly
   requestAnimationFrame(function() {
     requestAnimationFrame(function() {
       mobCarouselSnap(false);
+      var outer = document.getElementById('mobBooksOuter');
+      if (outer) outer.classList.add('ready');
     });
   });
 
