@@ -76,21 +76,44 @@ body {
   transition: background 0.15s;
 }
 .nav__cta:hover { background: var(--fox-rust); }
-.nav__hamburger { display: none; }
+.nav__hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 6px;
+  margin-left: auto;
+}
+.nav__hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--ink); border-radius: 2px;
+  transition: all 0.2s;
+}
+/* Mobile dropdown */
+.nav__mobile {
+  display: none; position: absolute; top: 64px; left: 0; right: 0;
+  background: var(--forest-dense); padding: 16px 24px 20px;
+  flex-direction: column; gap: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 200;
+}
+.nav__mobile.open { display: flex; }
+.nav__mobile .nav__link { color: var(--cream); padding: 10px 4px; }
+.nav__mobile .nav__link:hover { background: rgba(255,255,255,0.08); color: var(--cream); }
+.nav__mobile .nav__link.active { color: var(--fox-chest); font-weight: 600; }
+.nav__mobile .nav__cta {
+  margin-top: 8px; display: block; text-align: center;
+  background: var(--fox); color: white; padding: 11px 18px;
+  border-radius: 8px; font-size: 13px; font-weight: 600;
+  text-decoration: none;
+}
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .nav__links { display: none; }
   .nav__cta { display: none; }
-  .nav__hamburger {
-    display: flex; flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer; padding: 6px;
-    margin-left: auto;
-  }
-  .nav__hamburger span {
-    display: block; width: 22px; height: 2px;
-    background: var(--ink); border-radius: 2px;
-    transition: all 0.2s;
-  }
+  .nav__hamburger { display: flex; }
+  .nav { position: relative; }
+}
+@media (max-width: 600px) {
+  .nav { padding: 0 20px; height: 60px; }
+  .nav__mobile { top: 60px; padding: 14px 20px 18px; }
 }
 
 /* ── PAGE HEADER ── */
@@ -296,6 +319,14 @@ body {
   <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
+  <ul class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
+    <li><a class="nav__link active" href="books.html">Books</a></li>
+    <li><a class="nav__link" href="index.html#book">Bundles</a></li>
+    <li><a class="nav__link" href="index.html#challenge">Wild Challenge</a></li>
+    <li><a class="nav__link" href="index.html#schools">Schools</a></li>
+    <li><a class="nav__link" href="index.html#faq">FAQ</a></li>
+    <li style="margin-top:8px"><a class="nav__cta" href="index.html#schools">Schools enquiry &rarr;</a></li>
+  </ul>
 </nav>
 
 <!-- PAGE HEADER -->
@@ -316,7 +347,7 @@ body {
       <div class="book-card__body">
         <p class="book-card__num">Book 1</p>
         <h3 class="book-card__title">Little Fox &amp; the Busy Day</h3>
-        <a class="book-card__cta" href="index.html#book">Order &rarr; £13.99</a>
+        <a class="book-card__cta" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Order &rarr; £13.99</a>
       </div>
     </article>
 
@@ -328,7 +359,7 @@ body {
       <div class="book-card__body">
         <p class="book-card__num">Book 2</p>
         <h3 class="book-card__title">Little Fox Thinks it Through</h3>
-        <a class="book-card__cta" href="index.html#book">Order &rarr; £13.99</a>
+        <a class="book-card__cta" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Order &rarr; £13.99</a>
       </div>
     </article>
 
@@ -340,7 +371,7 @@ body {
       <div class="book-card__body">
         <p class="book-card__num">Book 3</p>
         <h3 class="book-card__title">Little Fox &amp; the Beach Day</h3>
-        <a class="book-card__cta" href="index.html#book">Order &rarr; £13.99</a>
+        <a class="book-card__cta" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Order &rarr; £13.99</a>
       </div>
     </article>
 
@@ -402,5 +433,28 @@ body {
   <p>&copy; 2025 The Wild Learning Collective &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="index.html#faq">FAQ</a> &nbsp;·&nbsp; <a href="index.html#schools">Schools</a></p>
 </footer>
 
+<script>
+// Hamburger menu toggle
+(function() {
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if (!hamburger || !mobileNav) return;
+  hamburger.addEventListener('click', function() {
+    mobileNav.classList.toggle('open');
+  });
+  // Close menu when any link is clicked
+  mobileNav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobileNav.classList.remove('open');
+    });
+  });
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+      mobileNav.classList.remove('open');
+    }
+  });
+})();
+</script>
 </body>
 </html>
