@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Journal — The Wild Learning Collective</title>
+<title>Blog — The Wild Learning Collective</title>
 <meta name="description" content="Thoughts on raising emotionally intelligent children, building reading habits, and the stories behind Little Fox & Friends. From The Wild Learning Collective.">
 <link rel="canonical" href="https://thewildlearningcollective.com/blog.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thewildlearningcollective.com/blog.html">
-<meta property="og:title" content="Journal — The Wild Learning Collective">
+<meta property="og:title" content="Blog — The Wild Learning Collective">
 <meta property="og:description" content="Thoughts on raising emotionally intelligent children and the stories behind Little Fox & Friends.">
 <meta property="og:image" content="https://thewildlearningcollective.com/og-preview.jpg">
 <meta property="og:site_name" content="The Wild Learning Collective">
@@ -16,7 +16,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "The Wild Learning Collective Journal",
+  "name": "The Wild Learning Collective Blog",
   "url": "https://thewildlearningcollective.com/blog.html",
   "publisher": {
     "@type": "Organization",
@@ -27,7 +27,7 @@
     {
       "@type": "BlogPosting",
       "headline": "How to Help Your Child Through Big Feelings",
-      "url": "https://thewildlearningcollective.com/blog.html#big-feelings",
+      "url": "https://thewildlearningcollective.com/blog-big-feelings.html",
       "datePublished": "2025-04-28",
       "author": { "@type": "Organization", "name": "The Wild Learning Collective" },
       "description": "Five practical, gentle strategies for helping young children name, understand and move through difficult emotions — without dismissing or amplifying them."
@@ -35,7 +35,7 @@
     {
       "@type": "BlogPosting",
       "headline": "Why the Books Your Child Reads Shape How They Think",
-      "url": "https://thewildlearningcollective.com/blog.html#books-shape-thinking",
+      "url": "https://thewildlearningcollective.com/blog-books-shape-thinking.html",
       "datePublished": "2025-05-05",
       "author": { "@type": "Organization", "name": "The Wild Learning Collective" },
       "description": "What developmental research says about story-based learning, emotional vocabulary, and why the best children's books do something different from what most parents expect."
@@ -60,21 +60,10 @@
   --sans:         'Jost', system-ui, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: var(--sans);
-  background: var(--cream);
-  color: var(--ink);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
 /* ── NAV ── */
-.nav {
-  position: sticky; top: 0; z-index: 100;
-  background: var(--cream); border-bottom: 1px solid var(--cream-haze);
-  display: flex; align-items: center; gap: 24px;
-  padding: 0 32px; height: 64px;
-}
+.nav { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 1px solid var(--cream-haze); display: flex; align-items: center; gap: 24px; padding: 0 32px; height: 64px; }
 .nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
 .nav__logo-icon { width: 36px; height: 36px; flex-shrink: 0; }
 .nav__logo-text { font-family: var(--serif); font-size: 15px; font-weight: 600; line-height: 1.2; color: var(--ink); }
@@ -97,144 +86,121 @@ body {
 @media (max-width: 600px) { .nav { padding: 0 20px; height: 60px; } .nav__mobile { top: 60px; } }
 
 /* ── BLOG HEADER ── */
-.blog-header {
-  background: var(--forest-dense);
-  padding: 64px 32px 56px;
-  text-align: center;
-}
-.blog-header__eyebrow {
-  font-family: var(--sans);
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--fox-chest); margin-bottom: 14px;
-}
-.blog-header__title {
-  font-family: var(--serif);
-  font-size: clamp(36px, 5vw, 54px);
-  font-weight: 600; color: var(--cream);
-  line-height: 1.1; margin-bottom: 16px;
-}
-.blog-header__sub {
-  font-size: 16px; font-weight: 300;
-  color: rgba(242,232,213,0.75);
-  max-width: 520px; margin: 0 auto;
-  line-height: 1.7;
-}
+.blog-header { background: var(--forest-dense); padding: 64px 32px 56px; text-align: center; }
+.blog-header__eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fox-chest); margin-bottom: 14px; }
+.blog-header__title { font-family: var(--serif); font-size: clamp(36px, 5vw, 54px); font-weight: 600; color: var(--cream); line-height: 1.1; margin-bottom: 16px; }
+.blog-header__sub { font-size: 16px; font-weight: 300; color: rgba(242,232,213,0.75); max-width: 520px; margin: 0 auto; line-height: 1.7; }
 
-/* ── ARTICLE LIST ── */
-.blog-index {
-  max-width: 780px; margin: 0 auto;
-  padding: 64px 32px;
-  display: flex; flex-direction: column; gap: 80px;
-}
+/* ── INDEX SHELL ── */
+.blog-index { max-width: 1080px; margin: 0 auto; padding: 56px 32px 80px; }
 
-/* ── ARTICLE ── */
-article.blog-post { scroll-margin-top: 80px; }
-.post-meta {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 18px;
+/* ── CONTROLS ── */
+.controls { display: grid; grid-template-columns: 1fr auto; gap: 20px 28px; align-items: center; margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid var(--cream-haze); }
+.search-wrap { position: relative; max-width: 360px; width: 100%; }
+.search-wrap input {
+  width: 100%; padding: 11px 14px 11px 38px;
+  background: white; border: 1px solid var(--cream-haze);
+  border-radius: 8px; font-family: var(--sans);
+  font-size: 14px; color: var(--ink); outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-.post-tag {
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--forest); background: rgba(79,111,82,0.1);
-  padding: 4px 10px; border-radius: 20px;
-}
-.post-date {
-  font-size: 12px; color: var(--soil); font-weight: 400;
-}
-.post-title {
-  font-family: var(--serif);
-  font-size: clamp(26px, 3.5vw, 36px);
-  font-weight: 600; color: var(--ink);
-  line-height: 1.15; margin-bottom: 10px;
-}
-.post-deck {
-  font-size: 16px; font-weight: 300; color: var(--soil);
-  line-height: 1.7; margin-bottom: 32px;
-  font-style: italic;
-}
-.post-divider {
-  width: 40px; height: 3px;
-  background: var(--forest); border-radius: 2px;
-  margin-bottom: 32px;
-}
-.post-body {
-  font-size: 16px; color: var(--ink);
-  line-height: 1.85; font-weight: 300;
-}
-.post-body p { margin-bottom: 20px; }
-.post-body h2 {
-  font-family: var(--serif);
-  font-size: 22px; font-weight: 600;
-  color: var(--ink); margin: 36px 0 12px;
-  line-height: 1.2;
-}
-.post-body h3 {
-  font-family: var(--serif);
-  font-size: 18px; font-weight: 600;
-  color: var(--forest); margin: 28px 0 10px;
-}
-.post-body strong { font-weight: 600; color: var(--ink); }
-.post-body a { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
-.post-body a:hover { color: var(--fox); }
-.post-body ul { margin: 0 0 20px 20px; }
-.post-body ul li { margin-bottom: 10px; }
-.post-cta-box {
-  background: var(--forest-dense);
-  border-radius: 12px;
-  padding: 28px 32px;
-  margin-top: 40px;
-  display: flex; align-items: center;
-  justify-content: space-between;
-  gap: 20px; flex-wrap: wrap;
-}
-.post-cta-box__text {
-  font-family: var(--serif);
-  font-size: 20px; font-weight: 500;
-  color: var(--cream); line-height: 1.3;
-  flex: 1;
-}
-.post-cta-box__text span {
-  display: block; font-size: 13px;
-  font-family: var(--sans); font-weight: 300;
-  color: rgba(242,232,213,0.7); margin-top: 4px;
-}
-.post-cta-box__btn {
-  background: var(--fox); color: white;
-  padding: 12px 24px; border-radius: 8px;
-  font-size: 14px; font-weight: 600;
-  text-decoration: none; white-space: nowrap;
-  transition: background 0.15s; flex-shrink: 0;
-}
-.post-cta-box__btn:hover { background: var(--fox-rust); }
+.search-wrap input::placeholder { color: var(--soil); opacity: 0.7; }
+.search-wrap input:focus { border-color: var(--forest); box-shadow: 0 0 0 3px rgba(79,111,82,0.12); }
+.search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; opacity: 0.55; pointer-events: none; }
+.sort-wrap { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--soil); }
+.sort-wrap label { white-space: nowrap; }
+.sort-wrap select { font-family: var(--sans); font-size: 13px; color: var(--ink); background: white; border: 1px solid var(--cream-haze); border-radius: 8px; padding: 8px 32px 8px 12px; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 4 L5 7 L8 4' stroke='%238C6A4A' stroke-width='1.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>"); background-repeat: no-repeat; background-position: right 10px center; }
 
-/* ── SEPARATOR ── */
-.post-separator {
-  border: none;
-  border-top: 1px solid var(--cream-haze);
+.tag-row { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tag-row__label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soil); margin-right: 4px; }
+.tag-chip {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+  color: var(--forest); background: rgba(79,111,82,0.08);
+  padding: 6px 14px; border-radius: 100px; border: 1px solid transparent;
+  cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
+.tag-chip:hover { background: rgba(79,111,82,0.18); }
+.tag-chip.active { background: var(--forest); color: var(--cream); border-color: var(--forest); }
+
+/* ── FEATURED ── */
+.featured-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fox); margin-bottom: 14px; }
+.featured-card {
+  display: grid; grid-template-columns: 1.15fr 1fr;
+  gap: 0; background: white; border-radius: 14px;
+  overflow: hidden; border: 1px solid var(--cream-haze);
+  margin-bottom: 56px;
+  text-decoration: none; color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.featured-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px -16px rgba(44,24,16,0.18); }
+.featured-card__art { background: linear-gradient(135deg, var(--forest-dense) 0%, var(--forest) 60%, var(--fox-rust) 130%); padding: 48px 40px; display: flex; align-items: center; justify-content: center; min-height: 280px; position: relative; }
+.featured-card__art::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 25%, rgba(232,168,124,0.18) 0%, transparent 55%); }
+.featured-card__art-text { position: relative; font-family: var(--serif); font-style: italic; font-size: clamp(20px, 2.4vw, 26px); color: rgba(242,232,213,0.82); line-height: 1.4; max-width: 320px; text-align: center; font-weight: 300; }
+.featured-card__art-text::before { content: "\201C"; display: block; font-size: 56px; line-height: 0.4; color: var(--fox-chest); margin-bottom: 18px; font-style: normal; }
+.featured-card__body { padding: 40px 36px; display: flex; flex-direction: column; justify-content: center; }
+.featured-card__meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.featured-card__title { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 30px); font-weight: 600; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+.featured-card__deck { font-size: 15px; color: var(--soil); line-height: 1.65; font-weight: 300; margin-bottom: 22px; }
+.featured-card__cta { font-size: 13px; font-weight: 600; color: var(--fox); letter-spacing: 0.04em; }
+.featured-card__cta::after { content: " →"; transition: margin-left 0.15s; display: inline-block; }
+.featured-card:hover .featured-card__cta::after { margin-left: 4px; }
+
+/* ── CARD GRID ── */
+.section-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--soil); margin-bottom: 18px; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.post-card {
+  display: flex; flex-direction: column;
+  background: white; border-radius: 12px;
+  border: 1px solid var(--cream-haze); overflow: hidden;
+  text-decoration: none; color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.post-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px -14px rgba(44,24,16,0.18); border-color: rgba(79,111,82,0.25); }
+.post-card__art { height: 140px; position: relative; display: flex; align-items: flex-end; padding: 18px 22px; }
+.post-card__art--parenting { background: linear-gradient(135deg, var(--cream-haze) 0%, var(--fox-chest) 100%); }
+.post-card__art--reading { background: linear-gradient(135deg, var(--forest) 0%, var(--forest-dense) 100%); }
+.post-card__art-mark { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 18px; letter-spacing: 0.02em; color: rgba(255,255,255,0.92); text-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+.post-card__art--reading .post-card__art-mark { color: rgba(242,232,213,0.92); }
+.post-card__body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.post-card__meta { display: flex; align-items: center; gap: 10px; }
+.post-card__title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ink); line-height: 1.25; }
+.post-card__deck { font-size: 14px; color: var(--soil); line-height: 1.6; font-weight: 300; flex: 1; }
+.post-card__cta { font-size: 12.5px; font-weight: 600; color: var(--fox); letter-spacing: 0.04em; margin-top: 4px; }
+.post-card__cta::after { content: " →"; transition: margin-left 0.15s; display: inline-block; }
+.post-card:hover .post-card__cta::after { margin-left: 4px; }
+
+.empty-state { padding: 56px 24px; text-align: center; color: var(--soil); font-style: italic; font-size: 15px; border: 1px dashed var(--cream-haze); border-radius: 10px; }
+
+/* shared meta visuals */
+.post-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--forest); background: rgba(79,111,82,0.1); padding: 4px 10px; border-radius: 20px; }
+.post-date { font-size: 12px; color: var(--soil); font-weight: 400; }
 
 /* ── FOOTER ── */
-footer {
-  background: var(--forest-dense);
-  color: rgba(242,232,213,0.65);
-  text-align: center;
-  padding: 32px;
-  font-size: 13px;
-}
+footer { background: var(--forest-dense); color: rgba(242,232,213,0.65); text-align: center; padding: 32px; font-size: 13px; }
 footer a { color: var(--fox-chest); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
-@media (max-width: 600px) {
+@media (max-width: 780px) {
   .blog-header { padding: 48px 24px 40px; }
-  .blog-index { padding: 40px 24px; gap: 60px; }
-  .post-cta-box { flex-direction: column; text-align: center; }
-  .post-cta-box__btn { width: 100%; text-align: center; }
+  .blog-index { padding: 40px 20px 60px; }
+  .controls { grid-template-columns: 1fr; }
+  .featured-card { grid-template-columns: 1fr; }
+  .featured-card__art { min-height: 180px; padding: 32px 28px; }
+  .featured-card__body { padding: 28px 24px 32px; }
 }
+@media (max-width: 600px) {
+  .featured-card__art-text { font-size: 18px; }
+  .featured-card__art-text::before { font-size: 44px; }
+  .post-card__art { height: 120px; }
+}
+
+a.skip-link { position: absolute; left: -9999px; top: 0; }
+a.skip-link:focus { left: 8px; top: 8px; background: var(--ink); color: var(--cream); padding: 8px 12px; border-radius: 6px; z-index: 1000; }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <nav class="nav" id="nav">
   <a class="nav__logo" href="index.html">
@@ -263,7 +229,7 @@ footer a:hover { text-decoration: underline; }
     <li><a class="nav__link" href="index.html#book">Bundles</a></li>
     <li><a class="nav__link" href="index.html#challenge">Wild Challenge</a></li>
     <li><a class="nav__link" href="index.html#schools">Schools</a></li>
-    <li><a class="nav__link active" href="blog.html">Journal</a></li>
+    <li><a class="nav__link active" href="blog.html">Blog</a></li>
   </ul>
   <a class="nav__cta" href="index.html#schools">Schools enquiry &rarr;</a>
   <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
@@ -274,121 +240,110 @@ footer a:hover { text-decoration: underline; }
     <li><a class="nav__link" href="index.html#book">Bundles</a></li>
     <li><a class="nav__link" href="index.html#challenge">Wild Challenge</a></li>
     <li><a class="nav__link" href="index.html#schools">Schools</a></li>
-    <li><a class="nav__link active" href="blog.html">Journal</a></li>
+    <li><a class="nav__link active" href="blog.html">Blog</a></li>
     <li style="margin-top:8px"><a class="nav__cta" href="index.html#schools">Schools enquiry &rarr;</a></li>
   </ul>
 </nav>
 
 <header class="blog-header">
   <p class="blog-header__eyebrow">The Wild Learning Collective</p>
-  <h1 class="blog-header__title">From the Journal</h1>
+  <h1 class="blog-header__title">From the Blog</h1>
   <p class="blog-header__sub">Thoughts on raising emotionally intelligent children, building reading habits, and the ideas behind Little Fox &amp; Friends.</p>
 </header>
 
-<main class="blog-index">
+<main id="main-content" class="blog-index">
 
-  <!-- ── ARTICLE 1 ── -->
-  <article class="blog-post" id="big-feelings">
-    <div class="post-meta">
-      <span class="post-tag">Parenting</span>
-      <span class="post-date">28 April 2025</span>
+  <div class="controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="searchInput" placeholder="Search the blog…" aria-label="Search blog posts">
     </div>
-    <h2 class="post-title">How to Help Your Child Through Big Feelings</h2>
-    <p class="post-deck">Five practical, gentle strategies for helping young children name, understand and move through difficult emotions — without dismissing or amplifying them.</p>
-    <div class="post-divider"></div>
-    <div class="post-body">
+    <div class="sort-wrap">
+      <label for="sortSelect">Sort</label>
+      <select id="sortSelect" aria-label="Sort posts">
+        <option value="newest" selected>Newest first</option>
+        <option value="oldest">Oldest first</option>
+      </select>
+    </div>
+    <div class="tag-row" role="tablist" aria-label="Filter by topic">
+      <span class="tag-row__label">Topics</span>
+      <button type="button" class="tag-chip active" data-tag="all">All</button>
+      <button type="button" class="tag-chip" data-tag="parenting">Parenting</button>
+      <button type="button" class="tag-chip" data-tag="reading">Reading &amp; Learning</button>
+    </div>
+  </div>
 
-      <p>Every parent knows the moment. Your child dissolves — at bedtime, in a car park, mid-snack — and the feeling flooding them seems impossibly large for such a small person. The question is never whether children will have big feelings. It's what we do when they arrive.</p>
-
-      <p>The good news is that emotional regulation isn't a personality trait children are born with or without. It's a skill — and like reading or riding a bike, it develops with the right kind of support and repetition.</p>
-
-      <h2>1. Name it before you manage it</h2>
-      <p>The single most effective thing you can do in the middle of a meltdown is help your child put a word to what they're experiencing. <strong>"You're feeling really frustrated right now"</strong> does two things at once: it validates that the feeling is real, and it activates the part of the brain responsible for language and reasoning — which tends to calm the emotional storm.</p>
-      <p>Research from UCLA found that simply labelling an emotion reduces its intensity. You don't need to fix anything. Just naming it is the first step.</p>
-
-      <h2>2. Stay regulated yourself</h2>
-      <p>Children co-regulate with the adults around them. When you stay calm — genuinely calm, not tightly controlled — your nervous system signals to theirs that the situation is survivable. This isn't about suppressing your own frustration. It's about pausing, taking a breath, and choosing your next move rather than reacting from instinct.</p>
-      <p>If you feel yourself escalating, a slow exhale (longer out than in) activates the parasympathetic nervous system within seconds. It works on children too.</p>
-
-      <h2>3. Validate first, redirect after</h2>
-      <p>A common pattern: child expresses a big feeling, parent immediately tries to fix it or redirect attention. <strong>"You don't need to cry about that"</strong> or <strong>"How about we do something fun instead?"</strong> Understandable — but it teaches children that their feelings are inconvenient rather than normal.</p>
-      <p>Try validation first: <strong>"I can see that really upset you. It makes sense that you feel that way."</strong> Once the child feels heard, they become far more receptive to moving forward. The redirection comes after, not instead of, the acknowledgement.</p>
-
-      <h2>4. Use stories to rehearse feelings safely</h2>
-      <p>One of the most powerful emotional learning tools for young children isn't a worksheet or a lesson — it's a story. When a child watches a character navigate a feeling and come through it, they're building an emotional map they can draw on later in their own life.</p>
-      <p>This is the core idea behind the <a href="books.html">Little Fox &amp; Friends series</a>. Each book follows Little Fox through a single emotional experience — a day that feels overwhelming, a moment of disagreement, a feeling of not belonging — not with a tidy resolution, but with a genuine, quiet process of working through it. Children who recognise themselves in those moments build the vocabulary and the confidence to face their own.</p>
-
-      <h2>5. Create a feelings check-in habit</h2>
-      <p>Emotional intelligence grows with practice. A simple daily check-in — at dinner, at bedtime, in the car — normalises the idea that feelings are worth noticing and talking about. It doesn't need to be structured. <strong>"What was the best feeling today? What was the hardest?"</strong> is enough.</p>
-      <p>Over time, children who grow up in households where feelings are named and discussed openly develop larger emotional vocabularies, stronger empathy, and more effective coping strategies than those for whom feelings are either suppressed or treated as crises.</p>
-
-      <p>The goal isn't a child who never has big feelings. It's a child who knows what to do when they arrive.</p>
-
-      <div class="post-cta-box">
-        <div class="post-cta-box__text">
-          Little Fox &amp; Friends
-          <span>Calm, illustrated picture books for ages 3–8 that build emotional vocabulary one story at a time.</span>
-        </div>
-        <a class="post-cta-box__btn" href="books.html">See the books &rarr;</a>
+  <!-- ── FEATURED HIGHLIGHT (only shown when default view) ── -->
+  <p class="featured-eyebrow" id="featuredEyebrow">Latest post</p>
+  <a class="featured-card" id="featuredCard" href="blog-books-shape-thinking.html">
+    <div class="featured-card__art">
+      <p class="featured-card__art-text">The books that shape children most deeply are the ones that make them feel <em>seen</em> &mdash; and then quietly expand what they think is possible.</p>
+    </div>
+    <div class="featured-card__body">
+      <div class="featured-card__meta">
+        <span class="post-tag">Reading &amp; Learning</span>
+        <span class="post-date">5 May 2025</span>
       </div>
+      <h2 class="featured-card__title">Why the Books Your Child Reads Shape How They Think</h2>
+      <p class="featured-card__deck">What developmental research says about story-based learning, emotional vocabulary, and why the best children's books do something quite different from what most parents expect.</p>
+      <span class="featured-card__cta">Read the post</span>
     </div>
-  </article>
+  </a>
 
-  <hr class="post-separator">
+  <p class="section-eyebrow" id="sectionEyebrow">More posts</p>
 
-  <!-- ── ARTICLE 2 ── -->
-  <article class="blog-post" id="books-shape-thinking">
-    <div class="post-meta">
-      <span class="post-tag">Reading &amp; Learning</span>
-      <span class="post-date">5 May 2025</span>
-    </div>
-    <h2 class="post-title">Why the Books Your Child Reads Shape How They Think</h2>
-    <p class="post-deck">What developmental research says about story-based learning, emotional vocabulary, and why the best children's books do something quite different from what most parents expect.</p>
-    <div class="post-divider"></div>
-    <div class="post-body">
+  <!-- ── ALL POSTS as cards (the newest one is hidden in default view because it's already in the featured slot) ── -->
+  <div class="card-grid" id="cardGrid">
 
-      <p>Ask most parents what they want from their child's books and you'll hear similar answers: imaginative, fun, with a good message at the end. What the research suggests, though, is that the most valuable thing a children's book can do has nothing to do with any of those things.</p>
-
-      <p>The books that shape children most deeply are the ones that make them feel <em>seen</em> — and then quietly expand what they think is possible.</p>
-
-      <h2>The emotional vocabulary effect</h2>
-      <p>Children are born with the same basic emotional hardware we all have. What varies enormously between children — and between adults — is their ability to identify, name and communicate what they're feeling. Psychologists call this <strong>emotional granularity</strong>: the capacity to distinguish between, say, frustration and disappointment, or excitement and anxiety.</p>
-      <p>The research is clear: children with larger emotional vocabularies are better at regulating their own behaviour, more empathetic towards others, and significantly less likely to express feelings through aggression or withdrawal. And one of the most reliable ways to build emotional vocabulary in young children is through stories.</p>
-      <p>When a character in a book names what they're feeling — and then navigates that feeling in a way the child can follow — the child adds that feeling to their internal map. Not as an abstract concept, but as something experienced and understood.</p>
-
-      <h2>The problem with lessons disguised as stories</h2>
-      <p>Much of children's publishing — particularly in the emotional intelligence space — makes a specific mistake. The story exists to deliver a moral. Be kind. Share your things. Tell the truth. The problem isn't the moral. The problem is that children can feel the scaffolding.</p>
-      <p>When a story is clearly built around a lesson, children engage with it differently. They're receiving information rather than experiencing something. The emotional processing that comes from genuine storytelling — the kind that changes how you see yourself and others — doesn't happen.</p>
-      <p>The books that stick are the ones that trust the child. That show rather than tell. That present a feeling honestly without rushing to resolve it. A child doesn't need Little Fox to have all the answers — they need Little Fox to have the same questions.</p>
-
-      <h2>What to look for</h2>
-      <p>When you're choosing books for young children, a few things are worth considering beyond the obvious:</p>
-      <ul>
-        <li><strong>Does the character feel the feeling fully?</strong> Not just mention it and move on, but sit with it long enough that the child recognises the experience.</li>
-        <li><strong>Is the resolution realistic?</strong> Tidy endings feel safe but teach children that feelings disappear quickly if you do the right thing. They often don't.</li>
-        <li><strong>Is there space for conversation?</strong> The best picture books are conversation starters, not conversation endings. Something left open is an invitation.</li>
-        <li><strong>Does the child see themselves?</strong> Representation matters — not just in terms of appearance, but in terms of experience and feeling.</li>
-      </ul>
-
-      <h2>The long game</h2>
-      <p>Reading with a child isn't primarily about literacy — though that matters enormously. It's about building, over hundreds of shared hours, a shared language for the interior life. Children who grow up with books that take feelings seriously grow into adults who take feelings seriously — their own and other people's.</p>
-      <p>That's not a small thing. The <a href="books.html">Little Fox &amp; Friends series</a> exists because we believe children's books can do more than entertain. They can quietly, gently, and durably change how a child understands themselves.</p>
-      <p>That's worth taking seriously from the very first page.</p>
-
-      <div class="post-cta-box">
-        <div class="post-cta-box__text">
-          The Little Fox Monthly Club
-          <span>A new story delivered every month. Beautiful hardbacks for ages 3–8, from £18/month.</span>
-        </div>
-        <a class="post-cta-box__btn" href="https://buy.stripe.com/9B6eV59qq8zg1Ic0JbdnW02">Join the club &rarr;</a>
+    <a class="post-card"
+       href="blog-books-shape-thinking.html"
+       data-tag="reading"
+       data-date="2025-05-05"
+       data-featured="true"
+       data-title="Why the Books Your Child Reads Shape How They Think"
+       data-deck="What developmental research says about story-based learning, emotional vocabulary, and why the best children's books do something quite different from what most parents expect.">
+      <div class="post-card__art post-card__art--reading">
+        <span class="post-card__art-mark">Reading &amp; Learning</span>
       </div>
-    </div>
-  </article>
+      <div class="post-card__body">
+        <div class="post-card__meta">
+          <span class="post-tag">Reading &amp; Learning</span>
+          <span class="post-date">5 May 2025</span>
+        </div>
+        <h3 class="post-card__title">Why the Books Your Child Reads Shape How They Think</h3>
+        <p class="post-card__deck">What developmental research says about story-based learning, emotional vocabulary, and why the best children's books do something quite different from what most parents expect.</p>
+        <span class="post-card__cta">Read the post</span>
+      </div>
+    </a>
+
+    <a class="post-card"
+       href="blog-big-feelings.html"
+       data-tag="parenting"
+       data-date="2025-04-28"
+       data-title="How to Help Your Child Through Big Feelings"
+       data-deck="Five practical, gentle strategies for helping young children name, understand and move through difficult emotions — without dismissing or amplifying them.">
+      <div class="post-card__art post-card__art--parenting">
+        <span class="post-card__art-mark">Parenting</span>
+      </div>
+      <div class="post-card__body">
+        <div class="post-card__meta">
+          <span class="post-tag">Parenting</span>
+          <span class="post-date">28 Apr 2025</span>
+        </div>
+        <h3 class="post-card__title">How to Help Your Child Through Big Feelings</h3>
+        <p class="post-card__deck">Five practical, gentle strategies for helping young children name, understand and move through difficult emotions.</p>
+        <span class="post-card__cta">Read the post</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="empty-state" id="emptyState" hidden>No posts match those filters yet. Try a different topic or clear the search.</div>
 
 </main>
 
 <footer>
-  <p>&copy; 2025 The Wild Learning Collective &nbsp;·&nbsp;
+  <p>&copy; 2026 The Wild Learning Collective &nbsp;·&nbsp;
     <a href="index.html">Home</a> &nbsp;·&nbsp;
     <a href="books.html">Books</a> &nbsp;·&nbsp;
     <a href="privacy.html">Privacy</a>
@@ -396,18 +351,103 @@ footer a:hover { text-decoration: underline; }
 </footer>
 
 <script>
+  // Hamburger
   var hamburger = document.getElementById('hamburger');
   var mobileNav = document.getElementById('mobile-nav');
   if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', function() {
-      mobileNav.classList.toggle('open');
-    });
+    hamburger.addEventListener('click', function() { mobileNav.classList.toggle('open'); });
     document.addEventListener('click', function(e) {
       if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
         mobileNav.classList.remove('open');
       }
     });
   }
+
+  // ── Index controls: search, tag filter, sort ──
+  (function() {
+    var searchInput   = document.getElementById('searchInput');
+    var sortSelect    = document.getElementById('sortSelect');
+    var tagButtons    = Array.prototype.slice.call(document.querySelectorAll('.tag-chip'));
+    var grid          = document.getElementById('cardGrid');
+    var featured      = document.getElementById('featuredCard');
+    var featuredLabel = document.getElementById('featuredEyebrow');
+    var sectionLabel  = document.getElementById('sectionEyebrow');
+    var emptyState    = document.getElementById('emptyState');
+
+    var allCards = Array.prototype.slice.call(grid.querySelectorAll('.post-card'));
+
+    var activeTag = 'all';
+    var sort      = 'newest';
+    var query     = '';
+
+    function matches(card) {
+      var tag   = card.getAttribute('data-tag') || '';
+      var title = (card.getAttribute('data-title') || '').toLowerCase();
+      var deck  = (card.getAttribute('data-deck')  || '').toLowerCase();
+      if (activeTag !== 'all' && tag !== activeTag) return false;
+      if (query && title.indexOf(query) === -1 && deck.indexOf(query) === -1) return false;
+      return true;
+    }
+
+    function dateOf(card) { return card.getAttribute('data-date') || ''; }
+
+    function render() {
+      var visible = allCards.filter(matches);
+      visible.sort(function(a, b) {
+        var d = dateOf(a).localeCompare(dateOf(b));
+        return sort === 'newest' ? -d : d;
+      });
+
+      var isDefaultView = (activeTag === 'all' && !query && sort === 'newest');
+
+      // Decide whether to show featured highlight
+      if (isDefaultView && visible.length > 0) {
+        if (featured) featured.style.display = '';
+        if (featuredLabel) featuredLabel.style.display = '';
+        if (sectionLabel) {
+          sectionLabel.textContent = 'More posts';
+          sectionLabel.style.display = visible.length > 1 ? '' : 'none';
+        }
+      } else {
+        if (featured) featured.style.display = 'none';
+        if (featuredLabel) featuredLabel.style.display = 'none';
+        if (sectionLabel) {
+          if (visible.length === 0) {
+            sectionLabel.style.display = 'none';
+          } else {
+            sectionLabel.textContent = visible.length === 1 ? '1 post' : visible.length + ' posts';
+            sectionLabel.style.display = '';
+          }
+        }
+      }
+
+      // Reorder grid to match sort, hide non-matches, hide the featured card's duplicate when in default view
+      visible.forEach(function(c) { grid.appendChild(c); });
+
+      allCards.forEach(function(c) {
+        var hideBecauseFeatured = (isDefaultView && c.getAttribute('data-featured') === 'true');
+        var hideBecauseFilter   = visible.indexOf(c) === -1;
+        c.style.display = (hideBecauseFeatured || hideBecauseFilter) ? 'none' : '';
+      });
+
+      // Empty state
+      emptyState.hidden = visible.length > 0;
+    }
+
+    tagButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        tagButtons.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeTag = btn.getAttribute('data-tag');
+        render();
+      });
+    });
+
+    if (sortSelect) sortSelect.addEventListener('change', function() { sort = sortSelect.value; render(); });
+    if (searchInput) searchInput.addEventListener('input', function() { query = searchInput.value.trim().toLowerCase(); render(); });
+
+    render();
+  })();
 </script>
 
 </body>
