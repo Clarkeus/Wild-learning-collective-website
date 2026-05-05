@@ -1673,6 +1673,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     gap: 10px;
     transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
     will-change: transform;
+    height: 100%;
   }
   .mbk-slide {
     width: 82%;
@@ -1685,20 +1686,34 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
     overflow: hidden;
   }
   .mbk-cover {
-    border-radius: 0;
+    flex: 0 0 42%;
+    position: relative;
     overflow: hidden;
     background: var(--cream-haze);
-    flex: 1 1 0;
-    min-height: 110px;
+  }
+  .mbk-cover::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 52px;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.22));
+    pointer-events: none;
   }
   .mbk-cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
   .mbk-cover svg { display: block; width: 100%; height: auto; }
-  .mbk-info { padding: 10px 16px 4px; flex: 0 0 auto; }
+  .mbk-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 18px 12px;
+    border-top: 3px solid var(--forest);
+    overflow: hidden;
+  }
   .mbk-num { font-size: 10px; font-weight: 600; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
-  .mbk-title { font-family: var(--serif); font-size: 19px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.15; }
-  .mbk-sub { font-size: 12px; color: var(--soil); font-weight: 300; line-height: 1.4; }
+  .mbk-title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.2; }
+  .mbk-sub { font-size: 12px; color: var(--soil); font-weight: 300; line-height: 1.4; margin-bottom: 2px; }
   /* Blurb */
-  .mbk-blurb { font-size: 12px; color: var(--soil); line-height: 1.6; font-style: italic; margin: 4px 0 0; }
+  .mbk-blurb { font-size: 14px; color: var(--soil); line-height: 1.75; font-style: italic; margin: 8px 0 0; flex: 1; }
   .mbk-blurb-coming { font-size: 12px; color: var(--soil); font-style: italic; opacity: 0.72; margin: 4px 0 0; }
   .mbk-readmore {
     background: none; border: none; padding: 4px 0 0;
