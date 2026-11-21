@@ -67,6 +67,35 @@ a{color:inherit}
   .hero .buy{font-size:.95rem}
 }
 
+
+/* Christmas pre-order */
+.xmas{background:#E9EDE7;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:clamp(56px,7vw,96px) 24px}
+.xmas__inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.xmas__art{width:clamp(200px,28vw,340px);height:auto;border-radius:2px}
+.xmas h2{font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.1;margin-bottom:12px}
+.xmas p{color:var(--ink-soft);max-width:36em}
+.xmas__deal b,.xmas__count b{color:var(--ink);font-weight:500;white-space:nowrap}
+.xmas__count{margin:20px 0 14px;max-width:460px}
+.xmas__left{font-size:1.25rem;color:var(--ink)!important;line-height:1.35}
+.xmas__left b{font-weight:500}
+.xmas__deal{margin:0 0 22px}
+.xmas__bar{height:8px;background:rgba(86,57,44,.12);border-radius:4px;overflow:hidden}
+.xmas__bar span{display:block;height:100%;width:0;background:var(--fox);border-radius:4px}
+.xmas__bar{margin-top:12px}
+.xmas__days{margin-top:8px;font-size:.95rem}
+.xmas__days{color:var(--ink-soft)}
+.xmas__opts{display:flex;gap:12px;flex-wrap:wrap}
+.xmas__opt{display:grid;grid-template-columns:1fr auto;gap:2px 18px;min-width:220px;padding:12px 16px;border:1px solid var(--fox);border-radius:2px;text-decoration:none;color:var(--fox);background:transparent}
+.xmas__opt:hover{background:rgba(168,77,36,.08)}
+.xmas__opt--main{background:var(--fox);color:var(--paper)}
+.xmas__opt--main:hover{background:#8f3f1b}
+.xmas__oname{font-size:1.1rem}
+.xmas__oprice{font-size:1.1rem;text-align:right}
+.xmas__onote{grid-column:1/-1;font-size:.9rem;opacity:.8}
+.xmas__opt.off{opacity:.55;cursor:default;pointer-events:none}
+.xmas__soon{margin-top:10px;font-size:.95rem}
+@media (max-width:640px){.xmas__inner{grid-template-columns:1fr}.xmas__art{width:100%;max-width:360px}.xmas__opt{flex:1 1 100%}}
+
 /* The first pages: a page-turner, one spread at a time, sized to fit the screen */
 .story{padding:clamp(64px,8vw,120px) 0 clamp(72px,9vw,120px)}
 .story__intro{max-width:620px;margin:0 auto 28px;padding:0 24px;text-align:center;font-style:italic;color:var(--ink-soft);font-size:1.1rem}
@@ -172,6 +201,15 @@ section[id]{scroll-margin-top:64px}
   .rf-print .f{margin-top:24pt;text-align:center;color:#666;font-size:10pt}
 }
 
+/* Colouring page */
+.col{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.col__pic canvas{width:100%;height:auto;display:block;border:1px solid var(--rule);background:#fff;cursor:crosshair;touch-action:manipulation}
+.col__pal{display:grid;grid-template-columns:repeat(5,44px);gap:10px}
+.col__sw{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);cursor:pointer;padding:0}
+.col__sw[aria-checked=true]{outline:3px solid var(--ink);outline-offset:3px}
+@media (max-width:760px){.col{grid-template-columns:1fr}.col__pal{grid-template-columns:repeat(5,1fr);max-width:320px}.col__sw{width:100%;aspect-ratio:1;height:auto}}
+@media print{body.printing-col > *:not(.col-print-host){display:none!important} body.printing-col .col-print-host img{width:100%;height:auto}}
+
 /* Buying: a plain price list, like the back of a book */
 .shop{border-top:1px solid var(--rule);padding:clamp(72px,9vw,120px) 24px}
 .shop__inner{max-width:880px;margin:0 auto}
@@ -200,6 +238,7 @@ section[id]{scroll-margin-top:64px}
 <nav class="nav" id="nav">
   <a class="nav__name" href="#">The Wild Learning Collective</a>
   <ul class="nav__links">
+    <li><a href="#christmas">Christmas</a></li>
     <li><a href="#story">The first pages</a></li>
     <li><a href="#club">The Club box</a></li>
     <li><a href="#shop">Buy the book</a></li>
@@ -218,6 +257,28 @@ section[id]{scroll-margin-top:64px}
   </div>
   <img class="hero__art" src="c03.webp" srcset="c03-900.webp 900w, c03.webp 1755w" sizes="100vw" width="1755" height="1241" alt="Little Fox sets off down a sunny forest path.">
 </header>
+
+<!-- ===== Christmas pre-order. Edit the settings in the XMAS block in the script at the bottom. ===== -->
+<section class="xmas" id="christmas">
+  <div class="xmas__inner">
+    <img class="xmas__art" id="xmasArt" src="xmas-friends.jpg" width="720" height="720" alt="Little Fox, Hedgehog and Robin in red Santa hats in the snow">
+    <div class="xmas__text">
+      <h2>Christmas with Little Fox</h2>
+      <p>A brand new Little Fox Christmas book, with a festive box to go with it: a Christmas reflection sheet, a colouring page, a crossword and more.</p>
+      <div class="xmas__count">
+        <p class="xmas__left"><b id="xmasLeft">250 families</b> to go before we can print the special Christmas edition.</p>
+        <div class="xmas__bar" id="xmasBar" aria-hidden="true"><span id="xmasFill"></span></div>
+        <p class="xmas__days" id="xmasDays"></p>
+      </div>
+      <p class="xmas__deal">We print in London, in small runs, so it only makes sense for us once enough families are on board. If we don&rsquo;t get there by <b id="xmasDate">10 December</b>, everyone who pre-ordered gets a full refund.</p>
+      <div class="xmas__opts">
+        <a class="xmas__opt xmas__opt--main" id="xmasPack" href="#"><span class="xmas__oname">Christmas pack</span><span class="xmas__oprice">£22</span><span class="xmas__onote">The book plus the festive box</span></a>
+        <a class="xmas__opt" id="xmasBook" href="#"><span class="xmas__oname">Christmas book</span><span class="xmas__oprice">£18</span><span class="xmas__onote">The book on its own</span></a>
+      </div>
+      <p class="xmas__soon" id="xmasSoon" hidden>Pre-orders open very soon.</p>
+    </div>
+  </div>
+</section>
 
 <section class="story" id="story">
   <p class="story__intro">The opening of Little Fox Thinks It Through, book two in the series.</p>
@@ -287,8 +348,21 @@ section[id]{scroll-margin-top:64px}
   </div>
   <div class="rf-print" id="rfPrintSheet" aria-hidden="true"></div>
   <div class="pane" role="tabpanel" id="pane-colour" aria-labelledby="tab-colour" hidden>
-    <p class="pane__what">A scene from the month&rsquo;s book to colour in.</p>
-    <div class="pane__empty">Sample coming soon</div>
+    <p class="pane__what">This month&rsquo;s colouring page. Pick a colour, then tap a space in the picture to fill it.</p>
+    <div class="col">
+      <div class="col__pic"><canvas id="colCanvas" width="1080" height="1350" aria-label="Christmas colouring page: Little Fox and Hedgehog decorating a tree"></canvas></div>
+      <div class="col__side">
+        <div class="col__pal" id="colPal" role="radiogroup" aria-label="Colours"></div>
+        <div class="puzzle__tools">
+          <button class="btn2" type="button" id="colUndo">Undo</button>
+          <button class="btn2" type="button" id="colClear">Start again</button>
+        </div>
+        <div class="puzzle__tools puzzle__tools--2">
+          <button class="buy" type="button" id="colPrint">Print my picture</button>
+          <a class="btn2" href="colouring.png" target="_blank" rel="noopener">Print a blank page</a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="pane" role="tabpanel" id="pane-wild" aria-labelledby="tab-wild" hidden>
     <p class="pane__what">One small thing to do outside, tied to the story.</p>
@@ -368,6 +442,27 @@ section[id]{scroll-margin-top:64px}
 var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('solid',scrollY>window.innerHeight*.6)},{passive:true});
 
+/* ===== XMAS SETTINGS: change these four lines ===== */
+var XMAS={
+  orders: 0,                 // how many pre-orders so far (update this by hand)
+  target: 250,               // orders needed before printing
+  deadline: '2026-12-10',    // last day to reach the target (YYYY-MM-DD)
+  linkPack: '',              // Stripe link for the Christmas pack (£22)
+  linkBook: ''               // Stripe link for the Christmas book on its own (£18)
+};
+(function(){
+  var d=new Date(XMAS.deadline+'T23:59:59'), days=Math.ceil((d-new Date())/864e5);
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('xmasDate').textContent=d.getDate()+' '+months[d.getMonth()];
+  var left=Math.max(0,XMAS.target-XMAS.orders);
+  document.getElementById('xmasLeft').textContent= left===0 ? 'We made it!' : left+(left===1?' family':' families');
+  if(left===0) document.querySelector('.xmas__left').innerHTML='<b>We made it!</b> The special Christmas edition is going to print.';
+  document.getElementById('xmasFill').style.width=Math.max(1.5,Math.min(100,XMAS.orders/XMAS.target*100))+'%';
+  document.getElementById('xmasDays').textContent= days>1 ? days+' days left to pre-order' : days===1 ? 'Last day to pre-order' : '';
+  var open=false;
+  [['xmasPack',XMAS.linkPack],['xmasBook',XMAS.linkBook]].forEach(function(x){var a=document.getElementById(x[0]); if(x[1]){a.href=x[1]; open=true}else{a.removeAttribute('href'); a.classList.add('off')}});
+  document.getElementById('xmasSoon').hidden=open;
+})();
 /* Thinking Pack signup (Formspree) */
 document.getElementById('packForm').addEventListener('submit',function(e){
   e.preventDefault(); var f=e.target, msg=document.getElementById('packMsg'), btn=f.querySelector('button');
@@ -414,6 +509,39 @@ document.getElementById('packForm').addEventListener('submit',function(e){
     var host=document.createElement('div'); host.className='rf-print-host'; var sh=document.getElementById('rfPrintSheet').cloneNode(); sh.innerHTML=out; host.appendChild(sh);
     document.body.appendChild(host); document.body.classList.add('printing-rf');
     setTimeout(function(){ try{window.print()}catch(e){} document.body.classList.remove('printing-rf'); host.remove(); },50);
+  };
+})();
+/* Colouring page: tap to fill */
+(function(){
+  var cv=document.getElementById('colCanvas'), cx=cv.getContext('2d',{willReadFrequently:true}), base=new Image(), hist=[], cur='#C8432B', ready=false;
+  var COLS=['#C8432B','#E58D49','#E9C46A','#6E8F6A','#3F6B4A','#A8C4D8','#4F7CA8','#8C6A4A','#E8A9A0','#FFFFFF'];
+  var pal=document.getElementById('colPal');
+  COLS.forEach(function(c,i){var b=document.createElement('button'); b.type='button'; b.className='col__sw'; b.style.background=c; b.setAttribute('role','radio'); b.setAttribute('aria-label',c==='#FFFFFF'?'White (rub out)':'Colour '+(i+1)); b.setAttribute('aria-checked',i===0);
+    b.onclick=function(){cur=c; pal.querySelectorAll('.col__sw').forEach(function(x){x.setAttribute('aria-checked',x===b)})}; pal.appendChild(b);});
+  function draw(){cx.fillStyle='#fff'; cx.fillRect(0,0,cv.width,cv.height); cx.drawImage(base,0,0,cv.width,cv.height);}
+  base.onload=function(){draw(); ready=true;}; base.src='colouring.png';
+  function hex(h){return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)]}
+  function fill(x,y){
+    var W=cv.width,H=cv.height,img=cx.getImageData(0,0,W,H),d=img.data,i0=(y*W+x)*4;
+    var tr=d[i0],tg=d[i0+1],tb=d[i0+2]; if(tr+tg+tb<200) return; // tapped a line
+    var c=hex(cur); if(Math.abs(tr-c[0])+Math.abs(tg-c[1])+Math.abs(tb-c[2])<10) return;
+    hist.push(img); if(hist.length>15) hist.shift(); img=cx.getImageData(0,0,W,H); d=img.data;
+    function same(i){return Math.abs(d[i]-tr)+Math.abs(d[i+1]-tg)+Math.abs(d[i+2]-tb)<60}
+    var st=[[x,y]];
+    while(st.length){var p=st.pop(),px=p[0],py=p[1],i=(py*W+px)*4;
+      while(px>=0&&same(i)){px--;i-=4} px++;i+=4; var up=false,dn=false;
+      while(px<W&&same(i)){d[i]=c[0];d[i+1]=c[1];d[i+2]=c[2];d[i+3]=255;
+        if(py>0){var u=i-W*4; if(same(u)){if(!up){st.push([px,py-1]);up=true}}else up=false}
+        if(py<H-1){var v=i+W*4; if(same(v)){if(!dn){st.push([px,py+1]);dn=true}}else dn=false}
+        px++;i+=4;}}
+    cx.putImageData(img,0,0);
+  }
+  cv.addEventListener('click',function(e){ if(!ready) return; var r=cv.getBoundingClientRect(); fill(Math.floor((e.clientX-r.left)/r.width*cv.width),Math.floor((e.clientY-r.top)/r.height*cv.height)); });
+  document.getElementById('colUndo').onclick=function(){var h=hist.pop(); if(h) cx.putImageData(h,0,0)};
+  document.getElementById('colClear').onclick=function(){if(ready){hist=[]; draw()}};
+  document.getElementById('colPrint').onclick=function(){
+    var host=document.createElement('div'); host.className='col-print-host'; var im=new Image(); im.src=cv.toDataURL('image/png'); host.appendChild(im); document.body.appendChild(host);
+    document.body.classList.add('printing-col'); im.onload=function(){ setTimeout(function(){ try{window.print()}catch(e){} document.body.classList.remove('printing-col'); host.remove(); },50) };
   };
 })();
 /* Page-turner */
