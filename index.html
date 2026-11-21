@@ -274,6 +274,17 @@ section[id]{scroll-margin-top:64px}
 .faq details p{color:var(--ink-soft);padding:0 0 20px}
 .faq__more{margin-top:28px;color:var(--ink-soft)}
 
+/* Wild Challenge */
+.wild{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.wild__card{width:100%;height:auto;border-radius:2px}
+.wild h3{font-weight:400;font-size:1.5rem;line-height:1.25;margin-bottom:10px}
+.wild p,.wild li{color:var(--ink-soft)}
+.wild b{color:var(--ink);font-weight:500}
+.wild ul{margin:8px 0 14px;padding-left:1.2em}
+.wild li{margin:3px 0}
+.wild__note{font-size:.95rem;margin-top:16px}
+@media (max-width:760px){.wild{grid-template-columns:1fr}}
+
 /* Buying: a plain price list, like the back of a book */
 .shop{border-top:1px solid var(--rule);padding:clamp(72px,9vw,120px) 24px}
 .shop__inner{max-width:880px;margin:0 auto}
@@ -430,8 +441,27 @@ section[id]{scroll-margin-top:64px}
     </div>
   </div>
   <div class="pane" role="tabpanel" id="pane-wild" aria-labelledby="tab-wild" hidden>
-    <p class="pane__what">One small thing to do outside, tied to the story.</p>
-    <div class="pane__empty">Sample coming soon</div>
+    <p class="pane__what">One small thing to do outside each month. Here&rsquo;s this month&rsquo;s.</p>
+    <div class="wild">
+      <img class="wild__card" src="wild-challenge.jpg" width="1400" height="990" loading="lazy" alt="Wild Challenge card: go and find something in nature that you only see in winter. Post it and tag us on Instagram for a chance to win a prize.">
+      <div class="wild__side">
+        <h3>Find something you only see in winter</h3>
+        <p>Not sure where to start? Some ideas:</p>
+        <ul>
+          <li>Frost patterns on a leaf or a window</li>
+          <li>Footprints in frost, mud or snow</li>
+          <li>Red holly berries</li>
+          <li>A robin, puffed up against the cold</li>
+          <li>The shapes of bare branches against the sky</li>
+        </ul>
+        <p>Take a photo of what you found, post it and tag <b>@thewildlearningcollective</b> for a chance to win a prize.</p>
+        <div class="puzzle__tools">
+          <a class="buy" href="https://www.instagram.com/thewildlearningcollective" target="_blank" rel="noopener">Open our Instagram</a>
+          <a class="btn2" href="wild-challenge.jpg" target="_blank" rel="noopener">Print the card</a>
+        </div>
+        <p class="wild__note">For grown-ups: please share a photo of what your child found rather than of your child.</p>
+      </div>
+    </div>
   </div>
   <div class="pane" role="tabpanel" id="pane-video" aria-labelledby="tab-video" hidden>
     <p class="pane__what">The month&rsquo;s story, narrated, to watch together.</p>
