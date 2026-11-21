@@ -513,32 +513,38 @@ document.getElementById('packForm').addEventListener('submit',function(e){
 })();
 /* Colouring page: tap to fill */
 (function(){
-  var cv=document.getElementById('colCanvas'), cx=cv.getContext('2d',{willReadFrequently:true}), base=new Image(), hist=[], cur='#C8432B', ready=false;
+  var cv=document.getElementById('colCanvas'), cx=cv.getContext('2d',{willReadFrequently:true}), base=new Image(), maskImg=new Image(), hist=[], cur='#C8432B', ready=0, W=1080, H=1350, ORIG, MASK;
   var COLS=['#C8432B','#E58D49','#E9C46A','#6E8F6A','#3F6B4A','#A8C4D8','#4F7CA8','#8C6A4A','#E8A9A0','#FFFFFF'];
   var pal=document.getElementById('colPal');
   COLS.forEach(function(c,i){var b=document.createElement('button'); b.type='button'; b.className='col__sw'; b.style.background=c; b.setAttribute('role','radio'); b.setAttribute('aria-label',c==='#FFFFFF'?'White (rub out)':'Colour '+(i+1)); b.setAttribute('aria-checked',i===0);
     b.onclick=function(){cur=c; pal.querySelectorAll('.col__sw').forEach(function(x){x.setAttribute('aria-checked',x===b)})}; pal.appendChild(b);});
-  function draw(){cx.fillStyle='#fff'; cx.fillRect(0,0,cv.width,cv.height); cx.drawImage(base,0,0,cv.width,cv.height);}
-  base.onload=function(){draw(); ready=true;}; base.src='colouring.png';
+  function grab(img){var c=document.createElement('canvas'); c.width=W; c.height=H; var g=c.getContext('2d'); g.fillStyle='#fff'; g.fillRect(0,0,W,H); g.drawImage(img,0,0,W,H); var d=g.getImageData(0,0,W,H).data, o=new Uint8Array(W*H); for(var i=0;i<W*H;i++) o[i]=d[i*4]>128?1:0; return o;}
+  function draw(){cx.fillStyle='#fff'; cx.fillRect(0,0,W,H); cx.drawImage(base,0,0,W,H);}
+  function done(){ if(++ready<2) return; ORIG=grab(base); MASK=grab(maskImg); draw(); }
+  base.onload=done; maskImg.onload=done; base.src='colouring.png'; maskImg.src='colouring-mask.png';
   function hex(h){return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)]}
   function fill(x,y){
-    var W=cv.width,H=cv.height,img=cx.getImageData(0,0,W,H),d=img.data,i0=(y*W+x)*4;
-    var tr=d[i0],tg=d[i0+1],tb=d[i0+2]; if(tr+tg+tb<200) return; // tapped a line
-    var c=hex(cur); if(Math.abs(tr-c[0])+Math.abs(tg-c[1])+Math.abs(tb-c[2])<10) return;
-    hist.push(img); if(hist.length>15) hist.shift(); img=cx.getImageData(0,0,W,H); d=img.data;
-    function same(i){return Math.abs(d[i]-tr)+Math.abs(d[i+1]-tg)+Math.abs(d[i+2]-tb)<60}
-    var st=[[x,y]];
-    while(st.length){var p=st.pop(),px=p[0],py=p[1],i=(py*W+px)*4;
-      while(px>=0&&same(i)){px--;i-=4} px++;i+=4; var up=false,dn=false;
-      while(px<W&&same(i)){d[i]=c[0];d[i+1]=c[1];d[i+2]=c[2];d[i+3]=255;
-        if(py>0){var u=i-W*4; if(same(u)){if(!up){st.push([px,py-1]);up=true}}else up=false}
-        if(py<H-1){var v=i+W*4; if(same(v)){if(!dn){st.push([px,py+1]);dn=true}}else dn=false}
-        px++;i+=4;}}
+    if(!ORIG[y*W+x]) return;
+    var seed=y*W+x;
+    if(!MASK[seed]){ // tapped near a line: find the closest open spot in the outline map
+      var best=-1; for(var r=1;r<8&&best<0;r++) for(var dy=-r;dy<=r&&best<0;dy++) for(var dx=-r;dx<=r;dx++){var xx=x+dx,yy=y+dy; if(xx>=0&&yy>=0&&xx<W&&yy<H&&MASK[yy*W+xx]){best=yy*W+xx;break}}
+      if(best<0) return; seed=best; }
+    var reg=new Uint8Array(W*H), st=[seed], q=[]; reg[seed]=1;
+    while(st.length){var p=st.pop(), px=p%W, py=(p-px)/W; q.push(p);
+      if(px>0&&!reg[p-1]&&MASK[p-1]){reg[p-1]=1;st.push(p-1)} if(px<W-1&&!reg[p+1]&&MASK[p+1]){reg[p+1]=1;st.push(p+1)}
+      if(py>0&&!reg[p-W]&&MASK[p-W]){reg[p-W]=1;st.push(p-W)} if(py<H-1&&!reg[p+W]&&MASK[p+W]){reg[p+W]=1;st.push(p+W)}}
+    for(var step=0;step<6;step++){ var nq=[]; // grow up to the real thin line, never across it
+      for(var k=0;k<q.length;k++){var p=q[k], px=p%W, nb=[px>0?p-1:-1,px<W-1?p+1:-1,p-W,p+W];
+        for(var j=0;j<4;j++){var n=nb[j]; if(n>=0&&n<W*H&&!reg[n]&&ORIG[n]){reg[n]=1;nq.push(n)}}}
+      q=nq; }
+    var img=cx.getImageData(0,0,W,H); hist.push(cx.getImageData(0,0,W,H)); if(hist.length>15) hist.shift();
+    var d=img.data, c=hex(cur);
+    for(var i=0;i<W*H;i++) if(reg[i]&&ORIG[i]){d[i*4]=c[0];d[i*4+1]=c[1];d[i*4+2]=c[2];d[i*4+3]=255}
     cx.putImageData(img,0,0);
   }
-  cv.addEventListener('click',function(e){ if(!ready) return; var r=cv.getBoundingClientRect(); fill(Math.floor((e.clientX-r.left)/r.width*cv.width),Math.floor((e.clientY-r.top)/r.height*cv.height)); });
+  cv.addEventListener('click',function(e){ if(ready<2) return; var r=cv.getBoundingClientRect(); fill(Math.floor((e.clientX-r.left)/r.width*W),Math.floor((e.clientY-r.top)/r.height*H)); });
   document.getElementById('colUndo').onclick=function(){var h=hist.pop(); if(h) cx.putImageData(h,0,0)};
-  document.getElementById('colClear').onclick=function(){if(ready){hist=[]; draw()}};
+  document.getElementById('colClear').onclick=function(){if(ready>1){hist=[]; draw()}};
   document.getElementById('colPrint').onclick=function(){
     var host=document.createElement('div'); host.className='col-print-host'; var im=new Image(); im.src=cv.toDataURL('image/png'); host.appendChild(im); document.body.appendChild(host);
     document.body.classList.add('printing-col'); im.onload=function(){ setTimeout(function(){ try{window.print()}catch(e){} document.body.classList.remove('printing-col'); host.remove(); },50) };
