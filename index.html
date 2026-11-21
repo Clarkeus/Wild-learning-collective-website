@@ -125,12 +125,12 @@ a{color:inherit}
 /* The first pages: a page-turner, one spread at a time, sized to fit the screen */
 .story{padding:clamp(64px,8vw,120px) 0 clamp(72px,9vw,120px)}
 .story__intro{max-width:620px;margin:0 auto 28px;padding:0 24px;text-align:center;font-style:italic;color:var(--ink-soft);font-size:1.1rem}
-.book{--w:min(1400px,100vw,calc((100svh - 150px) * 1.414));width:var(--w);margin:0 auto}
+.book{--w:min(1400px,100vw,calc((100svh - 150px) * 1.5));width:var(--w);margin:0 auto}
 .book__pages{position:relative;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;align-items:flex-start;outline:none}
 .book__pages::-webkit-scrollbar{display:none}
 .page{flex:0 0 100%;scroll-snap-align:start;position:relative;container-type:inline-size;margin:0}
 .page img{width:100%}
-.page--paper{aspect-ratio:1755/1241;display:flex;align-items:center;justify-content:center;background:var(--paper)}
+.page--paper{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;background:var(--paper)}
 .page__words{position:absolute;left:var(--x);top:var(--y);font-size:2.35cqw;line-height:1.35}
 .page__words p+p{margin-top:.62em}
 .page__words--centre{position:static;text-align:center;font-size:3.2cqw}
@@ -346,28 +346,28 @@ section[id]{scroll-margin-top:64px}
 </section>
 
 <section class="story" id="story">
-  <p class="story__intro">The opening of Little Fox Thinks It Through, book two in the series.</p>
+  <p class="story__intro">The opening of Little Fox and the Busy Day, book one in the series.</p>
   <div class="book" aria-roledescription="book" aria-label="The first pages">
     <div class="book__pages" id="bookPages" tabindex="0">
       <figure class="page" role="group" aria-roledescription="page">
-        <img src="c03.webp" srcset="c03-900.webp 900w, c03.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" alt="Little Fox trots along a sunny forest path.">
-        <figcaption class="page__words" style="--x:6.5%;--y:20%"><p>Little Fox had an idea.</p><p>It felt clear.</p><p>It felt right.</p><p>And he was eager to share it.</p></figcaption>
+        <img src="b05.webp" srcset="b05-900.webp 900w, b05.webp 1536w" sizes="(max-width:1400px) 100vw, 1400px" width="1536" height="1024" alt="Little Fox races along a forest path.">
+        <figcaption class="page__words" style="--x:7%;--y:12%"><p>Little Fox ran through the forest.</p><p>Fast.</p><p>Faster than the wind.</p><p>There was so much to see&hellip;</p><p>and no time to stop.</p></figcaption>
       </figure>
       <figure class="page" role="group" aria-roledescription="page">
-        <img src="c04.webp" srcset="c04-900.webp 900w, c04.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Little Fox meets Rabbit on the path.">
-        <figcaption class="page__words" style="--x:6%;--y:15%"><p>As he walked through the forest,<br>he met Rabbit.</p><p>Rabbit listened, then said,</p><p>&ldquo;I think I&rsquo;d feel unsure about that.&rdquo;</p></figcaption>
+        <img src="b06.webp" srcset="b06-900.webp 900w, b06.webp 1536w" sizes="(max-width:1400px) 100vw, 1400px" width="1536" height="1024" loading="lazy" alt="Three rabbits wave as Little Fox hurries past.">
+        <figcaption class="page__words" style="--x:8%;--y:15%"><p>&ldquo;Come play with us!&rdquo; the rabbits called.</p><p>&ldquo;Not now,&rdquo; said Fox, already hurrying past.</p></figcaption>
       </figure>
       <figure class="page" role="group" aria-roledescription="page">
-        <img src="c06.webp" srcset="c06-900.webp 900w, c06.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Deer walks beside Little Fox.">
-        <figcaption class="page__words" style="--x:9%;--y:16%"><p>Further along, Deer joined him.</p><p>&ldquo;I think it&rsquo;s quite simple,&rdquo; Little Fox said.</p><p>&ldquo;I don&rsquo;t really see it that way,&rdquo; Deer replied.</p><p>&ldquo;I imagine something different.&rdquo;</p></figcaption>
+        <img src="b07.webp" srcset="b07-900.webp 900w, b07.webp 1536w" sizes="(max-width:1400px) 100vw, 1400px" width="1536" height="1024" loading="lazy" alt="Two deer reach up for fruit in a tree as Little Fox runs by.">
+        <figcaption class="page__words" style="--x:8%;--y:11%"><p>&ldquo;Little Fox, could you help us?&rdquo; the deer<br>asked, reaching up at the fruit.</p><p>&ldquo;Maybe later,&rdquo; Fox called, without<br>slowing down.</p></figcaption>
       </figure>
       <figure class="page" role="group" aria-roledescription="page">
-        <img src="c07.webp" srcset="c07-900.webp 900w, c07.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Little Fox sits on the path, frowning a little.">
-        <figcaption class="page__words" style="--x:6.5%;--y:21%"><p>Little Fox felt a quiet irritation.</p><p>Why did everyone see it differently<br>when it felt so obvious to him?</p></figcaption>
+        <img src="b09.webp" srcset="b09-900.webp 900w, b09.webp 1536w" sizes="(max-width:1400px) 100vw, 1400px" width="1536" height="1024" loading="lazy" alt="Little Fox trips over a tree root, leaves flying.">
+        <figcaption class="page__words" style="--x:7.5%;--y:16%"><p>Little Fox kept running.</p><p>Faster&hellip; and faster&hellip;</p><p>until&hellip; he tripped.</p></figcaption>
       </figure>
       <figure class="page" role="group" aria-roledescription="page">
-        <img src="c10.webp" srcset="c10-900.webp 900w, c10.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Bear sits down on the path beside Little Fox.">
-        <figcaption class="page__words" style="--x:6%;--y:9%"><p>Then he meets Bear.</p><p><span class="soft">The rest is in the book.</span></p><a class="buy page__buy" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Buy the book, £13.99</a></figcaption>
+        <img src="b11.webp" srcset="b11-900.webp 900w, b11.webp 1536w" sizes="(max-width:1400px) 100vw, 1400px" width="1536" height="1024" loading="lazy" alt="Little Fox sits alone on the quiet forest path.">
+        <figcaption class="page__words" style="--x:8%;--y:14%"><p>The forest felt different now.</p><p>Still. Quiet.</p><p>Almost&hellip; lonely.</p><p><span class="soft">The rest is in the book.</span></p><a class="buy page__buy" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Buy the book, £13.99</a></figcaption>
       </figure>
     </div>
     <div class="book__nav">
