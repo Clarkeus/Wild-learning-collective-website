@@ -141,6 +141,12 @@ section[id]{scroll-margin-top:64px}
 .item .buy{grid-column:2;grid-row:2;justify-self:end}
 @media (max-width:560px){.item{grid-template-columns:1fr}.item__price{text-align:left}.item .buy{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}}
 
+.signup{border-top:1px solid var(--rule);padding:clamp(64px,8vw,104px) 24px;text-align:center}
+.signup h2{font-weight:400;font-size:clamp(26px,2.8vw,36px);margin-bottom:10px}
+.signup p{color:var(--ink-soft);max-width:32em;margin:0 auto}
+.signup form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:26px auto 12px;max-width:520px}
+.signup input{flex:1 1 240px;font:inherit;font-size:1rem;padding:.55em .8em;border:1px solid var(--ink-soft);border-radius:2px;background:#FBF7F0;color:var(--ink)}
+.signup__msg{font-size:.95rem}
 .foot{padding:40px 24px 56px;text-align:center;color:var(--ink-soft);font-size:.95rem}
 .foot a{margin:0 10px}
 </style>
@@ -166,7 +172,7 @@ section[id]{scroll-margin-top:64px}
       <a class="buy" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Buy the book, £13.99</a>
     </div>
   </div>
-  <img class="hero__art" src="images/c03.webp" srcset="images/c03-900.webp 900w, images/c03.webp 1755w" sizes="100vw" width="1755" height="1241" alt="Little Fox sets off down a sunny forest path.">
+  <img class="hero__art" src="c03.webp" srcset="c03-900.webp 900w, c03.webp 1755w" sizes="100vw" width="1755" height="1241" alt="Little Fox sets off down a sunny forest path.">
 </header>
 
 <section class="story" id="story">
@@ -179,19 +185,19 @@ section[id]{scroll-margin-top:64px}
         </div>
       </div>
       <figure class="page" role="group" aria-roledescription="page">
-        <img src="images/c04.webp" srcset="images/c04-900.webp 900w, images/c04.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Little Fox meets Rabbit on the path.">
+        <img src="c04.webp" srcset="c04-900.webp 900w, c04.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Little Fox meets Rabbit on the path.">
         <figcaption class="page__words" style="--x:6%;--y:15%"><p>As he walked through the forest,<br>he met Rabbit.</p><p>Rabbit listened, then said,</p><p>&ldquo;I think I&rsquo;d feel unsure about that.&rdquo;</p></figcaption>
       </figure>
       <figure class="page" role="group" aria-roledescription="page">
-        <img src="images/c06.webp" srcset="images/c06-900.webp 900w, images/c06.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Deer walks beside Little Fox.">
+        <img src="c06.webp" srcset="c06-900.webp 900w, c06.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Deer walks beside Little Fox.">
         <figcaption class="page__words" style="--x:9%;--y:16%"><p>Further along, Deer joined him.</p><p>&ldquo;I think it&rsquo;s quite simple,&rdquo; Little Fox said.</p><p>&ldquo;I don&rsquo;t really see it that way,&rdquo; Deer replied.</p><p>&ldquo;I imagine something different.&rdquo;</p></figcaption>
       </figure>
       <figure class="page" role="group" aria-roledescription="page">
-        <img src="images/c07.webp" srcset="images/c07-900.webp 900w, images/c07.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Little Fox sits on the path, frowning a little.">
+        <img src="c07.webp" srcset="c07-900.webp 900w, c07.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Little Fox sits on the path, frowning a little.">
         <figcaption class="page__words" style="--x:6.5%;--y:21%"><p>Little Fox felt a quiet irritation.</p><p>Why did everyone see it differently<br>when it felt so obvious to him?</p></figcaption>
       </figure>
       <figure class="page" role="group" aria-roledescription="page">
-        <img src="images/c10.webp" srcset="images/c10-900.webp 900w, images/c10.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Bear sits down on the path beside Little Fox.">
+        <img src="c10.webp" srcset="c10-900.webp 900w, c10.webp 1755w" sizes="(max-width:1400px) 100vw, 1400px" width="1755" height="1241" loading="lazy" alt="Bear sits down on the path beside Little Fox.">
         <figcaption class="page__words" style="--x:6%;--y:9%"><p>Then he meets Bear.</p><p><span class="soft">The rest is in the book.</span></p><a class="buy page__buy" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Buy the book, £13.99</a></figcaption>
       </figure>
     </div>
@@ -245,7 +251,7 @@ section[id]{scroll-margin-top:64px}
       </div>
       <div class="puzzle__tools puzzle__tools--2">
         <button class="btn2" type="button" id="cwClear">Start again</button>
-        <a class="btn2" href="images/crossword-print.jpg" target="_blank" rel="noopener">Print this page</a>
+        <a class="btn2" href="crossword-print.jpg" target="_blank" rel="noopener">Print this page</a>
       </div>
       <p class="puzzle__msg" id="cwMsg" aria-live="polite"></p>
     </div>
@@ -282,6 +288,15 @@ section[id]{scroll-margin-top:64px}
     </div>
   </div>
 </section>
+<section class="signup" id="signup">
+  <h2>Not ready to buy yet?</h2>
+  <p>Get the free Little Fox Thinking Pack: printable puzzles, a Wild Challenge card, and questions that get more than &ldquo;fine&rdquo; out of your child.</p>
+  <form id="packForm">
+    <input type="email" name="email" required placeholder="Your email" aria-label="Email address" autocomplete="email">
+    <button class="buy" type="submit">Send me the pack</button>
+  </form>
+  <p class="signup__msg" id="packMsg" aria-live="polite">No spam. Unsubscribe any time.</p>
+</section>
 </main>
 
 <footer class="foot">
@@ -293,6 +308,15 @@ section[id]{scroll-margin-top:64px}
 var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('solid',scrollY>window.innerHeight*.6)},{passive:true});
 
+/* Thinking Pack signup (Formspree) */
+document.getElementById('packForm').addEventListener('submit',function(e){
+  e.preventDefault(); var f=e.target, msg=document.getElementById('packMsg'), btn=f.querySelector('button');
+  var fd=new FormData(f); fd.append('form_type','thinking_pack'); fd.append('_subject','Thinking Pack signup');
+  btn.disabled=true; btn.textContent='Sending';
+  fetch('https://formspree.io/f/mvzdqezp',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+  .then(function(r){ if(!r.ok) throw 0; f.style.display='none'; msg.textContent='Thank you. Your Thinking Pack is on its way, so check your inbox.'; if(window.plausible) plausible('Email Signup'); })
+  .catch(function(){ btn.disabled=false; btn.textContent='Try again'; msg.textContent='That didn\'t send. Try again, or email hello@thewildlearningcollective.com'; });
+});
 /* Page-turner */
 (function(){
   var box=document.getElementById('bookPages'), pages=box.children, n=pages.length;
