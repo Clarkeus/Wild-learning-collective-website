@@ -255,9 +255,9 @@ section[id]{scroll-margin-top:64px}
 .sch__form{margin-top:56px;padding-top:44px;border-top:1px solid var(--rule);max-width:720px}
 .sch__form h3{font-weight:400;font-size:1.6rem;margin-bottom:6px}
 .sch__form>p{color:var(--ink-soft);margin-bottom:22px}
-.sch__row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.sch__form input:not([type=checkbox]),.sch__form select,.sch__form textarea{width:100%;font:inherit;font-size:1rem;padding:.55em .75em;border:1px solid var(--ink-soft);border-radius:2px;background:#FBF7F0;color:var(--ink)}
-.sch__form textarea{margin:12px 0 16px;resize:vertical}
+.sch__row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+
+.sch__form textarea{margin:0 0 16px}
 .sch__checks{border:0;margin:14px 0 0;padding:0}
 .sch__checks legend{color:var(--ink-soft);margin-bottom:6px}
 .sch__checks label{display:flex;gap:10px;align-items:center;padding:3px 0}
@@ -310,6 +310,28 @@ section[id]{scroll-margin-top:64px}
 .foot{padding:40px 24px 56px;text-align:center;color:var(--ink-soft);font-size:.95rem}
 .foot a{margin:0 10px}
 
+
+/* Modern form controls */
+.mf input:not([type=checkbox]),.mf select,.mf textarea{-webkit-appearance:none;appearance:none;width:100%;font-family:var(--sans,'Figtree',sans-serif);font-size:15px;color:var(--ink);background:#FFFDF9;border:1px solid rgba(86,57,44,.2);border-radius:10px;padding:13px 14px;box-shadow:0 1px 2px rgba(86,57,44,.04);transition:border-color .15s,box-shadow .15s}
+.mf input::placeholder,.mf textarea::placeholder{color:rgba(86,57,44,.45)}
+.mf input:focus,.mf select:focus,.mf textarea:focus{outline:none;border-color:var(--fox);box-shadow:0 0 0 4px rgba(168,77,36,.12)}
+.mf select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2356392C' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
+.mf select:invalid,.mf select.empty{color:rgba(86,57,44,.45)}
+.mf input[type=number]::-webkit-inner-spin-button,.mf input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.mf input[type=number]{-moz-appearance:textfield}
+.mf textarea{min-height:96px;resize:vertical;line-height:1.5}
+.mf button[type=submit]{-webkit-appearance:none;appearance:none;font-family:var(--sans,'Figtree',sans-serif);font-size:15px;font-weight:600;color:#fff;background:var(--fox);border:0;border-radius:10px;padding:14px 26px;cursor:pointer;box-shadow:0 1px 2px rgba(86,57,44,.15);transition:background .15s,transform .1s}
+.mf button[type=submit]:hover{background:#8f3f1b}
+.mf button[type=submit]:active{transform:scale(.98)}
+.mf .lbl{display:block;font-family:var(--sans,'Figtree',sans-serif);font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--ink);margin:6px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;font-family:var(--sans,'Figtree',sans-serif);font-size:14px;font-weight:500;color:var(--ink);background:#FFFDF9;border:1px solid rgba(86,57,44,.2);border-radius:999px;padding:9px 15px;transition:all .15s;user-select:none}
+.chips label:hover span{border-color:var(--fox)}
+.chips input:checked+span{background:var(--fox);border-color:var(--fox);color:#fff}
+.chips input:focus-visible+span{box-shadow:0 0 0 4px rgba(168,77,36,.18)}
+
 /* Modern UI layer: menus, tabs, buttons and labels in a clean sans */
 .nav{align-items:center;padding:16px clamp(20px,4vw,56px)}
 .nav__name{font-family:var(--serif);font-size:1.2rem}
@@ -329,7 +351,7 @@ section[id]{scroll-margin-top:64px}
 .foot{font-family:var(--sans);font-size:14px}
 .puzzle__links,.puzzle__links button{font-family:var(--sans);font-size:14px}
 .rf__step,.rf__ideas summary,.xmas__days,.signup__msg,.sch__checks legend{font-family:var(--sans);font-size:14px}
-.sch__form input:not([type=checkbox]),.sch__form select,.sch__form textarea,.signup input{font-family:var(--sans);font-size:15px;border-radius:6px}
+
 .faq summary::after{font-family:var(--sans)}
 </style>
 </head>
@@ -571,28 +593,29 @@ section[id]{scroll-margin-top:64px}
     <div class="sch__form">
       <h3>Bring Little Fox to your group</h3>
       <p>Tell us a little about your school, nursery, library or group and we&rsquo;ll reply within 48 hours with options and prices. No obligation.</p>
-      <form id="schForm">
+      <form id="schForm" class="mf">
         <div class="sch__row">
           <input name="name" required placeholder="Your name" autocomplete="name">
           <input name="email" type="email" required placeholder="Your email" autocomplete="email">
         </div>
         <div class="sch__row">
           <input name="school" required placeholder="School or group name">
-          <select name="role"><option value="">Your role</option><option>Class teacher</option><option>PSHE lead</option><option>Head teacher</option><option>Librarian</option><option>SENCO</option><option>Teaching assistant</option><option>Other</option></select>
+          <select name="role" required><option value="" disabled selected>Your role</option><option>Class teacher</option><option>PSHE lead</option><option>Head teacher</option><option>Librarian</option><option>SENCO</option><option>Teaching assistant</option><option>Other</option></select>
         </div>
         <div class="sch__row">
-          <select name="yearGroup"><option value="">Year group</option><option>Reception</option><option>KS1 (Years 1 and 2)</option><option>Lower KS2 (Years 3 and 4)</option><option>Upper KS2 (Years 5 and 6)</option><option>Mixed or whole school</option></select>
+          <select name="yearGroup" required><option value="" disabled selected>Year group</option><option>Reception</option><option>KS1 (Years 1 and 2)</option><option>Lower KS2 (Years 3 and 4)</option><option>Upper KS2 (Years 5 and 6)</option><option>Mixed or whole school</option></select>
           <input name="children" type="number" min="1" placeholder="Roughly how many children?">
         </div>
-        <fieldset class="sch__checks"><legend>Interested in (tick any)</legend>
-          <label><input type="checkbox" name="interest" value="Classroom books and lessons"> Books and lessons for the classroom</label>
-          <label><input type="checkbox" name="interest" value="Group or library session"> A group or library session</label>
-          <label><input type="checkbox" name="interest" value="Author visit"> An author visit</label>
-          <label><input type="checkbox" name="interest" value="Termly subscription"> A termly book subscription</label>
-          <label><input type="checkbox" name="interest" value="Christmas class gifts"> Christmas books as class gifts</label>
-        </fieldset>
+        <span class="lbl">Interested in</span>
+        <div class="chips">
+          <label><input type="checkbox" name="interest" value="Classroom books and lessons"><span>Books and lessons</span></label>
+          <label><input type="checkbox" name="interest" value="Group or library session"><span>A group session</span></label>
+          <label><input type="checkbox" name="interest" value="Author visit"><span>An author visit</span></label>
+          <label><input type="checkbox" name="interest" value="Termly subscription"><span>Termly books</span></label>
+          <label><input type="checkbox" name="interest" value="Christmas class gifts"><span>Christmas class gifts</span></label>
+        </div>
         <textarea name="notes" rows="3" placeholder="Anything else? (optional)"></textarea>
-        <button class="buy" type="submit">Send enquiry</button>
+        <button type="submit">Send enquiry</button>
         <p class="sch__msg" id="schMsg" aria-live="polite"></p>
       </form>
     </div>
@@ -617,9 +640,9 @@ section[id]{scroll-margin-top:64px}
 <section class="signup" id="signup">
   <h2>Not ready to buy yet?</h2>
   <p>Get the free Little Fox Thinking Pack: printable puzzles, a Wild Challenge card, and questions that get more than &ldquo;fine&rdquo; out of your child.</p>
-  <form id="packForm">
+  <form id="packForm" class="mf">
     <input type="email" name="email" required placeholder="Your email" aria-label="Email address" autocomplete="email">
-    <button class="buy" type="submit">Send me the pack</button>
+    <button type="submit">Send me the pack</button>
   </form>
   <p class="signup__msg" id="packMsg" aria-live="polite">No spam. Unsubscribe any time.</p>
 </section>

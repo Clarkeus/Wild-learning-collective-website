@@ -36,10 +36,29 @@ b{color:var(--ink);font-weight:500}
 .nav a:last-child{font-family:'Figtree',sans-serif;font-size:15px;font-weight:500;background:var(--fox);color:#fff;padding:9px 16px;border-radius:6px}
 form{margin-top:20px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-input,select,textarea{width:100%;font-family:'Figtree',sans-serif;font-size:15px;padding:.6em .75em;border:1px solid var(--ink-soft);border-radius:6px;background:#FBF7F0;color:var(--ink)}
-textarea{margin:2px 0 16px;resize:vertical}
-button{font-family:'Figtree',sans-serif;font-size:15px;font-weight:500;background:var(--fox);color:#fff;border:0;border-radius:6px;padding:11px 20px;cursor:pointer}
-button:hover{background:#8f3f1b}
+textarea{margin:0 0 16px}
+.row{gap:12px!important;margin-bottom:12px!important}
+
+/* Modern form controls */
+.mf input:not([type=checkbox]),.mf select,.mf textarea{-webkit-appearance:none;appearance:none;width:100%;font-family:var(--sans,'Figtree',sans-serif);font-size:15px;color:var(--ink);background:#FFFDF9;border:1px solid rgba(86,57,44,.2);border-radius:10px;padding:13px 14px;box-shadow:0 1px 2px rgba(86,57,44,.04);transition:border-color .15s,box-shadow .15s}
+.mf input::placeholder,.mf textarea::placeholder{color:rgba(86,57,44,.45)}
+.mf input:focus,.mf select:focus,.mf textarea:focus{outline:none;border-color:var(--fox);box-shadow:0 0 0 4px rgba(168,77,36,.12)}
+.mf select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2356392C' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
+.mf select:invalid,.mf select.empty{color:rgba(86,57,44,.45)}
+.mf input[type=number]::-webkit-inner-spin-button,.mf input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.mf input[type=number]{-moz-appearance:textfield}
+.mf textarea{min-height:96px;resize:vertical;line-height:1.5}
+.mf button[type=submit]{-webkit-appearance:none;appearance:none;font-family:var(--sans,'Figtree',sans-serif);font-size:15px;font-weight:600;color:#fff;background:var(--fox);border:0;border-radius:10px;padding:14px 26px;cursor:pointer;box-shadow:0 1px 2px rgba(86,57,44,.15);transition:background .15s,transform .1s}
+.mf button[type=submit]:hover{background:#8f3f1b}
+.mf button[type=submit]:active{transform:scale(.98)}
+.mf .lbl{display:block;font-family:var(--sans,'Figtree',sans-serif);font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--ink);margin:6px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;font-family:var(--sans,'Figtree',sans-serif);font-size:14px;font-weight:500;color:var(--ink);background:#FFFDF9;border:1px solid rgba(86,57,44,.2);border-radius:999px;padding:9px 15px;transition:all .15s;user-select:none}
+.chips label:hover span{border-color:var(--fox)}
+.chips input:checked+span{background:var(--fox);border-color:var(--fox);color:#fff}
+.chips input:focus-visible+span{box-shadow:0 0 0 4px rgba(168,77,36,.18)}
 .msg{margin-top:12px;font-family:'Figtree',sans-serif;font-size:14px}
 .foot{font-family:'Figtree',sans-serif;font-size:14px}
 @media (max-width:640px){.row{grid-template-columns:1fr}}
@@ -65,14 +84,14 @@ button:hover{background:#8f3f1b}
 
   <h2>Ask about a reading</h2>
   <p>Tell us about your event and we&rsquo;ll reply within 48 hours with availability and prices.</p>
-  <form id="readForm">
+  <form id="readForm" class="mf">
     <div class="row"><input name="name" required placeholder="Your name" autocomplete="name"><input name="email" type="email" required placeholder="Your email" autocomplete="email"></div>
     <div class="row">
-      <select name="eventType" required><option value="">Type of event</option><option>Nursery or school</option><option>Library or bookshop</option><option>Parent and toddler group</option><option>Birthday party</option><option>Community event</option><option>Other</option></select>
+      <select name="eventType" required><option value="" disabled selected>Type of event</option><option>Nursery or school</option><option>Library or bookshop</option><option>Parent and toddler group</option><option>Birthday party</option><option>Community event</option><option>Other</option></select>
       <input name="place" required placeholder="Town or venue">
     </div>
     <div class="row"><input name="date" placeholder="Preferred date (if you have one)"><input name="children" type="number" min="1" placeholder="Roughly how many children?"></div>
-    <div class="row"><select name="ages"><option value="">Children&rsquo;s ages</option><option>Under 3</option><option>3 to 5</option><option>5 to 8</option><option>Mixed ages</option></select><span></span></div>
+    <div class="row"><select name="ages" required><option value="" disabled selected>Children&rsquo;s ages</option><option>Under 3</option><option>3 to 5</option><option>5 to 8</option><option>Mixed ages</option></select><span></span></div>
     <textarea name="notes" rows="3" placeholder="Anything else we should know? (optional)"></textarea>
     <button type="submit">Send enquiry</button>
     <p class="msg" id="readMsg" aria-live="polite"></p>
