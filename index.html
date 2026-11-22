@@ -238,6 +238,16 @@ section[id]{scroll-margin-top:64px}
 @media print{body.printing-col > *:not(.col-print-host){display:none!important} body.printing-col .col-print-host img{width:100%;height:auto}}
 
 
+
+/* Reading with Olivia */
+.ol{background:#EFE6D8;border-top:1px solid var(--rule);padding:clamp(64px,8vw,110px) 24px}
+.ol__inner{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.ol__img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px}
+.ol h2{font-weight:400;font-size:clamp(32px,3.6vw,48px);line-height:1.1;margin-bottom:14px}
+.ol p{color:var(--ink-soft);margin-bottom:12px;max-width:30em}
+.ol .buy{margin-top:10px}
+@media (max-width:760px){.ol__inner{grid-template-columns:1fr}}
+
 /* Schools */
 .sch{border-top:1px solid var(--rule);padding:clamp(72px,9vw,120px) 24px}
 .sch__inner{max-width:1040px;margin:0 auto}
@@ -364,7 +374,7 @@ section[id]{scroll-margin-top:64px}
     <li><a href="#story">The first pages</a></li>
     <li><a href="#club">The Club box</a></li>
     <li><a href="#schools">Schools</a></li>
-    <li><a href="readings.html">Readings</a></li>
+    <li><a href="#olivia">Reading with Olivia</a></li>
     <li><a href="#shop">Buy the book</a></li>
   </ul>
 </nav>
@@ -565,6 +575,18 @@ section[id]{scroll-margin-top:64px}
     </div>
   </div>
 </section>
+<section class="ol" id="olivia">
+  <div class="ol__inner">
+    <img class="ol__img" src="olivia.jpg" onerror="this.onerror=null;this.src='c10.webp'" width="1200" height="900" loading="lazy" alt="Olivia, co-author of Little Fox, with one of the books">
+    <div class="ol__text">
+      <h2>Reading with Olivia</h2>
+      <p>Olivia, co-author of Little Fox, reads the stories aloud in person, then talks with the children about how Little Fox felt and what they noticed.</p>
+      <p>For nurseries, schools, libraries, bookshops, toddler groups and birthday parties.</p>
+      <a class="buy" href="readings.html">Book a reading</a>
+    </div>
+  </div>
+</section>
+
 <section class="sch" id="schools">
   <div class="sch__inner">
     <h2>For schools and groups</h2>
@@ -579,7 +601,6 @@ section[id]{scroll-margin-top:64px}
         <p>A half-day session for libraries, parent groups and school trips: read the book, head outside for the Wild Challenge, then finish with drawing and talking.</p>
       </div>
     </div>
-    <p class="sch__olivia">Want the story read aloud in person? <a class="link" href="readings.html">Book a reading with Olivia</a>, co-author of Little Fox.</p>
     <div class="sch__dl">
       <p>Free to download and try with your class:</p>
       <div class="puzzle__tools">
@@ -650,7 +671,7 @@ section[id]{scroll-margin-top:64px}
 
 <footer class="foot">
   <a class="link" href="mailto:hello@thewildlearningcollective.com">hello@thewildlearningcollective.com</a>
-  <a class="link" href="readings.html">Book a reading</a>
+  <a class="link" href="readings.html">Reading with Olivia</a>
   <a class="link" href="#faq">Questions</a>
   <a class="link" href="delivery.html">Delivery and returns</a>
   <a class="link" href="privacy.html">Privacy</a>
