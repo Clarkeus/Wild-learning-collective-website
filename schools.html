@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Little Fox for schools and groups | The Wild Learning Collective</title>
+<meta name="description" content="Little Fox picture books for schools, nurseries, libraries and groups: free KS1 and KS2 lesson plans, activity sheets and a simple enquiry form.">
+<link rel="canonical" href="https://thewildlearningcollective.com/schools.html">
+<meta name="author" content="The Wild Learning Collective">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thewildlearningcollective.com/">
+<meta property="og:site_name" content="The Wild Learning Collective">
+<meta property="og:title" content="Little Fox picture books, from The Wild Learning Collective">
+<meta property="og:description" content="Stories that give children room to think. Watercolour picture books for ages 3 to 8, plus a monthly Club box.">
+<meta property="og:image" content="https://thewildlearningcollective.com/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Little Fox picture books, from The Wild Learning Collective">
+<meta name="twitter:description" content="Stories that give children room to think. Watercolour picture books for ages 3 to 8.">
+<meta name="twitter:image" content="https://thewildlearningcollective.com/og-preview.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>">
+<script defer data-domain="thewildlearningcollective.com" src="https://plausible.io/js/script.outbound-links.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Colours sampled from the paintings in Little Fox Thinks It Through */
+:root{
+  --paper:#F5EEE4;   /* the mist behind the text */
+  --ink:#56392C;     /* the book's text colour */
+  --ink-soft:rgba(86,57,44,.72);
+  --rule:rgba(86,57,44,.18);
+  --sage:#C2CD99;
+  --sand:#D6B067;
+  --fox:#A84D24;     /* fox fur, deepened so text on it is legible */
+  --serif:'EB Garamond', Garamond, 'Times New Roman', serif;
+  --sans:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+
+/* Links and the one button style */
+.link{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em}
+.link:hover{text-decoration-thickness:2px}
+.buy{display:inline-block;line-height:1.3;font-family:var(--serif);background:var(--fox);color:var(--paper);text-decoration:none;padding:.55em 1.1em .6em;border-radius:2px;font-size:1rem;letter-spacing:.01em}
+.buy:hover{background:#8f3f1b}
+:focus-visible{outline:2px solid var(--fox);outline-offset:3px}
+
+/* Nav: words on the page, no bar until you scroll */
+.nav{position:fixed;inset:0 0 auto;z-index:10;display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px clamp(20px,4vw,56px);transition:background .3s}
+.nav.solid{background:var(--paper);border-bottom:1px solid var(--rule)}
+.nav__name{font-size:1.05rem;text-decoration:none;font-weight:500}
+.nav__links{display:flex;gap:28px;list-style:none;font-size:1rem}
+.nav__links a{text-decoration:none}
+.nav__links a:hover{text-decoration:underline;text-underline-offset:.22em}
+/* Phone menu */
+.nav__btn{display:none}
+@media (max-width:760px){
+  .nav__links{display:none}
+  .nav__btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px;background:none;border:0;cursor:pointer;padding:0 10px}
+  .nav__btn span{display:block;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .2s}
+  .nav.open .nav__btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav.open .nav__btn span:nth-child(2){opacity:0}
+  .nav.open .nav__btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav.open{background:var(--paper);border-bottom:1px solid var(--rule)}
+  .nav.open .nav__links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:6px 20px 20px;box-shadow:0 12px 24px rgba(86,57,44,.08)}
+  .nav.open .nav__links li a{display:block;padding:14px 4px;font-size:17px;border-bottom:1px solid var(--rule);opacity:1}
+  .nav.open .nav__links li:last-child a{border:0;margin-top:16px;text-align:center;padding:14px}
+}
+
+/* Hero: the last page of the book, text lifted out and set live */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+.hero__art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:80% 100%}
+/* a little more of the painting's own mist behind the words */
+.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(245,238,228,.6) 0%,rgba(245,238,228,.35) 40%,rgba(245,238,228,0) 62%);pointer-events:none}
+.hero__text{position:relative;z-index:2;text-align:left;margin:clamp(110px,18vh,190px) 0 0 clamp(20px,6vw,96px);padding:0 24px;max-width:760px}
+.hero h1{text-wrap:balance;font-weight:400;font-size:clamp(34px,4.6vw,60px);line-height:1.12;letter-spacing:-.005em}
+.hero p{font-size:clamp(18px,1.6vw,22px);color:var(--ink-soft);margin:22px 0 0;max-width:34em}
+.hero__actions{margin-top:30px;display:flex;gap:28px;justify-content:flex-start;align-items:baseline;flex-wrap:wrap}
+@media (max-width:640px){
+  /* on phones the painting stays behind the words, cropped so Little Fox walks in below them */
+  .hero{min-height:100svh}
+  .hero__art{object-position:80% 100%}
+  .hero::after{background:linear-gradient(180deg,rgba(245,238,228,.82) 0%,rgba(245,238,228,.6) 38%,rgba(245,238,228,0) 58%)}
+  .hero__text{margin:92px 0 0;padding:0 24px}
+  .hero__actions{gap:18px 22px}
+}
+@media (max-width:640px) and (max-height:720px){
+  .hero__text{margin-top:74px}
+  .hero h1{font-size:28px}
+  .hero p{font-size:16px;margin-top:14px}
+  .hero__actions{margin-top:18px;gap:14px 18px}
+  .hero .buy{font-size:.95rem}
+}
+
+
+/* Christmas pre-order */
+.xmas{background:#E9EDE7;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:clamp(56px,7vw,96px) 24px}
+.xmas__inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.xmas__art{width:clamp(200px,28vw,340px);height:auto;border-radius:2px}
+.xmas h2{font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.1;margin-bottom:12px}
+.xmas p{color:var(--ink-soft);max-width:36em}
+.xmas__deal b,.xmas__count b{color:var(--ink);font-weight:500;white-space:nowrap}
+.xmas__count{margin:20px 0 14px;max-width:460px}
+.xmas__left{font-size:1.25rem;color:var(--ink)!important;line-height:1.35}
+.xmas__left b{font-weight:500}
+.xmas__deal{margin:0 0 22px}
+.xmas__bar{height:8px;background:rgba(86,57,44,.12);border-radius:4px;overflow:hidden}
+.xmas__bar span{display:block;height:100%;width:0;background:var(--fox);border-radius:4px}
+.xmas__bar{margin-top:12px}
+.xmas__days{margin-top:8px;font-size:.95rem}
+.xmas__days{color:var(--ink-soft)}
+.xmas__opts{display:flex;gap:12px;flex-wrap:wrap}
+.xmas__opt{display:grid;grid-template-columns:1fr auto;gap:2px 18px;min-width:220px;padding:12px 16px;border:1px solid var(--fox);border-radius:2px;text-decoration:none;color:var(--fox);background:transparent}
+.xmas__opt:hover{background:rgba(168,77,36,.08)}
+.xmas__opt--main{background:var(--fox);color:var(--paper)}
+.xmas__opt--main:hover{background:#8f3f1b}
+.xmas__oname{font-size:1.1rem}
+.xmas__oprice{font-size:1.1rem;text-align:right}
+.xmas__onote{grid-column:1/-1;font-size:.9rem;opacity:.8}
+.xmas__opt.off{opacity:.55;cursor:default;pointer-events:none}
+.xmas__soon{margin-top:10px;font-size:.95rem}
+@media (max-width:640px){.xmas__inner{grid-template-columns:1fr}.xmas__art{width:100%;max-width:360px}.xmas__opt{flex:1 1 100%}}
+
+/* The first pages: a page-turner, one spread at a time, sized to fit the screen */
+.story{padding:clamp(64px,8vw,120px) 0 clamp(72px,9vw,120px)}
+.story__intro{max-width:620px;margin:0 auto 28px;padding:0 24px;text-align:center;font-style:italic;color:var(--ink-soft);font-size:1.1rem}
+.book{--w:min(1400px,100vw,calc((100svh - 150px) * 1.5));width:var(--w);margin:0 auto}
+.book__pages{position:relative;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;align-items:flex-start;outline:none}
+.book__pages::-webkit-scrollbar{display:none}
+.page{flex:0 0 100%;scroll-snap-align:start;position:relative;container-type:inline-size;margin:0}
+.page img{width:100%}
+.page--paper{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;background:var(--paper)}
+.page__words{position:absolute;left:var(--x);top:var(--y);font-size:2.35cqw;line-height:1.35}
+.page__words p+p{margin-top:.62em}
+.page__words--centre{position:static;text-align:center;font-size:3.2cqw}
+.page__words .soft{color:var(--ink-soft)}
+.page__buy{margin-top:1.1em;font-size:max(15px,1.25cqw)}
+.book__nav{display:flex;justify-content:space-between;align-items:baseline;padding:18px clamp(20px,2vw,8px) 0;color:var(--ink-soft)}
+.book__nav button{font:inherit;font-size:1.05rem;color:var(--ink);background:none;border:0;cursor:pointer;padding:6px 0}
+.book__nav button:disabled{color:var(--rule);cursor:default}
+@media (max-width:640px){
+  .page__words{position:static;font-size:19px;padding:20px 24px 0}
+  .page--paper{aspect-ratio:auto;min-height:56vw;padding:40px 24px}
+  .page__words--centre{font-size:24px;padding:0}
+  .page__buy{font-size:1rem}
+  .book__nav{padding:18px 24px 0}
+}
+/* Puzzle: a page from the Club box */
+.puzzle{border-top:1px solid var(--rule);padding:clamp(72px,9vw,120px) 24px}
+.puzzle__inner{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.puzzle__head{max-width:1040px;margin:0 auto 36px}
+.puzzle h2{font-weight:400;font-size:clamp(28px,3vw,40px);margin-bottom:12px}
+.puzzle__lede{color:var(--ink-soft);max-width:34em}
+.cw{--cell:min(46px,calc((100vw - 48px)/11));display:grid;grid-template-columns:repeat(11,var(--cell));grid-auto-rows:var(--cell);width:max-content;max-width:100%}
+.cw__cell{position:relative;border:1px solid var(--ink);margin:0 -1px -1px 0;background:#F1E2C4}
+.cw__cell input{width:100%;height:100%;border:0;background:transparent;text-align:center;font:500 calc(var(--cell)*.52)/1 var(--serif);color:var(--fox);text-transform:uppercase;caret-color:var(--fox);padding-top:calc(var(--cell)*.1)}
+.cw__cell input:focus{outline:none;background:rgba(168,77,36,.18)}
+.cw__cell.on input{background:rgba(168,77,36,.10)}
+.cw__cell.on input:focus{background:rgba(168,77,36,.2)}
+.cw__cell.done{background:rgba(194,205,153,.45)}
+.cw__cell.done input{color:#3f5a32}
+.cw__num{position:absolute;top:2px;left:3px;font-size:calc(var(--cell)*.24);line-height:1;color:var(--ink-soft);pointer-events:none}
+.clues h3{font-weight:500;font-size:1.15rem;margin:0 0 8px}
+.clues h3:not(:first-child){margin-top:24px}
+.clues ol{list-style:none}
+.clues li{padding:5px 0 5px 0;cursor:pointer;display:flex;gap:12px}
+.clues li span{min-width:1.2em;color:var(--ink-soft)}
+.clues li.on{color:var(--fox)}
+.clues li.done{text-decoration:line-through;text-decoration-thickness:1px;color:var(--ink-soft)}
+.bank{margin-top:22px}
+.bank p{color:var(--ink-soft);margin-bottom:8px}
+.bank ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:1.2rem;letter-spacing:.08em}
+.bank li.done{text-decoration:line-through;color:var(--ink-soft)}
+.puzzle__tools{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.puzzle__tools button{font-family:var(--serif);cursor:pointer;border:0}
+.puzzle__tools--2{margin-top:12px}
+.btn2{display:inline-block;text-decoration:none;font-family:var(--serif);line-height:1.3;background:transparent;color:var(--fox);border:1px solid var(--fox)!important;padding:.55em 1.1em .6em;border-radius:2px;font-size:1rem}
+.btn2:hover{background:rgba(168,77,36,.08)}
+.puzzle__msg{font-size:clamp(19px,1.8vw,23px);min-height:1.4em;margin-top:18px}
+.puzzle__links{margin-top:10px;display:flex;gap:24px;font-size:.95rem;color:var(--ink-soft)}
+.puzzle__links button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+.tabs{display:flex;flex-wrap:wrap;gap:6px 30px;margin-top:34px;border-bottom:1px solid var(--rule)}
+.tabs button{font:inherit;font-size:1.08rem;color:var(--ink-soft);background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:10px 0;cursor:pointer}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--fox)}
+.pane{max-width:1040px;margin:0 auto}
+@media (max-width:640px){.tabs{flex-wrap:nowrap;overflow-x:auto;gap:24px;scrollbar-width:none;margin-left:-24px;margin-right:-24px;padding:0 24px}.tabs::-webkit-scrollbar{display:none}.tabs button{white-space:nowrap}}
+section[id]{scroll-margin-top:64px}
+.pane__what{color:var(--ink-soft);max-width:36em;margin-bottom:32px}
+.pane__empty{border:1px dashed var(--rule);padding:clamp(56px,8vw,110px) 24px;text-align:center;color:var(--ink-soft);font-style:italic}
+@media (max-width:760px){.puzzle__inner{grid-template-columns:1fr}}
+
+
+/* Reflection sheet */
+.rf{max-width:760px}
+.rf__head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:8px}
+.rf__head img{width:96px;height:96px;border-radius:2px}
+.rf__title{font-weight:400;font-size:clamp(28px,3vw,38px);color:var(--fox);line-height:1.1}
+.rf__theme{color:var(--ink-soft);font-size:1.15rem}
+.rf__q{margin-top:18px;display:none}
+.rf__q.on{display:block}
+.rf__step{color:var(--ink-soft);font-size:.95rem;margin-bottom:6px}
+.rf__step b{font-weight:400;color:var(--fox)}
+.rf__nav{display:flex;gap:12px;margin-top:16px;align-items:center}
+.rf__nav button{font-family:var(--serif)}
+.rf__nav button:disabled{opacity:.35;cursor:default}
+.rf__q label{display:block;font-size:1.15rem;margin-bottom:8px}
+.rf__q textarea{width:100%;min-height:68px;resize:vertical;font:inherit;font-size:1.05rem;line-height:1.5;color:var(--ink);background:#FBF7F0;border:1px solid var(--rule);border-radius:2px;padding:10px 12px}
+.rf__q textarea:focus{outline:none;border-color:var(--fox)}
+.rf__ideas{margin-top:6px}
+.rf__ideas summary{cursor:pointer;color:var(--ink-soft);font-size:.95rem;list-style:none;text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px;width:max-content}
+.rf__ideas summary::-webkit-details-marker{display:none}
+.rf__ideas ul{list-style:none;margin:8px 0 0;padding-left:16px;border-left:2px solid var(--sage);color:var(--ink-soft)}
+.rf__ideas li{padding:2px 0}
+.rf-print{display:none}
+@media print{
+  body.printing-rf > *:not(.rf-print-host){display:none!important}
+  body.printing-rf .rf-print{display:block!important}
+  body.printing-rf{background:#fff}
+  .rf-print{font-family:var(--serif);color:#000;padding:0}
+  .rf-print h1{font-weight:400;color:#A84D24;font-size:30pt;margin:0}
+  .rf-print .t{color:#555;font-size:14pt;margin:0 0 10pt}
+  .rf-print h2{font-weight:400;color:#A84D24;font-size:18pt;margin:18pt 0 4pt}
+  .rf-print .q{font-size:13pt;margin:12pt 0 4pt}
+  .rf-print .a{font-size:13pt;border-bottom:1px solid #999;min-height:30pt;padding:2pt 0 6pt;white-space:pre-wrap}
+  .rf-print .f{margin-top:24pt;text-align:center;color:#666;font-size:10pt}
+}
+
+/* Colouring page */
+.col{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.col__pic canvas{width:100%;height:auto;display:block;border:1px solid var(--rule);background:#fff;cursor:crosshair;touch-action:manipulation}
+.col__pal{display:grid;grid-template-columns:repeat(5,44px);gap:10px}
+.col__sw{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);cursor:pointer;padding:0}
+.col__sw[aria-checked=true]{outline:3px solid var(--ink);outline-offset:3px}
+@media (max-width:760px){.col{grid-template-columns:1fr}.col__pal{grid-template-columns:repeat(5,1fr);max-width:320px}.col__sw{width:100%;aspect-ratio:1;height:auto}}
+@media print{body.printing-col > *:not(.col-print-host){display:none!important} body.printing-col .col-print-host img{width:100%;height:auto}}
+
+
+
+/* Reading with Olivia */
+.ol{background:#EFE6D8;border-top:1px solid var(--rule);padding:clamp(64px,8vw,110px) 24px}
+.ol__inner{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.ol__img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px}
+.ol h2{font-weight:400;font-size:clamp(32px,3.6vw,48px);line-height:1.1;margin-bottom:14px}
+.ol p{color:var(--ink-soft);margin-bottom:12px;max-width:30em}
+.ol .buy{margin-top:10px}
+@media (max-width:760px){.ol__inner{grid-template-columns:1fr}}
+
+/* Schools */
+.sch{border-top:1px solid var(--rule);padding:clamp(72px,9vw,120px) 24px}
+.sch__inner{max-width:1040px;margin:0 auto}
+.sch h2,.faq h2{font-weight:400;font-size:clamp(28px,3vw,40px);margin-bottom:12px}
+.sch__lede{color:var(--ink-soft);max-width:36em;margin-bottom:40px}
+.sch__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,4vw,56px);max-width:860px}
+.sch__item{border-top:2px solid var(--fox);padding-top:18px}
+.sch__item img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;background:#E9E2D6}
+.sch__item h3{font-weight:400;font-size:1.45rem;margin:0 0 8px}
+.sch__item p{color:var(--ink-soft)}
+.sch__olivia{margin-top:36px;font-size:1.15rem}
+.sch__dl{margin-top:32px}
+.sch__dl p{color:var(--ink-soft)}
+.sch__dl .puzzle__tools{margin-top:12px;gap:10px}
+.sch__form{margin-top:56px;padding-top:44px;border-top:1px solid var(--rule);max-width:720px}
+.sch__form h3{font-weight:400;font-size:1.6rem;margin-bottom:6px}
+.sch__form>p{color:var(--ink-soft);margin-bottom:22px}
+.sch__row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+
+.sch__form textarea{margin:0 0 16px}
+.sch__checks{border:0;margin:14px 0 0;padding:0}
+.sch__checks legend{color:var(--ink-soft);margin-bottom:6px}
+.sch__checks label{display:flex;gap:10px;align-items:center;padding:3px 0}
+.sch__checks input{width:18px;height:18px;accent-color:var(--fox)}
+.sch__msg{margin-top:12px;color:var(--ink-soft)}
+@media (max-width:760px){.sch__grid{grid-template-columns:1fr}.sch__row{grid-template-columns:1fr}}
+/* FAQ */
+.faq{border-top:1px solid var(--rule);padding:clamp(72px,9vw,120px) 24px}
+.faq__inner{max-width:760px;margin:0 auto}
+.faq h2{margin-bottom:24px}
+.faq details{border-top:1px solid var(--rule)}
+.faq details:last-of-type{border-bottom:1px solid var(--rule)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 32px 18px 0;font-size:1.15rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';position:absolute;right:4px;top:14px;font-size:1.5rem;color:var(--fox)}
+.faq details[open] summary::after{content:'\2212'}
+.faq details p{color:var(--ink-soft);padding:0 0 20px}
+.faq__more{margin-top:28px;color:var(--ink-soft)}
+
+/* Wild Challenge */
+.wild{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.wild__card{width:100%;height:auto;border-radius:2px}
+.wild h3{font-weight:400;font-size:1.5rem;line-height:1.25;margin-bottom:10px}
+.wild p,.wild li{color:var(--ink-soft)}
+.wild b{color:var(--ink);font-weight:500}
+.wild ul{margin:8px 0 14px;padding-left:1.2em}
+.wild li{margin:3px 0}
+.wild__note{font-size:.95rem;margin-top:16px}
+@media (max-width:760px){.wild{grid-template-columns:1fr}}
+
+/* Buying: a plain price list, like the back of a book */
+.shop{border-top:1px solid var(--rule);padding:clamp(72px,9vw,120px) 24px}
+.shop__inner{max-width:880px;margin:0 auto}
+.shop h2{font-weight:400;font-size:clamp(28px,3vw,40px);margin-bottom:12px}
+.shop__lede{color:var(--ink-soft);max-width:34em;margin-bottom:44px}
+.item{display:grid;grid-template-columns:1fr auto;gap:8px 32px;padding:26px 0;border-top:1px solid var(--rule);align-items:baseline}
+.item:last-child{border-bottom:1px solid var(--rule)}
+.item h3{font-weight:500;font-size:1.3rem}
+.item__price{font-size:1.3rem;text-align:right}
+.item__note{color:var(--ink-soft);grid-column:1}
+.item .buy{grid-column:2;grid-row:2;justify-self:end}
+@media (max-width:560px){.item{grid-template-columns:1fr}.item__price{text-align:left}.item .buy{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}}
+
+.signup{border-top:1px solid var(--rule);padding:clamp(64px,8vw,104px) 24px;text-align:center}
+.signup h2{font-weight:400;font-size:clamp(26px,2.8vw,36px);margin-bottom:10px}
+.signup p{color:var(--ink-soft);max-width:32em;margin:0 auto}
+.signup form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:26px auto 12px;max-width:520px}
+.signup input{flex:1 1 240px;font:inherit;font-size:1rem;padding:.55em .8em;border:1px solid var(--ink-soft);border-radius:2px;background:#FBF7F0;color:var(--ink)}
+.signup__msg{font-size:.95rem}
+.foot{padding:40px 24px 56px;text-align:center;color:var(--ink-soft);font-size:.95rem}
+.foot a{margin:0 10px}
+
+
+/* Modern form controls */
+.mf input:not([type=checkbox]),.mf select,.mf textarea{-webkit-appearance:none;appearance:none;width:100%;font-family:var(--sans,'Figtree',sans-serif);font-size:15px;color:var(--ink);background:#FFFDF9;border:1px solid rgba(86,57,44,.2);border-radius:10px;padding:13px 14px;box-shadow:0 1px 2px rgba(86,57,44,.04);transition:border-color .15s,box-shadow .15s}
+.mf input::placeholder,.mf textarea::placeholder{color:rgba(86,57,44,.45)}
+.mf input:focus,.mf select:focus,.mf textarea:focus{outline:none;border-color:var(--fox);box-shadow:0 0 0 4px rgba(168,77,36,.12)}
+.mf select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2356392C' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
+.mf select:invalid,.mf select.empty{color:rgba(86,57,44,.45)}
+.mf input[type=number]::-webkit-inner-spin-button,.mf input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.mf input[type=number]{-moz-appearance:textfield}
+.mf textarea{min-height:96px;resize:vertical;line-height:1.5}
+.mf button[type=submit]{-webkit-appearance:none;appearance:none;font-family:var(--sans,'Figtree',sans-serif);font-size:15px;font-weight:600;color:#fff;background:var(--fox);border:0;border-radius:10px;padding:14px 26px;cursor:pointer;box-shadow:0 1px 2px rgba(86,57,44,.15);transition:background .15s,transform .1s}
+.mf button[type=submit]:hover{background:#8f3f1b}
+.mf button[type=submit]:active{transform:scale(.98)}
+.mf .lbl{display:block;font-family:var(--sans,'Figtree',sans-serif);font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--ink);margin:6px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;font-family:var(--sans,'Figtree',sans-serif);font-size:14px;font-weight:500;color:var(--ink);background:#FFFDF9;border:1px solid rgba(86,57,44,.2);border-radius:999px;padding:9px 15px;transition:all .15s;user-select:none}
+.chips label:hover span{border-color:var(--fox)}
+.chips input:checked+span{background:var(--fox);border-color:var(--fox);color:#fff}
+.chips input:focus-visible+span{box-shadow:0 0 0 4px rgba(168,77,36,.18)}
+
+/* Modern UI layer: menus, tabs, buttons and labels in a clean sans */
+.nav{align-items:center;padding:16px clamp(20px,4vw,56px)}
+.nav__name{font-family:var(--serif);font-size:1.2rem}
+.nav__links{font-family:var(--sans);font-size:15px;font-weight:500;gap:30px;align-items:center}
+.nav__links a{color:var(--ink);opacity:.85}
+.nav__links a:hover{opacity:1;text-decoration:none}
+.nav__links li:last-child a{background:var(--fox);color:#fff;opacity:1;padding:9px 16px;border-radius:6px}
+.nav__links li:last-child a:hover{background:#8f3f1b}
+.buy,.btn2{font-family:var(--sans)!important;font-weight:500;font-size:15px;border-radius:6px;padding:10px 18px}
+.buy{line-height:1.3}
+.tabs button{font-family:var(--sans);font-size:15px;font-weight:500}
+.book__nav,.book__nav button{font-family:var(--sans);font-size:15px}
+.xmas__opt{font-family:var(--sans);border-radius:8px}
+.xmas__oname,.xmas__oprice{font-size:16px;font-weight:600}
+.xmas__onote{font-size:13.5px}
+.item .buy{font-size:15px}
+.foot{font-family:var(--sans);font-size:14px}
+.puzzle__links,.puzzle__links button{font-family:var(--sans);font-size:14px}
+.rf__step,.rf__ideas summary,.xmas__days,.signup__msg,.sch__checks legend{font-family:var(--sans);font-size:14px}
+
+.faq summary::after{font-family:var(--sans)}
+</style>
+<style>.nav{background:var(--paper);border-bottom:1px solid var(--rule)}.sch{border-top:0;padding-top:clamp(110px,14vw,150px)}</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a class="nav__name" href="/#">The Wild Learning Collective</a>
+  <button class="nav__btn" id="navBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  <ul class="nav__links" id="navLinks">
+    <li><a href="/#christmas">Christmas</a></li>
+    <li><a href="/#story">The first pages</a></li>
+    <li><a href="/#club">The Club box</a></li>
+    <li><a href="schools.html">Schools</a></li>
+    <li><a href="/#olivia">Reading with Olivia</a></li>
+    <li><a href="/#books">Buy the book</a></li>
+  </ul>
+</nav>
+<main>
+<section class="sch" id="schools">
+  <div class="sch__inner">
+    <h1 style="font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1.1;margin-bottom:12px">Little Fox for schools and groups</h1>
+    <p class="sch__lede">From classrooms to library sessions, Little Fox travels well. Every booking comes with lesson plans, activity sheets and a Wild Challenge card for heading outdoors.</p>
+    <div class="sch__grid">
+      <div class="sch__item">
+        <h3>In the classroom</h3>
+        <p>A ready-made PSHE lesson. Read the story together, then let the conversation go where it needs to. Fits one 45 to 60 minute lesson, and any teacher can run it.</p>
+      </div>
+      <div class="sch__item">
+        <h3>Library and group sessions</h3>
+        <p>A half-day session for libraries, parent groups and school trips: read the book, head outside for the Wild Challenge, then finish with drawing and talking.</p>
+      </div>
+    </div>
+    <div class="sch__dl">
+      <p>Free to download and try with your class:</p>
+      <div class="puzzle__tools">
+        <a class="btn2" href="ks1-teacher-plan.png" target="_blank" rel="noopener">KS1 lesson plan</a>
+        <a class="btn2" href="ks1-worksheet.png" target="_blank" rel="noopener">KS1 activity sheet</a>
+        <a class="btn2" href="ks2-teacher-plan.png" target="_blank" rel="noopener">KS2 lesson plan</a>
+        <a class="btn2" href="ks2-worksheet.png" target="_blank" rel="noopener">KS2 activity sheet</a>
+        <a class="btn2" href="little-fox-one-pager.png" target="_blank" rel="noopener">School info pack</a>
+      </div>
+    </div>
+    <div class="sch__form">
+      <h3>Bring Little Fox to your group</h3>
+      <p>Tell us a little about your school, nursery, library or group and we&rsquo;ll reply within 48 hours with options and prices. No obligation.</p>
+      <form id="schForm" class="mf">
+        <div class="sch__row">
+          <input name="name" required placeholder="Your name" autocomplete="name">
+          <input name="email" type="email" required placeholder="Your email" autocomplete="email">
+        </div>
+        <div class="sch__row">
+          <input name="school" required placeholder="School or group name">
+          <select name="role" required><option value="" disabled selected>Your role</option><option>Class teacher</option><option>PSHE lead</option><option>Head teacher</option><option>Librarian</option><option>SENCO</option><option>Teaching assistant</option><option>Other</option></select>
+        </div>
+        <div class="sch__row">
+          <select name="yearGroup" required><option value="" disabled selected>Year group</option><option>Reception</option><option>KS1 (Years 1 and 2)</option><option>Lower KS2 (Years 3 and 4)</option><option>Upper KS2 (Years 5 and 6)</option><option>Mixed or whole school</option></select>
+          <input name="children" type="number" min="1" placeholder="Roughly how many children?">
+        </div>
+        <span class="lbl">Interested in</span>
+        <div class="chips">
+          <label><input type="checkbox" name="interest" value="Classroom books and lessons"><span>Books and lessons</span></label>
+          <label><input type="checkbox" name="interest" value="Group or library session"><span>A group session</span></label>
+          <label><input type="checkbox" name="interest" value="Author visit"><span>An author visit</span></label>
+          <label><input type="checkbox" name="interest" value="Termly subscription"><span>Termly books</span></label>
+          <label><input type="checkbox" name="interest" value="Christmas class gifts"><span>Christmas class gifts</span></label>
+        </div>
+        <textarea name="notes" rows="3" placeholder="Anything else? (optional)"></textarea>
+        <button type="submit">Send enquiry</button>
+        <p class="sch__msg" id="schMsg" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <a class="link" href="mailto:hello@thewildlearningcollective.com">hello@thewildlearningcollective.com</a>
+  <a class="link" href="schools.html">Schools</a>
+  <a class="link" href="readings.html">Reading with Olivia</a>
+  <a class="link" href="/#faq">Questions</a>
+  <a class="link" href="delivery.html">Delivery and returns</a>
+  <a class="link" href="privacy.html">Privacy</a>
+</footer>
+<script>
+var nav=document.getElementById('nav'), navBtn=document.getElementById('navBtn');
+navBtn.addEventListener('click',function(){var o=nav.classList.toggle('open'); navBtn.setAttribute('aria-expanded',o);});
+document.querySelectorAll('#navLinks a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open'); navBtn.setAttribute('aria-expanded','false');})});
+
+/* School enquiry (Formspree) */
+document.getElementById('schForm').addEventListener('submit',function(e){
+  e.preventDefault(); var f=e.target, msg=document.getElementById('schMsg'), btn=f.querySelector('button');
+  var fd=new FormData(f), picks=fd.getAll('interest'); fd.delete('interest'); fd.append('interests',picks.join(', ')||'None ticked');
+  fd.append('form_type','school_enquiry'); fd.append('_subject','Group enquiry: '+(fd.get('school')||''));
+  btn.disabled=true; btn.textContent='Sending';
+  fetch('https://formspree.io/f/mvzdqezp',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+  .then(function(r){ if(!r.ok) throw 0; f.innerHTML='<p style="font-size:1.2rem">Thank you. We&rsquo;ll be in touch within 48 hours.</p>'; if(window.plausible) plausible('School Enquiry'); })
+  .catch(function(){ btn.disabled=false; btn.textContent='Try again'; msg.textContent='That didn\'t send. Please try again, or email hello@thewildlearningcollective.com'; });
+});
+</script>
+</body>
+</html>
