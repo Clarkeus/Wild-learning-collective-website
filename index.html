@@ -27,7 +27,7 @@
  {"@type":"WebSite","@id":"https://thewildlearningcollective.com/#site","name":"The Wild Learning Collective","alternateName":"Little Fox","url":"https://thewildlearningcollective.com","publisher":{"@id":"https://thewildlearningcollective.com/#org"}},
  {"@type":"Book","name":"Little Fox The Busy Day","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#books"}},
  {"@type":"Book","name":"Little Fox Thinks It Through","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#books"}},
- {"@type":"Book","name":"Little Fox The Beach Day","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#books"}},
+ {"@type":"Book","name":"Little Fox and the Beach Day","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#books"}},
  {"@type":"Product","name":"Little Fox Monthly Club","brand":{"@id":"https://thewildlearningcollective.com/#org"},"description":"A new Little Fox picture book every month, plus eight activities to go with it. Free UK delivery, cancel any time.","offers":{"@type":"Offer","price":"18.00","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#books"}}
 ]}
 </script>
@@ -394,6 +394,18 @@ section[id]{scroll-margin-top:64px}
 }
 
 
+
+/* Cover flip */
+.flip{position:relative;perspective:1200px;margin-bottom:14px;cursor:pointer;outline:none}
+.flip__in{position:relative;aspect-ratio:3/2;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.flip__in img{position:absolute;inset:0;width:100%!important;height:100%;object-fit:cover;border-radius:8px;backface-visibility:hidden;-webkit-backface-visibility:hidden;margin:0!important}
+.flip__b{transform:rotateY(180deg)}
+.flip.on .flip__in{transform:rotateY(180deg)}
+@media (hover:hover){.flip:hover .flip__in{transform:rotateY(180deg)}}
+.flip:focus-visible .flip__in{box-shadow:0 0 0 3px rgba(168,77,36,.35);border-radius:8px}
+.flip__hint{position:absolute;right:10px;top:10px;font-family:var(--sans);font-size:12px;font-weight:500;color:#fff;background:rgba(40,28,20,.55);padding:4px 10px;border-radius:999px;pointer-events:none;transition:opacity .3s}
+.flip.on .flip__hint,.flip:hover .flip__hint{opacity:0}
+
 /* Book picker */
 .pick{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
 .pick[hidden]{display:none}
@@ -571,7 +583,13 @@ section[id]{scroll-margin-top:64px}
     <p class="books__lede">Printed in London on FSC certified paper. Free UK delivery.</p>
     <div class="books__row">
       <article class="bk">
-        <img src="cover-busy-day.jpg" width="900" height="600" loading="lazy" alt="Cover of Little Fox and the Busy Day">
+        <div class="flip" tabindex="0" role="button" aria-label="Little Fox and the Busy Day: tap to see the back cover">
+          <div class="flip__in">
+            <img class="flip__f" src="cover-busy-day.jpg" width="900" height="600" loading="lazy" alt="Front cover of Little Fox and the Busy Day">
+            <img class="flip__b" src="cover-busy-day-back.jpg" width="900" height="600" loading="lazy" alt="Back cover: Little Fox is rushing through the forest, too busy to stop, too fast to notice. But when he finally slows down, he discovers something magical was waiting for him all along. A gentle story about the joy of slowing down and being present.">
+          </div>
+          <span class="flip__hint">Tap to see the back</span>
+        </div>
         <span class="bk__num">Book 1</span>
         <h3>Little Fox and the Busy Day</h3>
         <p>Little Fox is having the kind of day where everything feels too much: too loud, too fast, too full. Somewhere between the rushing and the doing, he finds a quiet moment. A gentle story about feelings, focus and the power of simply stopping to breathe.</p>
@@ -580,7 +598,7 @@ section[id]{scroll-margin-top:64px}
         <a class="bk__gift" href="https://buy.stripe.com/3cI9AL8mmbLs2MgfE5dnW01?client_reference_id=gift-busy-day">Buying as a gift? Three months for £49.99 &rarr;</a>
       </article>
       <article class="bk">
-        <img src="cover-thinks-it-through.jpg" data-fb="c04-900.webp" width="900" height="600" loading="lazy" alt="Little Fox Thinks It Through">
+        <img src="c04-900.webp" width="900" height="636" loading="lazy" alt="Little Fox meeting Rabbit, from Little Fox Thinks It Through">
         <span class="bk__num">Book 2</span>
         <h3>Little Fox Thinks It Through</h3>
         <p>Little Fox has an idea he feels sure about. Along the way, he discovers that others see things differently. What happens when we slow down long enough to listen, explain and stay? A gentle story about thoughtfulness, perspective and understanding.</p>
@@ -589,9 +607,9 @@ section[id]{scroll-margin-top:64px}
         <a class="bk__gift" href="https://buy.stripe.com/3cI9AL8mmbLs2MgfE5dnW01?client_reference_id=gift-thinks-it-through">Buying as a gift? Three months for £49.99 &rarr;</a>
       </article>
       <article class="bk">
-        <img src="cover-beach-day.jpg" data-fb="images/little-fox-the-beach-day-children-s-pict.webp|little-fox-the-beach-day-children-s-pict.webp" width="900" height="600" loading="lazy" alt="Little Fox The Beach Day">
+        <img src="cover-beach-day.jpg" width="900" height="600" loading="lazy" alt="Cover of Little Fox and the Beach Day">
         <span class="bk__num">Book 3</span>
-        <h3>Little Fox The Beach Day</h3>
+        <h3>Little Fox and the Beach Day</h3>
         <p>A sunny day, a stretch of sand, and one little fox discovering the world one wave at a time. Full of wonder, a little mess, and the joy that comes when you stop worrying about getting wet. A warm story about courage, curiosity and letting go.</p>
         <a class="buy" href="#" data-pick="beach-day">Buy this book, £13.99</a>
         <a class="buy bk__clubbtn" href="https://buy.stripe.com/9B6eV59qq8zg1Ic0JbdnW02?client_reference_id=club-start-beach-day"><b>Join the Club, £18 a month</b><span>This book + 8 extras, every month</span></a>
@@ -890,11 +908,17 @@ document.querySelectorAll('img[data-fb]').forEach(function(im){
   function next(){ if(!list.length){im.style.visibility='hidden'; im.onerror=null; return;} im.src=list.shift(); }
   im.onerror=next; if(im.complete && im.naturalWidth===0) next();
 });
+/* Cover flip: tap on phones, hover on desktop */
+document.querySelectorAll('.flip').forEach(function(f){
+  if(window.matchMedia('(hover:hover)').matches){var h=f.querySelector('.flip__hint'); if(h) h.textContent='Hover to see the back';}
+  function t(){f.classList.toggle('on')}
+  f.addEventListener('click',t); f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}});
+});
 /* Book picker: add a separate Stripe link per book here when you have them */
 var BOOKS=[
   {id:'busy-day', num:'Book 1', title:'Little Fox and the Busy Day', desc:'About slowing down and noticing.', link:'https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00'},
   {id:'thinks-it-through', num:'Book 2', title:'Little Fox Thinks It Through', desc:'About listening when others see it differently.', link:'https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00'},
-  {id:'beach-day', num:'Book 3', title:'Little Fox The Beach Day', desc:'About courage, curiosity and letting go.', link:'https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00'}
+  {id:'beach-day', num:'Book 3', title:'Little Fox and the Beach Day', desc:'About courage, curiosity and letting go.', link:'https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00'}
 ];
 (function(){
   var box=document.getElementById('pick'), opts=document.getElementById('pickOpts'), go=document.getElementById('pickGo'), last;
