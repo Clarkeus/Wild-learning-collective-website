@@ -25,10 +25,10 @@
 {"@context":"https://schema.org","@graph":[
  {"@type":"Organization","@id":"https://thewildlearningcollective.com/#org","name":"The Wild Learning Collective","url":"https://thewildlearningcollective.com","logo":"https://thewildlearningcollective.com/og-preview.jpg","foundingLocation":{"@type":"Place","name":"London, UK"},"sameAs":["https://www.instagram.com/thewildlearningcollective","https://www.tiktok.com/@thewildlearningcollective","https://www.pinterest.com/thewildlearningcollective"]},
  {"@type":"WebSite","@id":"https://thewildlearningcollective.com/#site","name":"The Wild Learning Collective","alternateName":"Little Fox","url":"https://thewildlearningcollective.com","publisher":{"@id":"https://thewildlearningcollective.com/#org"}},
- {"@type":"Book","name":"Little Fox The Busy Day","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","bookFormat":"https://schema.org/Hardcover","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#shop"}},
- {"@type":"Book","name":"Little Fox Thinks It Through","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","bookFormat":"https://schema.org/Hardcover","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#shop"}},
- {"@type":"Book","name":"Little Fox The Beach Day","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","bookFormat":"https://schema.org/Hardcover","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#shop"}},
- {"@type":"Product","name":"Little Fox Monthly Club","brand":{"@id":"https://thewildlearningcollective.com/#org"},"description":"A new Little Fox picture book every month, plus eight activities to go with it. Free UK delivery, cancel any time.","offers":{"@type":"Offer","price":"18.00","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#shop"}}
+ {"@type":"Book","name":"Little Fox The Busy Day","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#books"}},
+ {"@type":"Book","name":"Little Fox Thinks It Through","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#books"}},
+ {"@type":"Book","name":"Little Fox The Beach Day","author":[{"@type":"Person","name":"Matthias Clarke"},{"@type":"Person","name":"Olivia"}],"publisher":{"@id":"https://thewildlearningcollective.com/#org"},"genre":"Children's picture book","inLanguage":"en-GB","audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},"offers":{"@type":"Offer","price":"13.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#books"}},
+ {"@type":"Product","name":"Little Fox Monthly Club","brand":{"@id":"https://thewildlearningcollective.com/#org"},"description":"A new Little Fox picture book every month, plus eight activities to go with it. Free UK delivery, cancel any time.","offers":{"@type":"Offer","price":"18.00","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://thewildlearningcollective.com/#books"}}
 ]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +49,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background:var(--paper) url('paper.jpg') repeat;background-size:640px;color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 
@@ -165,7 +165,13 @@ a{color:inherit}
 .puzzle__inner{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
 .puzzle__head{max-width:1040px;margin:0 auto 36px}
 .puzzle h2{font-weight:400;font-size:clamp(28px,3vw,40px);margin-bottom:12px}
-.puzzle__lede{color:var(--ink-soft);max-width:34em}
+.puzzle__lede{color:var(--ink-soft);max-width:36em}
+.puzzle__lede b{color:var(--ink);font-weight:500}
+.clubfoot{max-width:1040px;margin:28px auto 0}
+.clubhead__cta{margin:0;max-width:340px}
+@media (max-width:760px){.clubhead__cta{max-width:none}}
+.clubhead__cta .bk__clubbtn{margin-top:0}
+.clubhead__try{margin-top:22px;color:var(--ink-soft)}
 .cw{--cell:min(46px,calc((100vw - 48px)/11));display:grid;grid-template-columns:repeat(11,var(--cell));grid-auto-rows:var(--cell);width:max-content;max-width:100%}
 .cw__cell{position:relative;border:1px solid var(--ink);margin:0 -1px -1px 0;background:#F1E2C4}
 .cw__cell input{width:100%;height:100%;border:0;background:transparent;text-align:center;font:500 calc(var(--cell)*.52)/1 var(--serif);color:var(--fox);text-transform:uppercase;caret-color:var(--fox);padding-top:calc(var(--cell)*.1)}
@@ -311,6 +317,102 @@ section[id]{scroll-margin-top:64px}
 .wild__note{font-size:.95rem;margin-top:16px}
 @media (max-width:760px){.wild{grid-template-columns:1fr}}
 
+
+
+/* The books */
+.books{border-top:1px solid var(--rule);padding:clamp(64px,8vw,104px) 24px}
+.books__inner{max-width:1100px;margin:0 auto}
+.books h2{font-weight:400;font-size:clamp(28px,3vw,40px);margin-bottom:28px}
+.books__row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,36px)}
+.bk{display:flex;flex-direction:column}
+.bk img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:8px;background:#E9E2D6;margin-bottom:14px}
+.bk__num{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--fox)}
+.bk h3{font-weight:400;font-size:1.35rem;line-height:1.2;margin:2px 0 8px}
+.bk p{color:var(--ink-soft);font-size:1rem;margin-bottom:16px;flex:1}
+.bk .buy{align-self:stretch;text-align:center}
+.bk__or{display:block;text-align:center;font-family:var(--sans);font-size:13px;color:var(--ink-soft);margin:8px 0}
+.bk__gift{display:block;text-align:center;margin-top:10px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+.bk__gift:hover{color:var(--fox)}
+.bk__clubbtn{margin-top:10px;background:#6E4E7E!important;display:flex!important;flex-direction:column;align-items:center;gap:1px}
+.bk__clubbtn:hover{background:#5A3E68!important}
+.bk__clubbtn b{font-weight:600}
+.bk__clubbtn span{font-size:13px;font-weight:400;opacity:.9}
+.books__lede{color:var(--ink-soft);margin:-16px 0 28px}
+.printed{margin:0 0 36px;max-width:620px}
+.printed img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:center 35%;border-radius:10px;box-shadow:0 8px 28px rgba(86,57,44,.14)}
+.printed figcaption{color:var(--ink-soft);font-size:1.1rem;max-width:24em}
+.printed figcaption b{display:block;color:var(--ink);font-weight:400;font-size:1.5rem;margin-bottom:6px}
+@media (max-width:760px){.printed{grid-template-columns:1fr;gap:14px;margin-bottom:28px}}
+.bk__club{margin-top:10px;font-family:var(--sans);font-size:14px;color:var(--fox);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+.bk__club:hover{text-decoration-thickness:2px}
+.clubx{display:block;max-width:560px;margin-top:36px}
+.more{display:block;text-decoration:none;color:var(--ink);background:#FFFDF9;border:1px solid rgba(86,57,44,.15);border-radius:12px;padding:18px 20px;transition:border-color .15s,box-shadow .15s}
+.more:hover{border-color:var(--fox);box-shadow:0 4px 16px rgba(86,57,44,.08)}
+.more__t{display:block;font-size:1.2rem;margin-bottom:2px}
+.more__t::after{content:' \2192';color:var(--fox)}
+.more__d{display:block;font-family:var(--sans);font-size:14px;color:var(--ink-soft)}
+@media (max-width:760px){.books__more{grid-template-columns:1fr}}
+
+@media (max-width:760px){.books__row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:24px;margin:0 -24px;padding:0 24px 6px;scrollbar-width:none}.books__row::-webkit-scrollbar{display:none}.bk{flex:0 0 80%;scroll-snap-align:start}.books__row::after{content:'';flex:0 0 8px}}
+
+
+/* Compact activities on phones */
+.pane__try{display:none}
+@media (max-width:760px){
+  .puzzle{padding-top:56px;padding-bottom:56px}
+  .pane__what{margin-bottom:14px}
+  .pane:not(.open) .pane__body{display:none}
+  .pane__try{display:block;width:100%;font-family:var(--sans);font-size:15px;font-weight:600;color:var(--fox);background:#FFFDF9;border:1.5px solid var(--fox);border-radius:10px;padding:13px;cursor:pointer}
+  .pane.open .pane__try{margin-bottom:18px;color:var(--ink-soft);border-color:var(--rule)}
+  .puzzle__inner{gap:20px!important}
+  .puzzle__msg:empty{display:none}
+  .puzzle__msg{margin-top:12px;font-size:17px}
+  .puzzle__tools{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .puzzle__tools--2{margin-top:10px}
+  .puzzle__tools .buy,.puzzle__tools .btn2{text-align:center;padding:11px 8px;font-size:14px}
+  .bank{margin-top:16px}
+  .clues h3{font-size:1.05rem;margin-bottom:4px}
+  .clues h3:not(:first-child){margin-top:14px}
+  .clues li{padding:2px 0;font-size:17px}
+  .rf__nav{margin-top:12px}
+  .wild{gap:16px}
+}
+
+
+/* Character spots */
+.books__inner,.puzzle__head,.faq__inner,.signup{position:relative}
+.spot{position:absolute;pointer-events:none;height:auto;user-select:none}
+.spot--rabbit{width:92px;right:4%;top:-14px}
+.spot--birds{width:150px;right:2%;top:-30px}
+.spot--bear{width:150px;right:-40px;top:-30px}
+.spot--bluebirds{width:110px;position:relative;display:block;margin:0 auto 14px}
+@media (max-width:760px){
+  .spot--rabbit{width:54px;right:0;top:-46px}
+  .spot--birds{width:104px;right:-4px;top:-20px}
+  .spot--bear{width:92px;right:-6px;top:-18px}
+  .spot--bluebirds{width:84px}
+}
+
+
+/* Book picker */
+.pick{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
+.pick[hidden]{display:none}
+.pick__bg{position:absolute;inset:0;background:rgba(40,28,20,.45);backdrop-filter:blur(2px)}
+.pick__box{position:relative;background:var(--paper);border-radius:14px;padding:28px 24px 22px;width:min(520px,100%);box-shadow:0 24px 60px rgba(40,28,20,.3);animation:pickIn .22s ease}
+@keyframes pickIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.pick__x{position:absolute;top:10px;right:12px;width:36px;height:36px;border:0;background:none;font-size:26px;color:var(--ink-soft);cursor:pointer;line-height:1}
+.pick h3{font-weight:400;font-size:1.6rem;margin:0 0 16px}
+.pick__opts{display:grid;gap:10px}
+.pick__opt{display:block;text-align:left;width:100%;font:inherit;color:var(--ink);background:#FFFDF9;border:1.5px solid rgba(86,57,44,.18);border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.pick__opt:hover{border-color:var(--fox)}
+.pick__opt[aria-checked=true]{border-color:var(--fox);box-shadow:0 0 0 3px rgba(168,77,36,.14)}
+.pick__num{display:block;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--fox);margin-bottom:2px}
+.pick__t{display:block;font-size:1.2rem}
+.pick__d{display:block;font-size:.95rem;color:var(--ink-soft)}
+.pick__go{display:block;text-align:center;margin-top:16px;font-family:var(--sans);font-weight:600;font-size:15px;color:#fff;background:var(--fox);border-radius:10px;padding:14px;text-decoration:none}
+.pick__go[aria-disabled=true]{opacity:.4;pointer-events:none}
+.pick__note{font-family:var(--sans);font-size:13px;color:var(--ink-soft);margin-top:10px;text-align:center}
+
 /* Buying: a plain price list, like the back of a book */
 .shop{border-top:1px solid var(--rule);padding:clamp(72px,9vw,120px) 24px}
 .shop__inner{max-width:880px;margin:0 auto}
@@ -386,10 +488,11 @@ section[id]{scroll-margin-top:64px}
   <ul class="nav__links" id="navLinks">
     <li><a href="#christmas">Christmas</a></li>
     <li><a href="#story">The first pages</a></li>
+    <li><a href="#books">The books</a></li>
     <li><a href="#club">The Club box</a></li>
-    <li><a href="#schools">Schools</a></li>
+    <li><a href="schools.html">Schools</a></li>
     <li><a href="#olivia">Reading with Olivia</a></li>
-    <li><a href="#shop">Buy the book</a></li>
+    <li><a href="#" data-pick>Buy the book</a></li>
   </ul>
 </nav>
 
@@ -400,7 +503,7 @@ section[id]{scroll-margin-top:64px}
     <p>Little Fox explores the forest, meets his friends and thinks things through along the way. Watercolour picture books for ages 3 to 8, written by Olivia and Matthias.</p>
     <div class="hero__actions">
       <a class="link" href="#story">Read the first pages</a>
-      <a class="buy" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Buy the book, £13.99</a>
+      <a class="buy" href="#" data-pick>Buy the book, £13.99</a>
     </div>
   </div>
   <img class="hero__art" src="c03.webp" srcset="c03-900.webp 900w, c03.webp 1755w" sizes="100vw" width="1755" height="1241" alt="Little Fox sets off down a sunny forest path.">
@@ -450,7 +553,7 @@ section[id]{scroll-margin-top:64px}
       </figure>
       <figure class="page" role="group" aria-roledescription="page">
         <img src="b11.webp" srcset="b11-900.webp 900w, b11.webp 1536w" sizes="(max-width:1400px) 100vw, 1400px" width="1536" height="1024" loading="lazy" alt="Little Fox sits alone on the quiet forest path.">
-        <figcaption class="page__words" style="--x:8%;--y:14%"><p>The forest felt different now.</p><p>Still. Quiet.</p><p>Almost&hellip; lonely.</p><p><span class="soft">The rest is in the book.</span></p><a class="buy page__buy" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Buy the book, £13.99</a></figcaption>
+        <figcaption class="page__words" style="--x:8%;--y:14%"><p>The forest felt different now.</p><p>Still. Quiet.</p><p>Almost&hellip; lonely.</p><p><span class="soft">The rest is in the book.</span></p><a class="buy page__buy" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00?client_reference_id=busy-day">Buy this book, £13.99</a></figcaption>
       </figure>
     </div>
     <div class="book__nav">
@@ -461,21 +564,60 @@ section[id]{scroll-margin-top:64px}
   </div>
 </section>
 
+<section class="books" id="books">
+  <div class="books__inner">
+    <img class="spot spot--rabbit" src="spot-rabbit.webp" alt="" aria-hidden="true" loading="lazy">
+    <h2>The books</h2>
+    <p class="books__lede">Printed in London on FSC certified paper. Free UK delivery.</p>
+    <div class="books__row">
+      <article class="bk">
+        <img src="cover-busy-day.jpg" width="900" height="600" loading="lazy" alt="Cover of Little Fox and the Busy Day">
+        <span class="bk__num">Book 1</span>
+        <h3>Little Fox and the Busy Day</h3>
+        <p>Little Fox is having the kind of day where everything feels too much: too loud, too fast, too full. Somewhere between the rushing and the doing, he finds a quiet moment. A gentle story about feelings, focus and the power of simply stopping to breathe.</p>
+        <a class="buy" href="#" data-pick="busy-day">Buy this book, £13.99</a>
+        <a class="buy bk__clubbtn" href="https://buy.stripe.com/9B6eV59qq8zg1Ic0JbdnW02?client_reference_id=club-start-busy-day"><b>Join the Club, £18 a month</b><span>This book + 8 extras, every month</span></a>
+        <a class="bk__gift" href="https://buy.stripe.com/3cI9AL8mmbLs2MgfE5dnW01?client_reference_id=gift-busy-day">Buying as a gift? Three months for £49.99 &rarr;</a>
+      </article>
+      <article class="bk">
+        <img src="cover-thinks-it-through.jpg" data-fb="c04-900.webp" width="900" height="600" loading="lazy" alt="Little Fox Thinks It Through">
+        <span class="bk__num">Book 2</span>
+        <h3>Little Fox Thinks It Through</h3>
+        <p>Little Fox has an idea he feels sure about. Along the way, he discovers that others see things differently. What happens when we slow down long enough to listen, explain and stay? A gentle story about thoughtfulness, perspective and understanding.</p>
+        <a class="buy" href="#" data-pick="thinks-it-through">Buy this book, £13.99</a>
+        <a class="buy bk__clubbtn" href="https://buy.stripe.com/9B6eV59qq8zg1Ic0JbdnW02?client_reference_id=club-start-thinks-it-through"><b>Join the Club, £18 a month</b><span>This book + 8 extras, every month</span></a>
+        <a class="bk__gift" href="https://buy.stripe.com/3cI9AL8mmbLs2MgfE5dnW01?client_reference_id=gift-thinks-it-through">Buying as a gift? Three months for £49.99 &rarr;</a>
+      </article>
+      <article class="bk">
+        <img src="cover-beach-day.jpg" data-fb="images/little-fox-the-beach-day-children-s-pict.webp|little-fox-the-beach-day-children-s-pict.webp" width="900" height="600" loading="lazy" alt="Little Fox The Beach Day">
+        <span class="bk__num">Book 3</span>
+        <h3>Little Fox The Beach Day</h3>
+        <p>A sunny day, a stretch of sand, and one little fox discovering the world one wave at a time. Full of wonder, a little mess, and the joy that comes when you stop worrying about getting wet. A warm story about courage, curiosity and letting go.</p>
+        <a class="buy" href="#" data-pick="beach-day">Buy this book, £13.99</a>
+        <a class="buy bk__clubbtn" href="https://buy.stripe.com/9B6eV59qq8zg1Ic0JbdnW02?client_reference_id=club-start-beach-day"><b>Join the Club, £18 a month</b><span>This book + 8 extras, every month</span></a>
+        <a class="bk__gift" href="https://buy.stripe.com/3cI9AL8mmbLs2MgfE5dnW01?client_reference_id=gift-beach-day">Buying as a gift? Three months for £49.99 &rarr;</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="puzzle" id="club">
   <div class="puzzle__head">
-    <h2>What&rsquo;s in a Club box</h2>
-    <p class="puzzle__lede">Each month, a new Little Fox book arrives in the post with eight things to go with it, all beautifully printed and ready to enjoy. Here are five of them to try out first, on screen or printed at home.</p>
+    <img class="spot spot--birds" src="spot-birds.webp" alt="" aria-hidden="true" loading="lazy">
+    <h2>The Club</h2>
+    <p class="puzzle__lede">A new book and eight activities, posted every month. Choose your first book and cancel any time.</p>
+    <p class="clubhead__try">Try five of the activities for free:</p>
     <div class="tabs" role="tablist" aria-label="Club box activities">
-      <button role="tab" id="tab-reflect" aria-controls="pane-reflect" aria-selected="true">Reflection sheet</button>
+      <button role="tab" id="tab-cross" aria-controls="pane-cross" aria-selected="true">Crossword</button>
+      <button role="tab" id="tab-reflect" aria-controls="pane-reflect" aria-selected="false">Reflection sheet</button>
       <button role="tab" id="tab-colour" aria-controls="pane-colour" aria-selected="false">Colouring page</button>
       <button role="tab" id="tab-wild" aria-controls="pane-wild" aria-selected="false">Wild Challenge</button>
-      <button role="tab" id="tab-cross" aria-controls="pane-cross" aria-selected="false">Crossword</button>
       <button role="tab" id="tab-video" aria-controls="pane-video" aria-selected="false">Video story</button>
     </div>
   </div>
 
-  <div class="pane" role="tabpanel" id="pane-reflect" aria-labelledby="tab-reflect">
-    <p class="pane__what">A few gentle questions to talk over together. Your child can write their answers, or tell you and you write them down. There are no wrong answers.</p>
+  <div class="pane" role="tabpanel" id="pane-reflect" aria-labelledby="tab-reflect" hidden>
+    <p class="pane__what">Gentle questions to talk over together. No wrong answers.</p>
     <div class="rf" id="rf">
       <div class="rf__head">
         <div><h3 class="rf__title">Reflection Sheet</h3><p class="rf__theme">Christmas</p></div>
@@ -496,7 +638,7 @@ section[id]{scroll-margin-top:64px}
   </div>
   <div class="rf-print" id="rfPrintSheet" aria-hidden="true"></div>
   <div class="pane" role="tabpanel" id="pane-colour" aria-labelledby="tab-colour" hidden>
-    <p class="pane__what">This month&rsquo;s colouring page. Pick a colour, then tap a space in the picture to fill it.</p>
+    <p class="pane__what">Pick a colour, then tap the picture to fill it in.</p>
     <div class="col">
       <div class="col__pic"><canvas id="colCanvas" width="1080" height="1350" aria-label="Christmas colouring page: Little Fox and Hedgehog decorating a tree"></canvas></div>
       <div class="col__side">
@@ -513,7 +655,7 @@ section[id]{scroll-margin-top:64px}
     </div>
   </div>
   <div class="pane" role="tabpanel" id="pane-wild" aria-labelledby="tab-wild" hidden>
-    <p class="pane__what">One small thing to do outside each month. Here&rsquo;s this month&rsquo;s.</p>
+    <p class="pane__what">One small thing to do outside each month.</p>
     <div class="wild">
       <img class="wild__card" src="wild-challenge.jpg" width="1400" height="990" loading="lazy" alt="Wild Challenge card: go and find something in nature that you only see in winter. Post it and tag us on Instagram for a chance to win a prize.">
       <div class="wild__side">
@@ -540,8 +682,8 @@ section[id]{scroll-margin-top:64px}
     <div class="pane__empty">Sample coming soon</div>
   </div>
 
-  <div class="pane" role="tabpanel" id="pane-cross" aria-labelledby="tab-cross" hidden>
-  <p class="pane__what">A nature crossword. All the words are listed under the grid, so it&rsquo;s a matter of working out which goes where.</p>
+  <div class="pane" role="tabpanel" id="pane-cross" aria-labelledby="tab-cross">
+  <p class="pane__what">A nature crossword, with a word bank to help.</p>
   <div class="puzzle__inner">
     <div>
       <div class="cw" id="cw" aria-label="Nature crossword"></div>
@@ -562,33 +704,13 @@ section[id]{scroll-margin-top:64px}
     </div>
   </div>
   </div>
-</section>
-
-<section class="shop" id="shop">
-  <div class="shop__inner">
-    <h2>Three ways to read along</h2>
-    <p class="shop__lede">Every book is printed in London on FSC certified paper. UK delivery is free.</p>
-
-    <div class="item">
-      <h3>One book</h3>
-      <div class="item__price">£13.99</div>
-      <p class="item__note">The Busy Day, Thinks It Through, or The Beach Day.</p>
-      <a class="buy" href="https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00">Buy</a>
-    </div>
-    <div class="item">
-      <h3>The Club</h3>
-      <div class="item__price">£18 a month</div>
-      <p class="item__note">A new Little Fox book each month, plus eight things to go with it, from a colouring page to a Wild Challenge for outdoors. Cancel whenever you like.</p>
-      <a class="buy" href="https://buy.stripe.com/9B6eV59qq8zg1Ic0JbdnW02">Join</a>
-    </div>
-    <div class="item">
-      <h3>The Gift</h3>
-      <div class="item__price">£49.99</div>
-      <p class="item__note">Three months of the Club, gift wrapped with a card. It stops on its own afterwards.</p>
-      <a class="buy" href="https://buy.stripe.com/3cI9AL8mmbLs2MgfE5dnW01">Send</a>
+  <div class="clubfoot">
+    <div class="clubhead__cta">
+      <a class="buy bk__clubbtn" href="https://buy.stripe.com/9B6eV59qq8zg1Ic0JbdnW02"><b>Join the Club, £18 a month</b><span>A new book + 8 extras, every month</span></a>
     </div>
   </div>
 </section>
+
 <section class="ol" id="olivia">
   <div class="ol__inner">
     <img class="ol__img" src="olivia.jpg" onerror="this.onerror=null;this.src='c10.webp'" width="1200" height="900" loading="lazy" alt="Olivia, co-author of Little Fox, with one of the books">
@@ -601,64 +723,9 @@ section[id]{scroll-margin-top:64px}
   </div>
 </section>
 
-<section class="sch" id="schools">
-  <div class="sch__inner">
-    <h2>For schools and groups</h2>
-    <p class="sch__lede">From classrooms to library sessions, Little Fox travels well. Every booking comes with lesson plans, activity sheets and a Wild Challenge card for heading outdoors.</p>
-    <div class="sch__grid">
-      <div class="sch__item">
-        <h3>In the classroom</h3>
-        <p>A ready-made PSHE lesson. Read the story together, then let the conversation go where it needs to. Fits one 45 to 60 minute lesson, and any teacher can run it.</p>
-      </div>
-      <div class="sch__item">
-        <h3>Library and group sessions</h3>
-        <p>A half-day session for libraries, parent groups and school trips: read the book, head outside for the Wild Challenge, then finish with drawing and talking.</p>
-      </div>
-    </div>
-    <div class="sch__dl">
-      <p>Free to download and try with your class:</p>
-      <div class="puzzle__tools">
-        <a class="btn2" href="ks1-teacher-plan.png" target="_blank" rel="noopener">KS1 lesson plan</a>
-        <a class="btn2" href="ks1-worksheet.png" target="_blank" rel="noopener">KS1 activity sheet</a>
-        <a class="btn2" href="ks2-teacher-plan.png" target="_blank" rel="noopener">KS2 lesson plan</a>
-        <a class="btn2" href="ks2-worksheet.png" target="_blank" rel="noopener">KS2 activity sheet</a>
-        <a class="btn2" href="little-fox-one-pager.png" target="_blank" rel="noopener">School info pack</a>
-      </div>
-    </div>
-    <div class="sch__form">
-      <h3>Bring Little Fox to your group</h3>
-      <p>Tell us a little about your school, nursery, library or group and we&rsquo;ll reply within 48 hours with options and prices. No obligation.</p>
-      <form id="schForm" class="mf">
-        <div class="sch__row">
-          <input name="name" required placeholder="Your name" autocomplete="name">
-          <input name="email" type="email" required placeholder="Your email" autocomplete="email">
-        </div>
-        <div class="sch__row">
-          <input name="school" required placeholder="School or group name">
-          <select name="role" required><option value="" disabled selected>Your role</option><option>Class teacher</option><option>PSHE lead</option><option>Head teacher</option><option>Librarian</option><option>SENCO</option><option>Teaching assistant</option><option>Other</option></select>
-        </div>
-        <div class="sch__row">
-          <select name="yearGroup" required><option value="" disabled selected>Year group</option><option>Reception</option><option>KS1 (Years 1 and 2)</option><option>Lower KS2 (Years 3 and 4)</option><option>Upper KS2 (Years 5 and 6)</option><option>Mixed or whole school</option></select>
-          <input name="children" type="number" min="1" placeholder="Roughly how many children?">
-        </div>
-        <span class="lbl">Interested in</span>
-        <div class="chips">
-          <label><input type="checkbox" name="interest" value="Classroom books and lessons"><span>Books and lessons</span></label>
-          <label><input type="checkbox" name="interest" value="Group or library session"><span>A group session</span></label>
-          <label><input type="checkbox" name="interest" value="Author visit"><span>An author visit</span></label>
-          <label><input type="checkbox" name="interest" value="Termly subscription"><span>Termly books</span></label>
-          <label><input type="checkbox" name="interest" value="Christmas class gifts"><span>Christmas class gifts</span></label>
-        </div>
-        <textarea name="notes" rows="3" placeholder="Anything else? (optional)"></textarea>
-        <button type="submit">Send enquiry</button>
-        <p class="sch__msg" id="schMsg" aria-live="polite"></p>
-      </form>
-    </div>
-  </div>
-</section>
-
 <section class="faq" id="faq">
   <div class="faq__inner">
+    <img class="spot spot--bear" src="spot-bear.webp" alt="" aria-hidden="true" loading="lazy">
     <h2>Questions</h2>
     <details><summary>What age are the books for?</summary><p>Children aged 3 to 8, read together with a grown-up. The pictures hold younger children; the questions in each story give older ones plenty to think about.</p></details>
     <details><summary>How does the Club work?</summary><p>Each month we send a new Little Fox book plus eight things to go with it, including a reflection sheet, a colouring page, a crossword and a Wild Challenge card for outdoors. Boxes ship at the start of each month, with free UK delivery.</p></details>
@@ -683,8 +750,20 @@ section[id]{scroll-margin-top:64px}
 </section>
 </main>
 
+<!-- Book picker -->
+<div class="pick" id="pick" hidden>
+  <div class="pick__bg" data-close></div>
+  <div class="pick__box" role="dialog" aria-modal="true" aria-labelledby="pickH">
+    <button class="pick__x" type="button" aria-label="Close" data-close>&times;</button>
+    <h3 id="pickH">Which book would you like?</h3>
+    <div class="pick__opts" id="pickOpts"></div>
+    <a class="pick__go" id="pickGo" aria-disabled="true">Continue to checkout, £13.99</a>
+    <p class="pick__note">Free UK delivery. Buying more than one? Pick your first and email us the rest, or choose the Club.</p>
+  </div>
+</div>
 <footer class="foot">
   <a class="link" href="mailto:hello@thewildlearningcollective.com">hello@thewildlearningcollective.com</a>
+  <a class="link" href="schools.html">Schools</a>
   <a class="link" href="readings.html">Reading with Olivia</a>
   <a class="link" href="#faq">Questions</a>
   <a class="link" href="delivery.html">Delivery and returns</a>
@@ -805,16 +884,32 @@ document.getElementById('packForm').addEventListener('submit',function(e){
     document.body.classList.add('printing-col'); im.onload=function(){ setTimeout(function(){ try{window.print()}catch(e){} document.body.classList.remove('printing-col'); host.remove(); },50) };
   };
 })();
-/* School enquiry (Formspree) */
-document.getElementById('schForm').addEventListener('submit',function(e){
-  e.preventDefault(); var f=e.target, msg=document.getElementById('schMsg'), btn=f.querySelector('button');
-  var fd=new FormData(f), picks=fd.getAll('interest'); fd.delete('interest'); fd.append('interests',picks.join(', ')||'None ticked');
-  fd.append('form_type','school_enquiry'); fd.append('_subject','Group enquiry: '+(fd.get('school')||''));
-  btn.disabled=true; btn.textContent='Sending';
-  fetch('https://formspree.io/f/mvzdqezp',{method:'POST',headers:{'Accept':'application/json'},body:fd})
-  .then(function(r){ if(!r.ok) throw 0; f.innerHTML='<p style="font-size:1.2rem">Thank you. We&rsquo;ll be in touch within 48 hours.</p>'; if(window.plausible) plausible('School Enquiry'); })
-  .catch(function(){ btn.disabled=false; btn.textContent='Try again'; msg.textContent='That didn\'t send. Please try again, or email hello@thewildlearningcollective.com'; });
+/* Image fallbacks: try each listed file until one loads */
+document.querySelectorAll('img[data-fb]').forEach(function(im){
+  var list=im.getAttribute('data-fb').split('|');
+  function next(){ if(!list.length){im.style.visibility='hidden'; im.onerror=null; return;} im.src=list.shift(); }
+  im.onerror=next; if(im.complete && im.naturalWidth===0) next();
 });
+/* Book picker: add a separate Stripe link per book here when you have them */
+var BOOKS=[
+  {id:'busy-day', num:'Book 1', title:'Little Fox and the Busy Day', desc:'About slowing down and noticing.', link:'https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00'},
+  {id:'thinks-it-through', num:'Book 2', title:'Little Fox Thinks It Through', desc:'About listening when others see it differently.', link:'https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00'},
+  {id:'beach-day', num:'Book 3', title:'Little Fox The Beach Day', desc:'About courage, curiosity and letting go.', link:'https://buy.stripe.com/4gM5kvfOO2aS1Ic3VndnW00'}
+];
+(function(){
+  var box=document.getElementById('pick'), opts=document.getElementById('pickOpts'), go=document.getElementById('pickGo'), last;
+  BOOKS.forEach(function(b){
+    var o=document.createElement('button'); o.type='button'; o.className='pick__opt'; o.setAttribute('role','radio'); o.setAttribute('aria-checked','false');
+    o.innerHTML='<span class="pick__num">'+b.num+'</span><span class="pick__t">'+b.title+'</span><span class="pick__d">'+b.desc+'</span>';
+    o.onclick=function(){opts.querySelectorAll('.pick__opt').forEach(function(x){x.setAttribute('aria-checked',x===o)}); go.href=b.link+(b.link.indexOf('?')>-1?'&':'?')+'client_reference_id='+b.id; go.removeAttribute('aria-disabled');};
+    o.dataset.id=b.id; opts.appendChild(o);
+  });
+  function open(e){e.preventDefault(); last=document.activeElement; box.hidden=false; document.body.style.overflow='hidden'; var want=this.getAttribute('data-pick'), pre=want&&opts.querySelector('[data-id="'+want+'"]'); if(pre){pre.click(); pre.focus();} else opts.querySelector('button').focus(); var n=document.getElementById('nav'); if(n) n.classList.remove('open');}
+  function close(){box.hidden=true; document.body.style.overflow=''; if(last) last.focus();}
+  document.querySelectorAll('[data-pick]').forEach(function(a){a.addEventListener('click',open)});
+  box.querySelectorAll('[data-close]').forEach(function(x){x.addEventListener('click',close)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!box.hidden) close();});
+})();
 /* Page-turner */
 (function(){
   var box=document.getElementById('bookPages'), pages=box.children, n=pages.length;
@@ -829,6 +924,18 @@ document.getElementById('schForm').addEventListener('submit',function(e){
   window.addEventListener('resize',function(){box.style.scrollBehavior='auto'; box.scrollLeft=pages[cur].offsetLeft; box.style.scrollBehavior=''; update();});
   update();
 })();
+/* Phone: activities open on tap */
+(function(){
+  document.querySelectorAll('#club .pane').forEach(function(p){
+    var what=p.querySelector('.pane__what'); if(!what) return;
+    var body=document.createElement('div'); body.className='pane__body';
+    while(what.nextSibling) body.appendChild(what.nextSibling);
+    if(body.querySelector('.pane__empty')){p.appendChild(body); p.classList.add('open'); return;}
+    var btn=document.createElement('button'); btn.type='button'; btn.className='pane__try'; btn.textContent='Try it';
+    btn.onclick=function(){var o=p.classList.toggle('open'); btn.textContent=o?'Close':'Try it';};
+    p.appendChild(btn); p.appendChild(body);
+  });
+})();
 /* Club box tabs */
 (function(){
   var tabs=[].slice.call(document.querySelectorAll('.tabs [role=tab]'));
@@ -837,7 +944,7 @@ document.getElementById('schForm').addEventListener('submit',function(e){
     t.addEventListener('click',function(){show(t)});
     t.addEventListener('keydown',function(e){var d={ArrowRight:1,ArrowLeft:-1}[e.key]; if(d){var n=tabs[(i+d+tabs.length)%tabs.length]; show(n); n.focus();}});
   });
-  show(document.getElementById('tab-reflect'));
+  show(document.getElementById('tab-cross'));
 })();
 /* Crossword */
 (function(){
